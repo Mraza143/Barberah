@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../../images/logo.png";
+import logo from "/images/logo.png";
 
 const Footer = () => (
   <div id="Contact Us"className="w-full flex md:justify-center justify-between items-center flex-col p-4 gradient-bg-footer">

@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
-import {BsScissors} from "react-icons/bs";
-import imageOne from "../../images/b4.jpg";
-import imageTwo from "../../images/b5.jpg";
-import imageThree from "../../images/b3.jpg";
+import imageOne from "/images/b5.jpg";
+import imageTwo from "/images/b4.jpg";
+import imageThree from "/images/b3.jpg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 

@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BrowserRouter } from "react-router-dom";
 import {HashLink as Link} from "react-router-hash-link";
 
-import logo from "../../images/logoo.png";
+import logo from "/images/logoo.png";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
