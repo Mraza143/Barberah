@@ -30,6 +30,24 @@ router.get('/', async (req, res) => {
     
     
    });
+
+   router.put('/:id', async (req, res) => {
+    const barber = await Barber.findById(req.params.id)
+  
+    if (!barber) {
+      res.status(400)
+      throw new Error('barber not found')
+    }
+  
+    const updatedBarber = await Barber.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    })
+  
+    res.status(200).json(updatedBarber)
+    
+    
+   });
+  
   
 
 module.exports = router;
