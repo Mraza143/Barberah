@@ -18,7 +18,7 @@ const App = () =>{
               total={6}
               />
             </Route>
-            <Route  path="/specificSalon/:id">
+            <Route  path="/specificSalon/:id/:name">
             <SpecificSalon/>
             </Route>
           </Switch>

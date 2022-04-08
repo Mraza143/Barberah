@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
-  let text = "/specificSalon/"  + _id;
+  let text = "/specificSalon/"  + _id + "/"+ name;
   return (
     
     <Link to={text}>
@@ -48,6 +48,7 @@ const Salons = (props) => {
     .then(res=> setSalons(res.data))
     .catch(error=>console.log(error));
   })
+
   return (
     <div className="gradient-bg-welcome" id="Salons">
     

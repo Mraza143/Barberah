@@ -1,5 +1,13 @@
 const mongoose = require('mongoose')
 
+const barberSchema = mongoose.Schema(
+  {
+    name:String,
+    experience : Number,
+    ratings : Number
+
+})
+
 const salonSchema = mongoose.Schema(
   {
     name:{
@@ -19,6 +27,14 @@ const salonSchema = mongoose.Schema(
       type:String,
       required:true,
     },
+    barbers: [barberSchema],
+    barber :[
+      {
+        name: String,
+        experience : Number,
+        ratings : Number
+      }
+    ]
   },
   {
     timestamps: true,

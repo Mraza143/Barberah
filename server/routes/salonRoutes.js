@@ -21,18 +21,27 @@ router.post('/', async (req, res) => {
     res.status(400)
     throw new Error('Please add a text field')
   }
-
   const salon = await Salon.create({
     name:req.body.name,
     timings:req.body.timings,
     location: req.body.location,
-    imagePath:req.body.imagePath
-
+    imagePath:req.body.imagePath,
+    barber: req.body.barber
   })
   res.status(200).json(salon)
   
   
  });
+
+ router.post('/:id', async (req, res) => {
+   const salon = await Salon.findById(req.params.id);
+   salon.barber.push(req.body);
+   salon.save();
+  res.status(200).json(salon)
+  
+  
+ });
+
 
  router.put('/:id', async (req, res) => {
   const salon = await Salon.findById(req.params.id)
