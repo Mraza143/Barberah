@@ -2,10 +2,13 @@ import React from "react";
 import { useParams} from "react-router-dom";
 import axios from "axios";
 import { useState ,useEffect} from "react";
+import { Link } from "react-router-dom";
 
 
-const ShopCard = ({imagePath , name,  experience , ratings})=> {
+const ShopCard = ({_id ,imagePath , name,  experience , ratings})=> {
+  let text = "/specificBarber/"  + _id ;
   return (
+    <Link to={text}>
     <div className="bg-[#181918] m-4 flex flex-1
       2xl:min-w-[350px]
       2xl:max-w-[400px]
@@ -33,6 +36,7 @@ const ShopCard = ({imagePath , name,  experience , ratings})=> {
      
       </div>
     </div>
+    </Link>
 
   );
 };

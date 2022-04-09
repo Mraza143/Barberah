@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Home, Welcome, Footer , Navbar, Services, Salons,SpecificSalon} from './components'
 import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
+import Barberprofile from './components/BarberProfile';
 
 
 const App = () =>{
@@ -20,6 +21,9 @@ const App = () =>{
             </Route>
             <Route  path="/specificSalon/:id/:name">
             <SpecificSalon/>
+            </Route>
+            <Route  path="/specificBarber/:id">
+            <Barberprofile/>
             </Route>
           </Switch>
         <Footer/>

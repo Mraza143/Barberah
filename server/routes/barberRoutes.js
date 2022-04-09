@@ -10,6 +10,11 @@ router.get('/', async (req, res) => {
   res.status(200).json(barbers)
  });
 
+router.get('/details/:id', async (req, res) => {
+  const barber = await Barber.findById(req.params.id)
+  res.status(200).json(barber)
+ });
+
  router.get('/:name', async (req, res) => {
     const barbers = await Barber.find({worksAt: req.params.name})
     res.status(200).json(barbers)
