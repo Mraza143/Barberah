@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector, useDispatch } from 'react-redux';
+import { getSalonsAsync } from "../redux/salonSlice";
 
 
 const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
@@ -41,13 +42,13 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
 };
 
 const Salons = (props) => {
-  const [salons, setSalons]= useState([]);
+
+  const dispatch = useDispatch();
+	const salons = useSelector((state) => state.salons);
   useEffect(()=>{
-    axios
-    .get("http://localhost:5000/api/salons")
-    .then(res=> setSalons(res.data))
-    .catch(error=>console.log(error));
-  })
+
+    dispatch(getSalonsAsync())
+  },[dispatch])
 
   return (
     <div className="gradient-bg-welcome" id="Salons">
@@ -65,20 +66,13 @@ const Salons = (props) => {
 
         <div className="flex flex-wrap  justify-center items-center mt-10">
           
-        {salons.filter((transaction,id)=>id<props.total).reverse().map((transaction, i) => (
-            <ShopCard key={i} {...transaction} />))}
-            
-
-           
+        {salons.filter((transaction,id)=>id<props.total).map((transaction, i) => (
+            <ShopCard key={i} {...transaction} />))}           
         </div>
        
       </div>
-      </div>
-      
+      </div>      
     </div>
-    
-    
-
   );
 };
 

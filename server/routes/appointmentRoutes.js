@@ -1,3 +1,4 @@
+const { request } = require('express');
 const express = require('express')
 const router = express.Router()
 const asyncHandler = require('express-async-handler')
@@ -7,6 +8,11 @@ const Appointment = require('../models/appointmentModel')
 
 router.get('/', async (req, res) => {
   const appointments = await Appointment.find({ })
+  res.status(200).json(appointments)
+ });
+ router.get('/:id/:name/:sname', async (req, res) => {
+
+  const appointments = await Appointment.find({barberName: req.params.name ,salonName:req.params.sname})
   res.status(200).json(appointments)
  });
 

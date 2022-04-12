@@ -22,7 +22,7 @@ const App = () =>{
             <Route  path="/specificSalon/:id/:name">
             <SpecificSalon/>
             </Route>
-            <Route  path="/specificBarber/:id">
+            <Route  path="/specificBarber/:id/:name/:sname">
             <Barberprofile/>
             </Route>
           </Switch>
