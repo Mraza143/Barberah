@@ -1,24 +1,29 @@
 {
-  "name": "barberah",
-  "version": "1.0.0",
-  "description": "Find and book the best barbers of your area",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon --watch server --exec node --experimental-modules server/server.js",
-    "watch": "nodemon server/server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.26.1",
-    "colors": "^1.4.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-async-handler": "^1.2.0",
-    "mongoose": "^6.2.9"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "name": "barberah",
+    "version": "1.0.0",
+    "description": "Find and book the best barbers of your area",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon --watch server --exec node --experimental-modules server/server.js",
+        "watch": "nodemon server/server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.26.1",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.0",
+        "colors": "^1.4.0",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "express-async-handler": "^1.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.13.5",
+        "validator": "^13.7.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }

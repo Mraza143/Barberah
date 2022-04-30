@@ -1,58 +1,15 @@
-const express = require('express')
-const router = express.Router()
-const asyncHandler = require('express-async-handler')
+const express = require("express");
+const { getAllBarbers, getSingleBarber, getBarbersByLocation, createBarber, updateBarber } = require("../controllers/barberController");
 
-const Barber = require('../models/barberModel')
-
-
-router.get('/', async (req, res) => {
-  const barbers = await Barber.find({ })
-  res.status(200).json(barbers)
- });
-
-router.get('/details/:id', async (req, res) => {
-  const barber = await Barber.findById(req.params.id)
-  res.status(200).json(barber)
- });
-
- router.get('/:name', async (req, res) => {
-    const barbers = await Barber.find({worksAt: req.params.name})
-    res.status(200).json(barbers)
-   });
+const router = express.Router();
 
 
- router.post('/', async (req, res) => {
 
-    const barber = await Barber.create({
-      name:req.body.name,
-      timings:req.body.timings,
-      experience: req.body.experience,
-      imagePath:req.body.imagePath,
-      worksAt: req.body.worksAt,
-      ratings: req.body.ratings
-    })
-    res.status(200).json(barber)
-    
-    
-   });
+router.route("/").get(getAllBarbers);
+router.route("/details/:id").get(getSingleBarber);
+router.route("/:name").get(getBarbersByLocation);
+router.route("/").post(createBarber);
+router.route("/:id").put(updateBarber);
 
-   router.put('/:id', async (req, res) => {
-    const barber = await Barber.findById(req.params.id)
-  
-    if (!barber) {
-      res.status(400)
-      throw new Error('barber not found')
-    }
-  
-    const updatedBarber = await Barber.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    })
-  
-    res.status(200).json(updatedBarber)
-    
-    
-   });
-  
-  
 
 module.exports = router;
