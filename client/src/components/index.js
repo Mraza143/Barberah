@@ -10,8 +10,8 @@ export { default as Services }
 from './Services'
 export { default as Home }
 from './Home'
-export { default as SignIn }
-from "./SignIn"
+/*export { default as SignIn }
+from "./SignIn"*/
 export { default as SpecialButton }
 from './SpecialButton'
 export { default as SpecificSalon }
