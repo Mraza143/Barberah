@@ -9,7 +9,6 @@ const ErrorHandler = require("../utils/errorHandler");
 // Find All Barbers
 exports.getAllBarbers = catchAsyncErrors(async(req, res, next) => {
     const barbers = await Barber.find();
-    // sendToken(barbers, 200, res);
     res.status(200).json(
         barbers
     )
@@ -20,7 +19,6 @@ exports.getAllBarbers = catchAsyncErrors(async(req, res, next) => {
 // Get Single Barber by Id
 exports.getSingleBarber = catchAsyncErrors(async(req, res, next) => {
     const barber = await Barber.findById(req.params.id)
-        // sendToken(barber, 200, res);
     res.status(200).json(
         barber
     )
@@ -29,7 +27,6 @@ exports.getSingleBarber = catchAsyncErrors(async(req, res, next) => {
 // Get Barbers By Location
 exports.getBarbersByLocation = catchAsyncErrors(async(req, res, next) => {
         const barbers = await Barber.find({ worksAt: req.params.name })
-            // sendToken(barbers, 200, res);
         res.status(200).json(
             barbers
         )
@@ -41,14 +38,13 @@ exports.createBarber = catchAsyncErrors(async(req, res, next) => {
     const { name, timings, experience, imagePath, worksAt, ratings } = req.body
 
     const barber = await Barber.create({
-            name,
-            timings,
-            experience,
-            imagePath,
-            worksAt,
-            ratings
-        })
-        // sendToken(barber, 200, res);
+        name,
+        timings,
+        experience,
+        imagePath,
+        worksAt,
+        ratings
+    })
     res.status(200).json(
         barber
     )

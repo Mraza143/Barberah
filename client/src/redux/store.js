@@ -6,12 +6,12 @@ import salonDetailsReducer from './salonDetailsSlice';
 import appointmentReducer from './appointmentSlice';
 
 export default configureStore({
-	reducer: {
-		barbers: barberReducer,
-		barberDetails: barberDetailsReducer,
-		salons:salonReducer,
-		salonDetails:salonDetailsReducer,
-		appointments:appointmentReducer
+    reducer: {
+        barbers: barberReducer,
+        barberDetails: barberDetailsReducer,
+        salons: salonReducer,
+        salonDetails: salonDetailsReducer,
+        appointments: appointmentReducer,
 
-	},
+    },
 });

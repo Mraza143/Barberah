@@ -2,16 +2,14 @@ import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 //import { Link } from "react-router-dom";<Link to='#shops' smooth>
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Link as Link1 } from "react-router-dom";
 import {HashLink as Link} from "react-router-hash-link";
 
 import logo from "/images/logoo.png";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
-
-  <Link to={link} smooth >
-    
+  <Link to={link} smooth > 
   <li className={`hover:bg-[#2546bd] mx-12 rounded-full cursor-pointer ${classprops}`}>{title}</li></Link>
 );
 
@@ -30,9 +28,16 @@ const Navbar = () => {
         {["About Us", "Services", "Salons", "Contact Us"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`#${item}`} />
         ))}
+        {/* <li className="bg-[#2952e3]  px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+          Login
+        </li> */}
+
+        <Link1 to="/login">
         <li className="bg-[#2952e3]  px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           Login
         </li>
+        </Link1>
+
       </ul>
       <div className="flex relative">
         {!toggleMenu && (
