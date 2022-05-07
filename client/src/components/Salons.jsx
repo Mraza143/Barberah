@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { getSalonsAsync } from "../redux/salonSlice";
+//import { getSalonsAsync } from "../redux/salonSlice";
+//import { getAllBarberss } from '../redux/actions/barberAction'
+import { getAllSalons } from "../redux/actions/salonAction";
 
 
 const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
@@ -44,10 +46,10 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
 const Salons = (props) => {
 
   const dispatch = useDispatch();
-	const salons = useSelector((state) => state.salons);
+	const {salons} = useSelector((state) => state.salons);
   useEffect(()=>{
 
-    dispatch(getSalonsAsync())
+    dispatch(getAllSalons())
   },[dispatch])
 
   return (

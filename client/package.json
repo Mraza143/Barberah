@@ -9,7 +9,6 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@reduxjs/toolkit": "^1.8.1",
         "axios": "^0.26.1",
         "react": "^17.0.2",
         "react-carousel": "^4.3.0",
@@ -20,7 +19,10 @@
         "react-responsive-carousel": "^3.2.23",
         "react-router-dom": "^5.3.0",
         "react-router-hash-link": "^2.4.3",
-        "react-toastify": "^9.0.1"
+        "react-toastify": "^9.0.1",
+        "redux": "^4.2.0",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-thunk": "^2.4.1"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^1.0.7",

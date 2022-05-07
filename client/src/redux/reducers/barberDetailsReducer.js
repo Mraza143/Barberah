@@ -1,27 +1,27 @@
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL,CLEAR_ERRORS } from "../constants/barberConstant"
+import { ALL_BARBER_DETAILS_FAIL,ALL_BARBER_DETAILS_REQUEST,ALL_BARBER_DETAILS_SUCCESS ,CLEAR_ERRORS } from "../constants/barberDetailsConstant"
 
 
 
-export const barbersReducer = (state = { barbers: [] }, action) => {
+export const barbersDetailsReducer = (state = { barber: {} }, action) => {
 
     switch (action.type) {
-        case ALL_BARBER_REQUEST:
+        case ALL_BARBER_DETAILS_REQUEST:
             return {
                 loading: true,
-                barbers: [],
+                barber: {},
             }
 
-        case ALL_BARBER_SUCCESS:
+        case ALL_BARBER_DETAILS_SUCCESS:
             return {
                 loading: false,
-                barbers: action.payload.barbers,
+                barber: action.payload.barber,
                 // productsCount: action.payload.productsCount,
                 // resultPerPage: action.payload.resultPerPage,
                 // filteredProductsCount: action.payload.filteredProductsCount,
             }
 
 
-        case ALL_BARBER_FAIL:
+        case ALL_BARBER_DETAILS_FAIL:
             return {
                 loading: false,
                 error: action.payload,

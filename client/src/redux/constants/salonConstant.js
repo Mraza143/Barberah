@@ -1,0 +1,8 @@
+export const ALL_SALON_REQUEST = 'ALL_SALON_REQUEST'
+export const ALL_SALON_SUCCESS = 'ALL_SALON_SUCCESS'
+export const ALL_SALON_FAIL = 'ALL_SALON_FAIL'
+
+
+
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS"

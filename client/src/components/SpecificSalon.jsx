@@ -4,8 +4,10 @@ import axios from "axios";
 import { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import {getSalonDetailsAsync} from '../redux/salonDetailsSlice';
-import { getBarbersSalonAsync } from "../redux/barberSlice";
+//import {getSalonDetailsAsync} from '../redux/salonDetailsSlice';
+//import { getBarbersSalonAsync } from "../redux/barberSlice";
+import { getAllBarberss } from "../redux/actions/barberAction";
+import { getAllSalonDetails } from "../redux/actions/salonDetailsAction";
 
 
 const ShopCard1 = (props)=> {
@@ -50,15 +52,15 @@ const ShopCard1 = (props)=> {
 const SpecificSalon = () => {
     const {id ,name} = useParams(); 
     const dispatch = useDispatch();
-	  const salonDetails = useSelector((state) => state.salonDetails);
+	  const salon = useSelector((state) => state.salon);
     const barbers = useSelector((state) => state.barbers);
-    const sname= salonDetails.name;
+    const sname= salon.name;
     
 
 
     useEffect(()=>{
-      dispatch(getSalonDetailsAsync({id}));
-      dispatch(getBarbersSalonAsync({name}));
+      dispatch(getAllSalonDetails({id}));
+      dispatch(getAllBarberss({name}));
 
     }, [dispatch,id,name]);
     return (
@@ -74,17 +76,17 @@ const SpecificSalon = () => {
           <div className="flex flex-col justify-center items-center w-full mt-3">
             <div className=" flex flex-col  justify-center items-center w-full mb-6 p-10 s">
               
-                <p className="    text-white text-base font-bold ">Location: {salonDetails.location}</p>             
-              <p className=" text-white text-base font-bold ">Timings: {salonDetails.timings} </p>
+                <p className="    text-white text-base font-bold ">Location: {salon.location}</p>             
+              <p className=" text-white text-base font-bold ">Timings: {salon.timings} </p>
              
             </div>
             <img
-              src={salonDetails.imagePath}
+              src={salon.imagePath}
               alt="nature"
               className="w-full h-128 2xl:h-96 rounded-md shadow-lg object-cover"
             />
             <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
-              <p className="text-[#37c7da] font-bold">{salonDetails.name}</p>
+              <p className="text-[#37c7da] font-bold">{salon.name}</p>
             </div>
             <div className="mt-20 flex flex-wrap  justify-center items-center ">
             {barbers.map((barber, i) => (

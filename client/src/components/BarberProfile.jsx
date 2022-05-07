@@ -3,8 +3,10 @@ import { useParams} from "react-router-dom";
 import axios from "axios";
 import { useState ,useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {getBarberDetailsAsync} from '../redux/barberDetailsSlice';
-import { getAppointmentsAsync } from "../redux/appointmentSlice";
+import { getAllBarbersDetails } from "../redux/actions/barberDetailsAction";
+import { getAllAppointments } from "../redux/actions/appointmentAction";
+//import {getBarberDetailsAsync} from '../redux/barberDetailsSlice';
+//import { getAppointmentsAsync } from "../redux/appointmentSlice";
 
 const ShopCard1 = (props)=> {
 
@@ -41,13 +43,13 @@ const BarberProfile = () => {
     console.log(id)
 
     const dispatch = useDispatch();
-	  const barberDetails = useSelector((state) => state.barberDetails);
+	  const barber = useSelector((state) => state.barber);
     const appointments = useSelector((state)=>state.appointments);
 
     useEffect(()=>{
 
-       dispatch(getBarberDetailsAsync({id}));
-       dispatch(getAppointmentsAsync({id,name,sname}))
+       dispatch(getAllBarbersDetails({id}));
+       dispatch(getAllAppointments({id,name,sname}))
        
 
     }, [dispatch, id]);
@@ -65,17 +67,17 @@ const BarberProfile = () => {
           <div className="flex flex-col justify-center items-center w-full mt-3">
             <div className=" flex flex-col  justify-center items-center w-full mb-6 p-10 s">
               
-                <p className="    text-white text-base font-bold ">Experience: {barberDetails.experience} years</p>             
-              <p className=" text-white text-base font-bold ">Ratings: {barberDetails.ratings} /10</p>
+                <p className="    text-white text-base font-bold ">Experience: {barber.experience} years</p>             
+              <p className=" text-white text-base font-bold ">Ratings: {barber.ratings} /10</p>
              
             </div>
             <img
-              src={ barberDetails.imagePath}
+              src={ barber.imagePath}
               alt="nature"
               className="w-256 h-64 2xl:h-96 rounded-md shadow-lg object-cover"
             />
             <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
-              <p className="text-[#37c7da] font-bold">{barberDetails.name}</p>
+              <p className="text-[#37c7da] font-bold">{barber.name}</p>
             </div>
 
           </div>

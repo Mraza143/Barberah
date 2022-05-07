@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+/*import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 //import { nanoid } from 'nanoid';
 
 export const getSalonsAsync = createAsyncThunk(
@@ -28,4 +28,4 @@ export const salonSlice = createSlice({
 });
 
 
-export default salonSlice.reducer;
+export default salonSlice.reducer;*/

@@ -1,15 +1,27 @@
-const asyncHandler = require('express-async-handler')
+const asyncHandler = require('express-async-handler');
+const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 
 const Salon = require('../models/salonModel')
 
 // @desc    Get goals
 // @route   GET /api/goals
 // @access  Private
-const getSalons = asyncHandler(async (req, res) => {
+/*const getSalons = asyncHandler(async (req, res) => {
   const salons = await Salon.find({ user: req.user.id })
 
-  res.status(200).json(salons)
+  res.status(200).json(
+    salons
+    )
+})*/
+exports.getSalons = catchAsyncErrors(async(req, res, next) => {
+  const salons = await Salon.find();
+  res.status(200).json(
+      salons
+  )
+
 })
+
+
 
 // @desc    Set goal
 // @route   POST /api/goals
@@ -60,10 +72,32 @@ const deleteSalon = asyncHandler(async (req, res) => {
 
   res.status(200).json({ id: req.params.id })
 })
+/*
+router.get('/:id', async (req, res) => {
+  const salon = await Salon.findById(req.params.id);
+  res.status(200).json(salon)
+ });
 
+
+
+
+
+
+    const salon = await Salon.create({
+    name:req.body.name,
+    timings:req.body.timings,
+    location: req.body.location,
+    imagePath:req.body.imagePath
+
+  })
+  res.status(200).json(salon)
+  
+  
+ });
+
+*/
 module.exports = {
-  getSalons,
-  setSalon,
+    setSalon,
   updateSalon,
   deleteSalon,
 }

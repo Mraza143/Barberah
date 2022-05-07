@@ -1,6 +1,8 @@
 const express = require('express')
+const {getSalons} = require("../controllers/SalonController");
 const router = express.Router()
-const asyncHandler = require('express-async-handler')
+//const asyncHandler = require('express-async-handler')
+
 
 const Salon = require('../models/salonModel')
 
@@ -9,6 +11,7 @@ router.get('/', async (req, res) => {
   const salons = await Salon.find({ })
   res.status(200).json(salons)
  });
+//router.route("/").get(getSalons);
 //router.route('/').post(setSalons);
 router.get('/:id', async (req, res) => {
   const salon = await Salon.findById(req.params.id);
@@ -38,8 +41,7 @@ router.post('/', async (req, res) => {
    salon.barber.push(req.body);
    salon.save();
   res.status(200).json(salon)
-  
-  
+ 
  });
 
 

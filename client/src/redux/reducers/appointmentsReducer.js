@@ -1,27 +1,27 @@
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL,CLEAR_ERRORS } from "../constants/barberConstant"
+import { ALL_APPOINTMENT_REQUEST,ALL_APPOINTMENT_SUCCESS,ALL_APPOINTMENT_FAIL,CLEAR_ERRORS } from "../constants/appointmentsConstant"
 
 
 
-export const barbersReducer = (state = { barbers: [] }, action) => {
+export const appointmentReducer = (state = { appointments: [] }, action) => {
 
     switch (action.type) {
-        case ALL_BARBER_REQUEST:
+        case ALL_APPOINTMENT_REQUEST:
             return {
                 loading: true,
-                barbers: [],
+                appointments: [],
             }
 
-        case ALL_BARBER_SUCCESS:
+        case ALL_APPOINTMENT_SUCCESS:
             return {
                 loading: false,
-                barbers: action.payload.barbers,
+               appointments: action.payload.appointments,
                 // productsCount: action.payload.productsCount,
                 // resultPerPage: action.payload.resultPerPage,
                 // filteredProductsCount: action.payload.filteredProductsCount,
             }
 
 
-        case ALL_BARBER_FAIL:
+        case ALL_APPOINTMENT_FAIL:
             return {
                 loading: false,
                 error: action.payload,
