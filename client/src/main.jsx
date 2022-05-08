@@ -6,17 +6,19 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 
 
-export default function Main() {
-  return (
+// export default function Main() {
 
-    <App></App>
-  );
-}
+//   return (
+
+//     <App></App>
+//   );
+// }
 
 ReactDOM.render(
 <React.StrictMode>
   <Provider store={store}>
-<Main />
+{/* <Main /> */}
+<App/>
 </Provider>
 </React.StrictMode>,
 document.getElementById("root")

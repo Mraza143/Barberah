@@ -1,4 +1,4 @@
-import { ALL_SALON_REQUEST, ALL_SALON_SUCCESS, ALL_SALON_FAIL,CLEAR_ERRORS } from "../constants/salonConstant"
+import { ALL_SALON_REQUEST, ALL_SALON_SUCCESS, ALL_SALON_FAIL, CLEAR_ERRORS } from "../constants/salonConstant"
 
 
 
