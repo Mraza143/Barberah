@@ -9,8 +9,9 @@ import {
 } from './components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Barberprofile from './components/BarberProfile'
-import  SignIn1  from './components/SignIn1'
 import  Navbar from "./components/Navbar"
+import  LogIn  from './components/Login'
+import Register from "./components/Register"
 
 const App = () => {
   return (
@@ -23,8 +24,13 @@ const App = () => {
           <Home />
         </Route>
         <Route path="/login">
-          <SignIn1 />
+          <LogIn />
         </Route>
+
+        <Route path="/register">
+          <Register/>
+        </Route>
+
        
         <Route path="/salons">
           <Salons total={6} />
