@@ -43,13 +43,13 @@ const BarberProfile = () => {
     console.log(id)
 
     const dispatch = useDispatch();
-	  const barber = useSelector((state) => state.barber);
-    const appointments = useSelector((state)=>state.appointments);
+	  const {barber} = useSelector((state) => state.barber);
+    const {appointments} = useSelector((state)=>state.appointments);
 
     useEffect(()=>{
 
-       dispatch(getAllBarbersDetails({id}));
-       dispatch(getAllAppointments({id,name,sname}))
+       dispatch(getAllBarbersDetails(id));
+       dispatch(getAllAppointments(id,name,sname))
        
 
     }, [dispatch, id]);

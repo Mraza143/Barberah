@@ -5,17 +5,13 @@ import { ALL_BARBER_DETAILS_REQUEST,ALL_BARBER_DETAILS_SUCCESS,ALL_BARBER_DETAIL
 export const getAllBarbersDetails = (id) => async(dispatch) => {
     try {
         dispatch({ type: ALL_BARBER_DETAILS_REQUEST })
-        //const config = { headers: { 'Content-Type': 'application/json' } }
-       //const  resp  = await axios.get(`http://localhost:5000/api/salons`)
-        const resp = await fetch(`http://localhost:5000/api/barbers/details/${id}`);
+
+       const { data } = await axios.get(`http://localhost:5000/api/barbers/details/${id}`);
+        //const resp = await fetch(`http://localhost:5000/api/barbers/details/${id}`);
         
-        //
-	    const barber = await resp.json();
-
-
         dispatch({
             type: ALL_BARBER_DETAILS_SUCCESS,
-            payload: barber,
+            payload: data,
         })
     } catch (error) {
         dispatch({

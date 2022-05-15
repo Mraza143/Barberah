@@ -29,12 +29,12 @@ app.use(cors())
 const user = require("./routes/userRoutes");
 const barber = require("./routes/barberRoutes");
 const salon = require("./routes/salonRoutes");
+const appointment = require("./routes/appointmentRoutes")
 
-//app.use('/api/salons', require('./routes/salonRoutes'))
-app.use('/api/appointments', require('./routes/appointmentRoutes'))
-app.use('/api/barbers', barber);
 app.use("/api", user);
 app.use("/api/salons", salon);
+app.use('/api/barbers', barber);
+app.use('/api/appointments',appointment)
 
 
 // Connecting Database
