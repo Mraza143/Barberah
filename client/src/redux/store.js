@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-// import { composeWithDevTools } from "redux-devtools-extension"
 import { composeWithDevTools } from "redux-devtools-extension"
 
+
+import { userReducer } from "./reducers/userReducer"
 
 import {
     barbersReducer
@@ -13,6 +14,7 @@ import { barbersDetailsReducer } from './reducers/barberDetailsReducer'
 import { appointmentReducer } from './reducers/appointmentsReducer'
 
 const reducer = combineReducers({
+    user: userReducer,
     salons: salonReducer,
     barbers: barbersReducer,
     salon: salonDetailsReducer,
