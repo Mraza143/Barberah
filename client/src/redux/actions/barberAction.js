@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS,ALL_BARBER_FAIL } from "../constants/barberConstant";
+import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS,ALL_BARBER_FAIL ,CLEAR_ERRORS} from "../constants/barberConstant";
 
 
 export const getAllBarberss = (name) => async(dispatch) => {
@@ -7,21 +7,12 @@ export const getAllBarberss = (name) => async(dispatch) => {
         dispatch({ type: ALL_BARBER_REQUEST })
         //const config = { headers: { 'Content-Type': 'application/json' } }
        //const  resp  = await axios.get(`http://localhost:5000/api/salons`)
-        const resp = await fetch(`http://localhost:5000/api/barbers/${name}`);
-        
-        //
-	    const barbers = await resp.json();
-      // const  salons  = await axios.get(`http://localhost:5000/api/salons`)
+       const {data } = await axios.get(`http://localhost:5000/api/barbers/${name}`);
 
-		
-        //const { data } = await axios.post(
-        //    `/api/login`, { email, password },
-        //    config,
-        //)
 
         dispatch({
             type: ALL_BARBER_SUCCESS,
-            payload: barbers,
+            payload: data,
         })
     } catch (error) {
         dispatch({

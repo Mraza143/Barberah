@@ -1,7 +1,8 @@
 const express = require("express");
-const { getAllBarbers, getSingleBarber, getBarbersByLocation, createBarber, updateBarber } = require("../controllers/barberController");
+const {getAllBarbers,getBarbersByLocation,getSingleBarber,createBarber,updateBarber} = require("../controllers/BarberController")
 
 const router = express.Router();
+const Barber = require('../models/barberModel')
 
 
 

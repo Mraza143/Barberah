@@ -7,15 +7,11 @@ export const getAllSalonDetails = (id) => async(dispatch) => {
         dispatch({ type: ALL_SALON_DETAILS_REQUEST })
         //const config = { headers: { 'Content-Type': 'application/json' } }
        //const  resp  = await axios.get(`http://localhost:5000/api/salons`)
-        const resp = await fetch(`http://localhost:5000/api/salons/${id}`);
-        
-        //
-	    const salon = await resp.json();
-
+       const {data } = await axios.get(`http://localhost:5000/api/salons/${id}`);
 
         dispatch({
             type: ALL_SALON_DETAILS_SUCCESS,
-            payload: salon,
+            payload: data,
         })
     } catch (error) {
         dispatch({

@@ -9,9 +9,10 @@ const ErrorHandler = require("../utils/errorHandler");
 // Find All Barbers
 exports.getAllBarbers = catchAsyncErrors(async(req, res, next) => {
     const barbers = await Barber.find();
-    res.status(200).json(
+    res.status(200).json({
+        success:true ,
         barbers
-    )
+})
 
 })
 
@@ -19,17 +20,19 @@ exports.getAllBarbers = catchAsyncErrors(async(req, res, next) => {
 // Get Single Barber by Id
 exports.getSingleBarber = catchAsyncErrors(async(req, res, next) => {
     const barber = await Barber.findById(req.params.id)
-    res.status(200).json(
+    res.status(200).json({
+        success : true,
         barber
-    )
+})
 })
 
 // Get Barbers By Location
 exports.getBarbersByLocation = catchAsyncErrors(async(req, res, next) => {
         const barbers = await Barber.find({ worksAt: req.params.name })
-        res.status(200).json(
+        res.status(200).json({
+            sucess : true,
             barbers
-        )
+})
 
     })
     // Create Barber
@@ -45,9 +48,10 @@ exports.createBarber = catchAsyncErrors(async(req, res, next) => {
         worksAt,
         ratings
     })
-    res.status(200).json(
+    res.status(200).json({
+        success:true,
         barber
-    )
+})
 })
 
 // Update Barber
@@ -65,8 +69,9 @@ exports.updateBarber = catchAsyncErrors(async(req, res, next) => {
             useFindAndModify: false
         })
         // sendToken(updatedBarber, 200, res);
-    res.status(200).json(
+    res.status(200).json({
+        success :true,
         updatedBarber
-    )
+})
 
 })

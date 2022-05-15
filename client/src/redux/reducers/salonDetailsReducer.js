@@ -23,6 +23,7 @@ export const salonDetailsReducer = (state = { salon: {} }, action) => {
 
         case ALL_SALON_DETAILS_FAIL:
             return {
+                ...state,
                 loading: false,
                 error: action.payload,
             }

@@ -50,17 +50,19 @@ const ShopCard1 = (props)=> {
 
 
 const SpecificSalon = () => {
-    const {id ,name} = useParams(); 
+    const {id , name} = useParams(); 
+
     const dispatch = useDispatch();
-	  const salon = useSelector((state) => state.salon);
-    const barbers = useSelector((state) => state.barbers);
+	  const {salon} = useSelector((state) => state.salon);
+    const {barbers} = useSelector((state) => state.barbers);
+    //console.log(salon);
     const sname= salon.name;
     
 
 
     useEffect(()=>{
-      dispatch(getAllSalonDetails({id}));
-      dispatch(getAllBarberss({name}));
+      dispatch(getAllSalonDetails(id));
+      dispatch(getAllBarberss(name));
 
     }, [dispatch,id,name]);
     return (
