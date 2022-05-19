@@ -13,11 +13,15 @@ import  Navbar from "./components/Navbar"
 import  LogIn  from './components/Login'
 import Register from "./components/Register"
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   return (
         <Router>
     <div className="gradient-bg-welcome">
         <Navbar />
+        <ToastContainer/>
       </div>
       <Switch>
         <Route exact path="/">
