@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom'
 import MailOutlineIcon from "@material-ui/icons/MailOutline"
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import { useDispatch, useSelector } from 'react-redux'
-
-
-import { toast } from 'react-toastify';
 import { clearErrors, login } from '../redux/actions/userAction'
 import Loader from "./Loader/Loader"
+import { useAlert } from 'react-alert'
+import { useHistory } from 'react-router-dom'
 
 
-
-const LogIn = ({ history }) => {
+const LogIn = () => {
 
 // ------------------
   const dispatch = useDispatch()
+  const alert=useAlert()
+  const history=useHistory()
   const { error, loading, isAuthenticated } = useSelector((state) => state.user)
 
 // -----------------
@@ -25,20 +25,19 @@ const [loginPassword, setLoginPassword] = useState('')
   const loginSubmit = (e) => {
     e.preventDefault()
     dispatch(login(loginEmail, loginPassword))
-    // toast.success("Account is Created");
 
   }
 
     // -----------------
     useEffect(() => {
       if (error) {
-        toast.error(error)
+        alert.error(error)
         dispatch(clearErrors())
       }
       if (isAuthenticated) {
-        history.push("/")
+        history.push("/sfghyh")
       }
-    }, [dispatch, error, toast, history, isAuthenticated])
+    }, [dispatch, error, alert, history, isAuthenticated])
 
  
 

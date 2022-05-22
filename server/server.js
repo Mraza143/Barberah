@@ -1,11 +1,8 @@
-const express = require('express')
-const app = express()
-const dotenv = require('dotenv').config()
+const app = require("./app");
+const cloudinary = require("cloudinary")
 const connectDB = require('./config/db')
-const cors = require('cors')
-const bodyParser = require("body-parser")
-const cookieParser = require("cookie-parser")
-const errorMiddleware = require('./middleware/error')
+
+
 
 
 
@@ -17,33 +14,18 @@ process.on('uncaughtException', (err) => {
 })
 
 
-// Builtin Middlewares
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser());
-app.use(cors())
-
-
-// Routes 
-const user = require("./routes/userRoutes");
-const barber = require("./routes/barberRoutes");
-const salon = require("./routes/salonRoutes");
-const appointment = require("./routes/appointmentRoutes")
-
-app.use("/api", user);
-app.use("/api/salons", salon);
-app.use('/api/barbers', barber);
-app.use('/api/appointments',appointment)
-
-
 // Connecting Database
 connectDB()
 
 
-// Middleware for Errors
-app.use(errorMiddleware)
 
+
+// Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 // Server Starts Listening to http://localhost:5000
 const server = app.listen(process.env.PORT, () =>

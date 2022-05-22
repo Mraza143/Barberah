@@ -12,16 +12,15 @@ import Barberprofile from './components/BarberProfile'
 import  Navbar from "./components/Navbar"
 import  LogIn  from './components/Login'
 import Register from "./components/Register"
+// import LoginSignup from './components/LoginSignup'
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
   return (
         <Router>
     <div className="gradient-bg-welcome">
         <Navbar />
-        <ToastContainer/>
       </div>
       <Switch>
         <Route exact path="/">
@@ -34,6 +33,8 @@ const App = () => {
         <Route path="/register">
           <Register/>
         </Route>
+
+{/* <Route exact path="/login" component={LoginSignup} /> */}
 
        
         <Route path="/salons">
