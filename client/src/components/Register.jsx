@@ -8,6 +8,8 @@ import { useAlert } from 'react-alert'
 import { clearErrors, register } from '../redux/actions/userAction'
 import { useHistory } from 'react-router-dom'
 import Select from 'react-select'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 const Register = () => {
   const dispatch = useDispatch()
@@ -27,7 +29,10 @@ const Register = () => {
   const [avatarPreview, setAvatarPreview] = useState(
     '/images/login_register.jpg',
   )
-
+  const optionss = [
+    'customer', 'salonowner'
+  ];
+  const defaultOptions = optionss[0];
   // const options = [  if you want to use react-select then use this array of object (options)
   //   { value: 'customer', label: 'Customer' },
   //   { value: 'salonowner', label: 'Salon Owner' },
@@ -170,18 +175,13 @@ const Register = () => {
                   </div> */}
 
 <div className="flex items-center  mb-6 py-2 px-3 rounded-2xl pl-0 pr-0">
-                    <select
-                      className='className=" block w-full px-3 py-1.5 font-normal text-gray-700  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"'
-                      name="role"
-                      value={role}
-                      // defaultValue={role}
-                      onChange={registerDataChange}
-                      
-                      >
-                        <option value="customer">Customer</option>
-                        <option value="salonowner">Salon Owner</option>
-</select>
+  <lable>customer</lable>
+            <input type="radio" name='role' value="customer" onChange={registerDataChange} />
+            <lable>salonOwner</lable>
+            <input type="radio" name='role' value="salonowner" onChange={registerDataChange} />
                   </div>
+                  <p>{user.role}</p>
+                  <p>hahah</p>
 
                   {/* ------------- */}
 
@@ -217,3 +217,17 @@ const Register = () => {
 }
 
 export default Register
+
+/*
+                    <select
+                      className='className=" block w-full px-3 py-1.5 font-normal text-gray-700  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"'
+                      name="role"
+                      value={role}
+                      // defaultValue={role}
+                      onChange={registerDataChange}
+                      
+                      >
+                        <option value="customer">Customer</option>
+                        <option value="salonowner">Salon Owner</option>
+</select>
+*/
