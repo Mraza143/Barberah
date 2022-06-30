@@ -24,6 +24,36 @@ const barberSchema = mongoose.Schema({
             type: String,
             required: true,
         },
+
+        numOfReviews: {
+            type: Number,
+            default: 0
+        },
+
+        reviews: [{
+
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: "User",
+                required: true
+            },
+
+            name: {
+                type: String,
+                required: true
+            },
+            rating: {
+                type: Number,
+                rquired: true
+            },
+            comment: {
+                type: String,
+                required: true
+            }
+        }],
+
+
+
     },
 
 )
