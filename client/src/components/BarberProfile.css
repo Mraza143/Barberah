@@ -50,6 +50,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
     border: 1px solid rgba(56, 56, 56, 0.116);
     width: 30vmax;
+    background-color: #ffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,17 +63,19 @@
 }
 
 .reviewCard>p {
+    margin-top: 8px;
     color: rgba(0, 0, 0, 0.836);
-    font: 600 0.9vmax "Roboto";
+    font: 600 1.9vmax "Roboto";
 }
 
 .reviewCardComment {
+    margin-top: 10px;
     color: rgba(0, 0, 0, 0.445);
-    font: 300 0.8vmax cursive;
+    font: 300 1.8vmax cursive;
 }
 
 .noReviews {
-    font: 400 1.3vmax "Gill Sans";
+    font: 400 2vmax "Gill Sans";
     text-align: center;
     color: rgba(0, 0, 0, 0.548);
 }
