@@ -73,6 +73,10 @@ const BarberProfile = () => {
     (state) => state.newReview,
   )
 
+  console.log(name,id)
+  console.log("User " +user)
+  console.log("Barber name "+ barber.name + " User name " +user.name)
+
   const options = {
     size: 'large',
     value: barber.ratings,
@@ -102,7 +106,7 @@ const BarberProfile = () => {
 
     dispatch(getAllBarbersDetails(id))
     dispatch(getAllAppointments(id, name, sname))
-  }, [dispatch, id, id, alert, reviewError, success])
+  }, [dispatch, id, alert, reviewError, success])
   // console.log(appointments)
   return (
     <>
@@ -269,7 +273,7 @@ const BarberProfile = () => {
                 ))}
             </div>
           ) : (
-            <p className="noReviews">No Reviews Yet</p>
+            <p className="noReviews text-white">No Reviews Yet</p>
           )}
 
       </div>

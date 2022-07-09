@@ -38,7 +38,7 @@ exports.getBarbersByLocation = catchAsyncErrors(async(req, res, next) => {
     // Create Barber
 exports.createBarber = catchAsyncErrors(async(req, res, next) => {
 
-    const { name, timings, experience, imagePath, worksAt, ratings } = req.body
+    const { name, timings, experience, imagePath, worksAt, ratings, reviews } = req.body
 
     const barber = await Barber.create({
         name,
@@ -46,7 +46,8 @@ exports.createBarber = catchAsyncErrors(async(req, res, next) => {
         experience,
         imagePath,
         worksAt,
-        ratings
+        ratings,
+        reviews
     })
     res.status(200).json({
         success: true,
@@ -113,5 +114,20 @@ exports.createBarberReview = catchAsyncErrors(async(req, res, next) => {
     await barber.save({ validateBeforeSave: false })
     res.status(200).json({
         success: true,
+    })
+})
+
+
+// Get all reviews of a product (Admin)
+exports.getBarberReviews = catchAsyncErrors(async(req, res, next) => {
+    const barber = await Barber.findById(req.query.id)
+
+    if (!barber) {
+        return next(new ErrorHandler('Barber not found', 404))
+    }
+
+    res.status(200).json({
+        success: true,
+        reviews: barber.reviews,
     })
 })
