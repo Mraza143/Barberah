@@ -1,0 +1,107 @@
+.dashboard {
+    width: 100vw;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    position: absolute;
+}
+
+.dashboardContainer {
+    border: 3px solid #950fb3;
+    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(213 126 245);
+    /* padding: 3rem 0; */
+}
+
+.dashboardContainer>h1 {
+    color: #fff;
+    font: 900 3rem "Roboto";
+    text-align: center;
+    /* background-color: transparent!important; */
+    background-color: rgb(174 10 209 / 93%)!important;
+    padding: 1rem;
+    margin: auto;
+    text-shadow: 4px 3px 0px #4d1758;
+}
+
+.dashboardSummary {
+    margin: 0 0 5rem 0;
+}
+
+.dashboardSummary>div {
+    display: flex;
+    /* background-color: white; */
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.dashboardSummary>div>p {
+    /* background-color: rgb(174 10 209 / 93%); */
+    color: white;
+    font: 700 1.7rem "Roboto";
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.dashboardSummaryBox2 .stats {
+    box-shadow: 12px 8px 6px -2px rgb(153 66 159 / 75%);
+    border: 4px ridge #b012d3;
+    border: 15px ridge #b012d3;
+    border-radius: 82%;
+}
+
+.dashboardSummaryBox2>a {
+    color: rgb(0, 0, 0);
+    font: 300 2rem "Roboto";
+    text-align: center;
+    background-color: rgb(255, 233, 174);
+    text-decoration: none;
+    padding: 1.5rem;
+    width: 10vmax;
+    height: 10vmax;
+    margin: 2rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dashboardSummaryBox2>a:first-child {
+    background-color: rgb(255, 110, 110);
+    color: rgb(255, 255, 255);
+}
+
+.dashboardSummaryBox2>a:last-child {
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+}
+
+.lineChart {
+    width: 80%;
+    margin: auto;
+}
+
+.doughnutChart {
+    width: 30vmax;
+    margin: auto;
+    margin: 5rem auto 2rem auto;
+}
+
+@media screen and (max-width: 600px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    .dashboardContainer {
+        border-left: none;
+    }
+    .dashboardSummary>div>p {
+        margin: 0;
+    }
+    .dashboardSummaryBox2>a {
+        padding: 0.5rem;
+        margin: 1rem;
+        font: 300 0.9rem "Roboto";
+    }
+}

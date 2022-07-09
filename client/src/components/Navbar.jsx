@@ -1,10 +1,7 @@
 import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-//import { Link } from "react-router-dom";<Link to='#shops' smooth>
 import { BrowserRouter, Link as Link1 } from "react-router-dom";
-//import {HashLink as Link} from "react-router-hash-link";
-
 import logo from "/images/logoo.png";
 
 
@@ -25,7 +22,7 @@ const Navbar = () => {
         
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["About Us", "Salons" , "login", "register" , "Contact Us"].map((item, index) => (
+        {["About Us", "Salons" , "login", "register" , "Contact Us", "dashboard"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`/${item}`} />
         ))}
 

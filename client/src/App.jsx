@@ -12,6 +12,7 @@ import Barberprofile from './components/BarberProfile'
 import  Navbar from "./components/Navbar"
 import  LogIn  from './components/Login'
 import Register from "./components/Register"
+import Dashboard from './components/Admin/Dashboard'
 // import LoginSignup from './components/LoginSignup'
 
 
@@ -34,7 +35,10 @@ const App = () => {
           <Register/>
         </Route>
 
-{/* <Route exact path="/login" component={LoginSignup} /> */}
+
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
 
        
         <Route path="/salons">
