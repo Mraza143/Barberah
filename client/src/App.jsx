@@ -13,6 +13,8 @@ import  Navbar from "./components/Navbar"
 import  LogIn  from './components/Login'
 import Register from "./components/Register"
 import Dashboard from './components/Admin/Dashboard'
+import BarbersList from "./components/Admin/BarbersList"
+import NewBarber from './components/Admin/NewBarber'
 // import LoginSignup from './components/LoginSignup'
 
 
@@ -35,9 +37,17 @@ const App = () => {
           <Register/>
         </Route>
 
-
+{/* Admin Pages */}
         <Route exact path="/dashboard">
           <Dashboard />
+        </Route>
+        
+        <Route exact path="/admin/barbers">
+          <BarbersList />
+        </Route>
+
+        <Route exact path="/admin/barber">
+          <NewBarber />
         </Route>
 
        
