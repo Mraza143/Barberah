@@ -76,34 +76,62 @@ exports.updateBarber = catchAsyncErrors(async(req, res, next) => {
     })
 
 })
+/*exports.createBarberReview =  catchAsyncErrors(async(req, res, next) => {
+    const {cname, crating, ccomment } = req.body
+  
+    const barber = await Barber.findById(req.params.id)
+  
+      const review = {
+        name : cname,
+        rating :crating,
+        comment :ccomment
+      }
+      barber.rel.push(review)
+      //barber.reviews.push(review)
+  
+      barber.numOfReviews = barber.reviews.length
+  
+     barber.ratings =
+      barber.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      barber.reviews.length
+      await barber.save()
+      res.status(201).json({ message: 'Review added' })
+     if(!barber) {
+      res.status(404)
+      throw new Error('Barber not found')
+    }
+  })
 
 
 // Create new review or update a review
-exports.createBarberReview = catchAsyncErrors(async(req, res, next) => {
+/*exports.createBarberReview = catchAsyncErrors(async(req, res, next) => {
     const { rating, comment, barberId } = req.body
 
+
     const review = {
-        user: req.user._id,
+        user: req.user.id,
         name: req.user.name,
         rating: Number(rating),
         comment,
     }
 
     const barber = await Barber.findById(barberId)
+    //const barber = await Barber.findById(req.params.id)
+    barber.reviews.push(review);
+    barber.numOfReviews = barber.reviews.length;
 
-    const isReviewed = barber.reviews.find(
+    /*const isReviewed = barber.reviews.find(
         (rev) => rev.user.toString() === req.user._id.toString(),
-    )
+    )*/
 
-    if (isReviewed) {
+    /*if (isReviewed) {
         barber.reviews.forEach((rev) => {
             if (rev.user.toString() === req.user._id.toString())
                 (rev.rating = rating), (rev.comment = comment)
         })
-    } else {
-        barber.reviews.push(review)
-        barber.numOfReviews = barber.reviews.length
-    }
+    } else {}
+
+    
 
     let avg = 0
     barber.reviews.forEach((rev) => {
@@ -120,7 +148,7 @@ exports.createBarberReview = catchAsyncErrors(async(req, res, next) => {
 
 // Get all reviews of a product (Admin)
 exports.getBarberReviews = catchAsyncErrors(async(req, res, next) => {
-    const barber = await Barber.findById(req.query.id)
+    const barber = await Barber.findById(req.params.id)
 
     if (!barber) {
         return next(new ErrorHandler('Barber not found', 404))
@@ -128,6 +156,6 @@ exports.getBarberReviews = catchAsyncErrors(async(req, res, next) => {
 
     res.status(200).json({
         success: true,
-        reviews: barber.reviews,
+        rel: barber.rel,
     })
-})
+})*/

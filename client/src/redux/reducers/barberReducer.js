@@ -1,4 +1,5 @@
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAIL, NEW_REVIEW_RESET, ALL_REVIEW_REQUEST, ALL_REVIEW_SUCCESS, ALL_REVIEW_FAIL } from "../constants/barberConstant"
+import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS,
+} from "../constants/barberConstant"
 
 
 
@@ -38,9 +39,23 @@ export const barbersReducer = (state = { barbers: [] }, action) => {
     }
 
 }
+/*export const productReviewCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case PRODUCT_CREATE_REVIEW_REQUEST:
+        return { loading: true }
+      case PRODUCT_CREATE_REVIEW_SUCCESS:
+        return { loading: false, success: true }
+      case PRODUCT_CREATE_REVIEW_FAIL:
+        return { loading: false, error: action.payload }
+      case PRODUCT_CREATE_REVIEW_RESET:
+        return {}
+      default:
+        return state
+    }
+  }
 
 
-export const newReviewReducer = (state = {}, action) => {
+/*export const newReviewReducer = (state = {}, action) => {
     switch (action.type) {
         case NEW_REVIEW_REQUEST:
             return {
@@ -71,10 +86,10 @@ export const newReviewReducer = (state = {}, action) => {
         default:
             return state
     }
-}
+}/*
 
 
-export const productReviewsReducer = (state = { reviews: [] }, action) => {
+/*export const productReviewsReducer = (state = { reviews: [] }, action) => {
     switch (action.type) {
         case ALL_REVIEW_REQUEST:
             return {
@@ -101,4 +116,4 @@ export const productReviewsReducer = (state = { reviews: [] }, action) => {
         default:
             return state
     }
-}
+}*/

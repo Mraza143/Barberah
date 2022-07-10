@@ -10,12 +10,13 @@ import {
   getAllBarbersDetails,
 } from '../redux/actions/barberDetailsAction'
 import { getAllAppointments } from '../redux/actions/appointmentAction'
+import {getAllReviews} from '../redux/actions/reviewAction'
 import { Rating } from '@material-ui/lab'
-import { newReview } from '../redux/actions/barberAction'
-import { NEW_REVIEW_RESET } from '../redux/constants/barberConstant'
+
 import "./BarberProfile.css"
-//import {getBarberDetailsAsync} from '../redux/barberDetailsSlice';
-//import { getAppointmentsAsync } from "../redux/appointmentSlice";
+import {createbarberReview ,getAllReviewsAverage} from '../redux/actions/reviewAction'
+import {CREATE_REVIEW_RESET} from '../redux/constants/reviewConstant'
+
 
 const ShopCard1 = (props) => {
   return (
@@ -50,7 +51,10 @@ const ReviewCard = ({ review }) => {
   return (
     <div className="reviewCard">
       <img src={profilePng} alt="User" />
-      <p>{review.name}</p>
+      <p>{review.customerName}</p>
+      <p>{review.rating}</p>
+
+
       <Rating {...options} />
       <span className="reviewCardComment">{review.comment}</span>
     </div>
@@ -66,16 +70,24 @@ const BarberProfile = () => {
   const [date, setDate] = useState('')
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+
+  const [barberId,setbarberId] = useState(id)
   const { user } = useSelector((state) => state.user)
+  const [customerName, setCustomerName] = useState(user.name)
+
   const { barber } = useSelector((state) => state.barber)
+  const  {reviews} = useSelector((state) => state.reviews)
+  //const [average,setAverage]=  useState(reviews[2]);
   const { appointments } = useSelector((state) => state.appointments)
+  const { average } = useSelector((state) => state.average)
+
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview,
   )
-
-  console.log(name,id)
-  console.log("User " +user)
-  console.log("Barber name "+ barber.name + " User name " +user.name)
+    
+  console.log(`average is `)
+  //console.log("User " +user)
+  //console.log("Barber name "+ barber.name + " User name " +user.name)
 
   const options = {
     size: 'large',
@@ -84,13 +96,23 @@ const BarberProfile = () => {
     precision: 0.5,
   }
 
-  const reviewSubmitHandler = () => {
+/*  const reviewSubmitHandler = () => {
     const myForm = new FormData()
     myForm.set('rating', rating)
     myForm.set('comment', comment)
     myForm.set('barberId', id)
 
     dispatch(newReview(myForm))
+  }*/
+  const submitHandler = (e) => {
+
+    e.preventDefault()
+    dispatch(
+      createbarberReview({barberId, customerName,
+        rating,
+        comment,
+      })
+    )
   }
 
   useEffect(() => {
@@ -101,12 +123,15 @@ const BarberProfile = () => {
 
     if (success) {
       alert.success('Review Submitted Successfully')
-      dispatch({ type: NEW_REVIEW_RESET })
+      dispatch({ type: CREATE_REVIEW_RESET })
     }
-
+    dispatch(getAllReviews(id))
     dispatch(getAllBarbersDetails(id))
     dispatch(getAllAppointments(id, name, sname))
-  }, [dispatch, id, alert, reviewError, success])
+    dispatch(getAllReviewsAverage(id))
+ 
+    
+  }, [dispatch, id, name,sname ,alert, reviewError, success])
   // console.log(appointments)
   return (
     <>
@@ -126,7 +151,7 @@ const BarberProfile = () => {
                 Experience: {barber.experience} years
               </p>
               <p className=" text-white text-base font-bold ">
-                Ratings: {barber.ratings} /10
+                Ratings: {Math.round(average * 100)/100} /10
               </p>
             </div>
             <img
@@ -145,7 +170,7 @@ const BarberProfile = () => {
             <ShopCard1
               key={i}
               date={barber.date}
-              customerName={barber.customerName}
+              customerName={barber.date}
             />
           ))}
           {/* ----------------------- */}
@@ -249,10 +274,11 @@ const BarberProfile = () => {
                 onChange={(e) => setComment(e.target.value)}
               ></textarea>
 
+
               <button
                 type="button"
                 class="h-12 w-48 rounded font-medium text-xs bg-blue-500 text-white"
-                onClick={reviewSubmitHandler}
+                onClick={submitHandler}
               >
                 Submit
               </button>
@@ -265,11 +291,11 @@ const BarberProfile = () => {
         </div>
 
 
-        {barber.reviews && barber.reviews[0] ? (
+        {reviews[0]!=null ? (
             <div className="reviews">
-              {barber.reviews &&
-                barber.reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review} />
+              {
+                reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review}  />
                 ))}
             </div>
           ) : (
@@ -287,5 +313,11 @@ const BarberProfile = () => {
 export default BarberProfile
 
 /*
-
+              <textarea
+                className="submitDialogTextArea"
+                cols="30"
+                rows="5"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+              ></textarea>
 */

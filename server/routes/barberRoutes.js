@@ -11,8 +11,9 @@ router.route("/details/:id").get(getSingleBarber);
 router.route("/:name").get(getBarbersByLocation);
 router.route("/").post(createBarber);
 router.route("/:id").put(updateBarber);
-router.route("/review").put(createBarberReview)
-router.route("/reviews").get(getBarberReviews)
+//router.route("/review").put(createBarberReview)
+//router.route("/reviews/:id").get(getBarberReviews)
+//router.route("/reviews/:id").post(createBarberReview)
 
 
 module.exports = router;

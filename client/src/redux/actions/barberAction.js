@@ -1,5 +1,6 @@
 import axios from "axios";
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAIL, ALL_REVIEW_REQUEST, ALL_REVIEW_SUCCESS, ALL_REVIEW_FAIL } from "../constants/barberConstant";
+import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS, 
+ } from "../constants/barberConstant";
 
 
 export const getAllBarberss = (name) => async(dispatch) => {
@@ -22,7 +23,35 @@ export const getAllBarberss = (name) => async(dispatch) => {
     }
 }
 
-
+/*export const createProductReview = (productId,cname, review) => async (
+    dispatch,
+  ) => {
+    try {
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_REQUEST,
+      })
+  
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      }
+  
+      await axios.post(`/api/barbers/${productId}/reviews`, cname ,review, config)
+  
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_SUCCESS,
+      })
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
 // NEW REVIEW
 export const newReview = (reviewData) => async(dispatch) => {
     try {
@@ -63,7 +92,7 @@ export const getAllReviews = (id) => async(dispatch) => {
             payload: error.response.data.message,
         })
     }
-}
+}*/
 
 
 

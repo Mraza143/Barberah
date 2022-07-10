@@ -29,11 +29,13 @@ const user = require("./routes/userRoutes");
 const barber = require("./routes/barberRoutes");
 const salon = require("./routes/salonRoutes");
 const appointment = require("./routes/appointmentRoutes")
+const review = require("./routes/reviewRoutes")
 
 app.use("/api", user);
 app.use("/api/salons", salon);
 app.use('/api/barbers', barber);
 app.use('/api/appointments', appointment)
+app.use('/api/reviews', review)
 
 
 
