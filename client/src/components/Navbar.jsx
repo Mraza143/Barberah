@@ -2,7 +2,7 @@ import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { BrowserRouter, Link as Link1 } from "react-router-dom";
-import logo from "/images/logoo.png";
+import logo from "/images/logooo.png";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
@@ -22,7 +22,7 @@ const Navbar = () => {
         
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["About Us", "Salons" , "login", "register" , "Contact Us", "dashboard"].map((item, index) => (
+        {["About Us", "Salons" , "Login", "Register" , "Contact Us"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`/${item}`} />
         ))}
 

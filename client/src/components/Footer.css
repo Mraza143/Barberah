@@ -1,0 +1,10 @@
+ul li {
+    display: inline;
+    padding: 0.5rem;
+    text-align: right;
+    float: left;
+}
+
+.font {
+    font-family: verdana;
+}
