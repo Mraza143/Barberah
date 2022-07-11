@@ -1,3 +1,20 @@
+.pakage {
+    min-width: 8rem;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border: 5px solid #930988;
+    border-radius: 10px;
+}
+
+.pakage p {
+    font-size: 14px;
+}
+
+.font__style {
+    font-family: cursive;
+}
+
 .submitReview {
     border: none;
     background-color: tomato;

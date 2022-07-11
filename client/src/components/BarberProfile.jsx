@@ -137,7 +137,7 @@ const BarberProfile = () => {
     <>
       <div className="gradient-bg-welcome pt-4 pb-8 flex md:flex-row flex-col w-full justify-center items-center">
         <div
-          className=" m-4 flex flex-[0.6]
+          className=" !bg-red mr-4 flex flex-[0.6]
           2xl:min-w-[750px]
           2xl:max-w-[800px]
           sm:min-w-[470px]
@@ -163,6 +163,32 @@ const BarberProfile = () => {
               <p className="text-[#37c7da] font-bold">{barber.name}</p>
             </div>
           </div>
+          {/* ------------ */}
+            <h1 className=' mt-6  mb-2  underline text-2xl text-white text-center'>Select Your Pakage</h1>
+          <div className='flex flex-wrap'>
+          <div className='pakage'>
+<h1 className='text-xl text-center underline'>Basic</h1>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+          </div>
+          <div className='pakage'>
+<h1 className='text-xl text-center underline'>Standard</h1>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+          </div>
+          <div className='pakage'>
+<h1 className='text-xl text-center underline'>Premium</h1>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+<p>lorem</p>
+          </div>
+          </div>
+          {/* ------------ */}
         </div>
         <div className="text-[#37c7da] flex-[0.4] ">
           Appointments for this barber
@@ -179,7 +205,7 @@ const BarberProfile = () => {
               <div className="md:flex ">
                 <div className="w-full px-7 py-8">
                   <div className="flex flex-row">
-                    <h2 className="text-3xl font-semibold">Appointment</h2>
+                    <h2 className="text-3xl font-semibold mx-auto font__style text-[#0f0e13]">Appointment</h2>
                   </div>
 
                   <div className="relative pb-5">
@@ -228,17 +254,12 @@ const BarberProfile = () => {
                     />
                   </div>
                   <div class="flex justify-between items-center pt-2">
+                  
                     <button
                       type="button"
-                      class="h-12 w-24 text-blue-500 text-xs font-medium"
+                      class="h-12 w-full rounded font-medium text-base bg-[#0f0e13] text-white"
                     >
-                      Return to cart
-                    </button>
-                    <button
-                      type="button"
-                      class="h-12 w-48 rounded font-medium text-xs bg-blue-500 text-white"
-                    >
-                      Continue to Shipping
+                      Book Appointment
                     </button>
                   </div>
                 </div>
@@ -255,7 +276,7 @@ const BarberProfile = () => {
           <div className="md:flex font-cursive">
             <div className="w-full px-6 py-6 flex flex-col ">
               <div className="flex flex-row mb-4">
-                <h2 className="text-2xl font-semibold text-[#602239]">
+                <h2 className="text-2xl font-semibold font__style text-[#602239]">
                   Submit Your Review For {barber.name} Barber{' '}
                 </h2>
               </div>

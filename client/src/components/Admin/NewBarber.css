@@ -47,7 +47,7 @@
     border-radius: 5px;
     border: 0;
     box-sizing: border-box;
-    color: #eee;
+    color: #fff;
     font-size: 16px;
     height: 100%;
     outline: 0;
@@ -56,7 +56,6 @@
 }
 
 .input:last-of-type {
-    color: #656572 !important;
     padding: 10px 10px !important;
 }
 
@@ -88,13 +87,13 @@
 }
 
 .submit {
-    background-color: #08d;
+    background-color: #b012d3;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
     color: #eee;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
     height: 50px;
     margin-top: 38px;
     /* // outline: 0; */
