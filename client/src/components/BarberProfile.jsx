@@ -135,7 +135,7 @@ const BarberProfile = () => {
   // console.log(appointments)
   return (
     <>
-      <div className="gradient-bg-welcome flex md:flex-row flex-col w-full justify-center items-center">
+      <div className="gradient-bg-welcome pt-4 pb-8 flex md:flex-row flex-col w-full justify-center items-center">
         <div
           className=" m-4 flex flex-[0.6]
           2xl:min-w-[750px]
@@ -250,13 +250,13 @@ const BarberProfile = () => {
       </div>
       {/* // ------------ Reviews form */}
 
-      <div className="gradient-bg-welcome flex flex-col w-full justify-center items-center py-8">
-        <div className="max-w-md  bg-white shadow-lg rounded-lg md:max-w-xl  mb-14">
-          <div className="md:flex ">
-            <div className="w-full px-7 py-8 flex flex-col ">
-              <div className="flex flex-row">
-                <h2 className="text-3xl font-semibold">
-                  Reviews For {barber.name} Barber{' '}
+      <div className="gradient-bg-welcome pt-12  flex flex-col w-full justify-center items-center py-8">
+        <div className="min-w-md  bg-white shadow-lg rounded-lg md:max-w-xl  mb-14">
+          <div className="md:flex font-cursive">
+            <div className="w-full px-6 py-6 flex flex-col ">
+              <div className="flex flex-row mb-4">
+                <h2 className="text-2xl font-semibold text-[#602239]">
+                  Submit Your Review For {barber.name} Barber{' '}
                 </h2>
               </div>
 
@@ -269,7 +269,7 @@ const BarberProfile = () => {
               <textarea
                 className="submitDialogTextArea"
                 cols="30"
-                rows="5"
+                rows="7"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               ></textarea>
@@ -277,7 +277,7 @@ const BarberProfile = () => {
 
               <button
                 type="button"
-                class="h-12 w-48 rounded font-medium text-xs bg-blue-500 text-white"
+                class="h-12 w-full rounded font-larger text-xs bg-[#602239] text-white"
                 onClick={submitHandler}
               >
                 Submit
@@ -292,12 +292,15 @@ const BarberProfile = () => {
 
 
         {reviews[0]!=null ? (
-            <div className="reviews">
-              {
+          <>
+            <h1 className='reviews__title'>Reviews for {barber.name} Barber</h1>
+          <div className="reviews">
+          {
                 reviews.map((review) => (
                   <ReviewCard key={review._id} review={review}  />
                 ))}
             </div>
+            </>
           ) : (
             <p className="noReviews text-white">No Reviews Yet</p>
           )}
