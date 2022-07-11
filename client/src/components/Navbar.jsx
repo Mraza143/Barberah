@@ -24,7 +24,7 @@ const Navbar = () => {
         
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["About Us", "Salons" , "login", "register" , "Contact Us", "dashboard"].map((item, index) => (
+        {["About Us", "Salons" , "Login", "Register" , "Contact Us"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`/${links[index]}`} />
         ))}
 

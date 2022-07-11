@@ -90,17 +90,10 @@ const Register = () => {
             >
               <div className="background-frame w-full mx-auto p-12 mx-12 flex-col items-center space-y-6">
                 <h1 className="text-white font-bold text-6xl font-sans">
-                  Barberah
+                  Be Confident, Be Brave, Be Yourself.
                 </h1>
                 <p className="text-white mt-1">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
-                  laborum nesciunt nam illum dicta voluptatibus suscipit,
-                  quibusdam fuga illo mollitia rerum doloribus modi ut
-                  consequuntur sit magni perferendis enim! Iste? Lorem ipsum
-                  dolor sit amet, consectetur adipisicing elit. At repellat
-                  natus iste aliquam aliquid enim in voluptatibus dicta ducimus
-                  ipsa placeat ullam cupiditate itaque eveniet nam quam, earum
-                  tempora facere.
+                  Cut the phone tag. Discover and book Beauty & Wellness professionals near you instantly anytime, anywhere.
                 </p>
               </div>
             </div>
@@ -112,11 +105,11 @@ const Register = () => {
                   encType="multipart/form-data"
                   className="bg-white rounded-md shadow-2xl p-5"
                 >
-                  <h1 className="text-gray-800 font-bold text-2xl mb-1">
-                    Hello Again!
+                  <h1 className="text-gray-800 font-bold text-2xl mb-1 text-center">
+                    Get your FREE Account
                   </h1>
-                  <p className="text-sm font-normal text-gray-600 mb-8">
-                    Welcome Back
+                  <p className="text-sm font-normal text-gray-600 mb-8 text-center">
+                    Create Account Now
                   </p>
                   <div className="flex items-center border-2 mb-6 py-2 px-3 rounded-2xl">
                     <FaceIcon />
@@ -175,13 +168,16 @@ const Register = () => {
                   </div> */}
 
 <div className="flex items-center  mb-6 py-2 px-3 rounded-2xl pl-0 pr-0">
-  <lable>customer</lable>
+  
+            <lable>Type: &nbsp;</lable>
             <input type="radio" name='role' value="customer" onChange={registerDataChange} />
-            <lable>salonOwner</lable>
+            <lable>&nbsp;Customer &nbsp;</lable>
+            
             <input type="radio" name='role' value="salonowner" onChange={registerDataChange} />
+            <lable>&nbsp;Salon Owner</lable>
                   </div>
-                  <p>{user.role}</p>
-                  <p>hahah</p>
+                  {/*<p>{user.role}</p>*/}
+                  <p>Image: </p>
 
                   {/* ------------- */}
 
@@ -206,6 +202,12 @@ const Register = () => {
                   >
                     Register
                   </button>
+                  <p className="text-center">
+                    Already have an account? 
+                    <a href="login" className="underline hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">
+                    &nbsp;Login
+                    </a>
+                  </p>
                 </form>
               </div>
             </div>
