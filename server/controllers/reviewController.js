@@ -41,8 +41,8 @@ exports.setReview = catchAsyncErrors(async(req, res, next) => {
 }
   const reviews= await Review.find({barberId:req.body.barberId});
   let val = 0;
-  if(!reviews){
-    val= Number(req.body.rating);
+  if(reviews.length==0){
+    val= req.body.rating;
   }else{
   val =
     reviews.reduce((acc, item) => item.rating + acc, 0) /
