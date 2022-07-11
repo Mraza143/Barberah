@@ -2,7 +2,7 @@ import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { BrowserRouter, Link as Link1 } from "react-router-dom";
-import logo from "/images/logoo.png";
+import logo from "/images/logooo.png";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
