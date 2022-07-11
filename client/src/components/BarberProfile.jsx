@@ -70,6 +70,7 @@ const BarberProfile = () => {
   const [date, setDate] = useState('')
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+  const [price,setPrice]=useState(0);
 
   const [barberId,setbarberId] = useState(id)
   const { user } = useSelector((state) => state.user)
@@ -166,21 +167,21 @@ const BarberProfile = () => {
           {/* ------------ */}
             <h1 className=' mt-6  mb-2  underline text-2xl text-white text-center'>Select Your Pakage</h1>
           <div className='flex flex-wrap'>
-          <div className='pakage'>
-<h1 className='text-xl text-center underline'>Basic</h1>
+          <div className='pakage' onClick={(e)=>setPrice(500)}>
+<h1 className='text-xl text-center underline' >Basic</h1>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
           </div>
-          <div className='pakage'>
+          <div className='pakage' onClick={(e)=>setPrice(1000)} >
 <h1 className='text-xl text-center underline'>Standard</h1>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
           </div>
-          <div className='pakage'>
+          <div className='pakage' onClick={(e)=>setPrice(2000)}>
 <h1 className='text-xl text-center underline'>Premium</h1>
 <p>lorem</p>
 <p>lorem</p>
@@ -249,6 +250,7 @@ const BarberProfile = () => {
                     <input
                       type="number"
                       name="price"
+                      value={price}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Price"
                     />
