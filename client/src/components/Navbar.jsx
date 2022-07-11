@@ -13,6 +13,8 @@ const NavBarItem = ({ title,link, classprops }) => (
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
+  //Modift this array for links of navbar
+  const links =["AboutUs","Salons","login","register","ContactUs","dashboard"] 
 
   return (
 
@@ -23,7 +25,7 @@ const Navbar = () => {
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {["About Us", "Salons" , "login", "register" , "Contact Us", "dashboard"].map((item, index) => (
-          <NavBarItem key={item + index} title={item} link={`/${item}`} />
+          <NavBarItem key={item + index} title={item} link={`/${links[index]}`} />
         ))}
 
 
