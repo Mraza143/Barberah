@@ -9,7 +9,7 @@ import {
   clearErrors,
   getAllBarbersDetails,
 } from '../redux/actions/barberDetailsAction'
-import { getAllAppointments } from '../redux/actions/appointmentAction'
+import { createAppointmentForCustomers, getAllAppointments } from '../redux/actions/appointmentAction'
 import {getAllReviews} from '../redux/actions/reviewAction'
 import { Rating } from '@material-ui/lab'
 
@@ -67,22 +67,27 @@ const BarberProfile = () => {
   // console.log(id)
   const alert = useAlert()
   const dispatch = useDispatch()
-  const [date, setDate] = useState('')
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
-  const [price,setPrice]=useState(0);
-
+  
   const [barberId,setbarberId] = useState(id)
   const { user } = useSelector((state) => state.user)
-  const [customerName, setCustomerName] = useState(user.name)
-
   const { barber } = useSelector((state) => state.barber)
+
+  // Appointment States
+  const [customerName, setCustomerName] = useState(user.name)
+  const [barberName, setBarberName]=useState(barber.name)
+  const [salonName, setSalonName]=useState(barber.worksAt)
+  const [date, setDate]=useState("")
+  const [price,setPrice]=useState(0);
+
   const  {reviews} = useSelector((state) => state.reviews)
   //const [average,setAverage]=  useState(reviews[2]);
   const { appointments } = useSelector((state) => state.appointments)
+  const {appointment, error:appointmentError, success : appointmentSuccess}=useSelector((state)=>state.newAppointment)
   const { average } = useSelector((state) => state.average)
 
-  const { success, error: reviewError } = useSelector(
+  const { success:reviewSuccess, error:reviewError } = useSelector(
     (state) => state.newReview,
   )
     
@@ -97,14 +102,17 @@ const BarberProfile = () => {
     precision: 0.5,
   }
 
-/*  const reviewSubmitHandler = () => {
-    const myForm = new FormData()
-    myForm.set('rating', rating)
-    myForm.set('comment', comment)
-    myForm.set('barberId', id)
+   const appointmentSubmitHandler=(e)=>{
+    e.preventDefault()
+    dispatch(createAppointmentForCustomers({
+      customerName,
+      barberName,
+      salonName,
+      date,
+      price
+    }))
+   }
 
-    dispatch(newReview(myForm))
-  }*/
   const submitHandler = (e) => {
 
     e.preventDefault()
@@ -122,17 +130,29 @@ const BarberProfile = () => {
       dispatch(clearErrors())
     }
 
-    if (success) {
+    if (reviewSuccess) {
       alert.success('Review Submitted Successfully')
       dispatch({ type: CREATE_REVIEW_RESET })
     }
+
+    if (appointmentError) {
+      alert.error(appointmentError)
+      dispatch(clearErrors())
+    }
+
+    if (appointmentSuccess) {
+      alert.success('Appointment Booked Successfully')
+      // dispatch({ type: CREATE_REVIEW_RESET })
+    }
+
+
     dispatch(getAllReviews(id))
     dispatch(getAllBarbersDetails(id))
     dispatch(getAllAppointments(id, name, sname))
     dispatch(getAllReviewsAverage(id))
  
     
-  }, [dispatch, id, name,sname ,alert, reviewError, success])
+  }, [dispatch, id, name,sname ,alert, reviewError, reviewSuccess, appointmentError, appointmentSuccess])
   // console.log(appointments)
   return (
     <>
@@ -142,12 +162,12 @@ const BarberProfile = () => {
           2xl:min-w-[750px]
           2xl:max-w-[800px]
           sm:min-w-[470px]
-          sm:max-w-[500px]
+          sm:max-w-[570px]
           min-w-full
           flex-col p-3 rounded-md hover:shadow-2xl"
         >
           <div className="flex flex-col justify-center items-center w-full mt-3">
-            <div className=" flex flex-col  justify-center items-center w-full mb-6 p-10 s">
+            <div className=" flex flex-col  justify-center items-center w-full mb-6 p-7">
               <p className="    text-white text-base font-bold ">
                 Experience: {barber.experience} years
               </p>
@@ -168,21 +188,21 @@ const BarberProfile = () => {
             <h1 className=' mt-6  mb-2  underline text-2xl text-white text-center'>Select Your Pakage</h1>
           <div className='flex flex-wrap'>
           <div className='pakage' onClick={(e)=>setPrice(500)}>
-<h1 className='text-xl text-center underline' >Basic</h1>
+<h1 className='text-xl text-center underline' >Basic $500</h1>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
           </div>
           <div className='pakage' onClick={(e)=>setPrice(1000)} >
-<h1 className='text-xl text-center underline'>Standard</h1>
+<h1 className='text-xl text-center underline'>Standard $1000</h1>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
           </div>
           <div className='pakage' onClick={(e)=>setPrice(2000)}>
-<h1 className='text-xl text-center underline'>Premium</h1>
+<h1 className='text-xl text-center underline'>Premium $2000</h1>
 <p>lorem</p>
 <p>lorem</p>
 <p>lorem</p>
@@ -191,13 +211,13 @@ const BarberProfile = () => {
           </div>
           {/* ------------ */}
         </div>
-        <div className="text-[#37c7da] flex-[0.4] ">
+        <div className="text-[#37c7da] flex-[0.3] ">
           Appointments for this barber
           {appointments.map((barber, i) => (
             <ShopCard1
               key={i}
               date={barber.date}
-              customerName={barber.date}
+              customerName={customerName}
             />
           ))}
           {/* ----------------------- */}
@@ -213,7 +233,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="cname"
-                      value={user.name}
+                      value={customerName}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Customer Name"
                     />
@@ -222,7 +242,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="bname"
-                      value={barber.name}
+                      value={barberName}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Barber Name"
                     />
@@ -231,7 +251,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="sname"
-                      value={barber.worksAt}
+                      value={salonName}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Salon Name"
                     />
@@ -241,7 +261,7 @@ const BarberProfile = () => {
                       type="date"
                       name="date"
                       value={date}
-                      onChange={() => setDate(e.target.value)}
+                      onChange={(e) => setDate(e.target.value)}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Date"
                     />
@@ -258,6 +278,7 @@ const BarberProfile = () => {
                   <div class="flex justify-between items-center pt-2">
                   
                     <button
+                  onClick={appointmentSubmitHandler}
                       type="button"
                       class="h-12 w-full rounded font-medium text-base bg-[#0f0e13] text-white"
                     >
