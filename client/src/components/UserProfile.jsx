@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import profilePng from '/images/Profile.png'
 
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 const UserProfile = () => {
   const [isClicked, setIsClicked] = useState(true);
@@ -57,6 +59,7 @@ const UserProfile = () => {
                 className=" text-xl rounded-lg p-3 hover:bg-light-gray"
               ></button>
               <div>
+                <DashboardIcon /> 
                 <p className="font-semibold dark:text-gray-200 ">Dashboard</p>
                 <p className="text-gray-500 text-sm dark:text-gray-400">
                   {" "}
@@ -70,6 +73,7 @@ const UserProfile = () => {
                 className=" text-xl rounded-lg p-3 hover:bg-light-gray"
               ></button>
               <div>
+                <AccountBoxIcon />
                 <p className="font-semibold dark:text-gray-200 ">My Profile</p>
                 <p className="text-gray-500 text-sm dark:text-gray-400">
                   {" "}
@@ -82,7 +86,7 @@ const UserProfile = () => {
           <div className="mt-5">
             <button
               onClick={handleClick}
-              className="p-3 w-full hover:drop-shadow-xl hover:bg-white"
+              className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg"
             >
               Logout
             </button>
