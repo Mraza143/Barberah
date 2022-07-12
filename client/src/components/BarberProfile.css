@@ -16,6 +16,11 @@
     font-family: cursive;
 }
 
+.border__style {
+    border: 2px solid lightpink;
+    padding: 5px;
+}
+
 .submitReview {
     border: none;
     background-color: tomato;

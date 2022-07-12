@@ -20,24 +20,26 @@ import {CREATE_REVIEW_RESET} from '../redux/constants/reviewConstant'
 
 const ShopCard1 = (props) => {
   return (
-    <div
-      className="bg-[#181918] m-4 flex flex-1
-      2xl:min-w-[350px]
-      2xl:max-w-[400px]
-      sm:min-w-[170px]
-      sm:max-w-[200px]
-      min-w-full
-      flex-col p-3 rounded-md hover:shadow-2xl"
-    >
-      <div className="flex flex-col items-center w-full mt-3">
-        <div className="flex flex-col  justify-center items-center display-flex justify-start w-full mb-6 p-2">
-          <p className="text-white text-base">Date: {props.date}</p>
-          <p className="text-white text-base">
-            Customer Name: {props.customerName}{' '}
-          </p>
-        </div>
-      </div>
-    </div>
+    // <div
+    //   className="bg-[#181918] m-4 flex flex-1
+    //   2xl:min-w-[350px]
+    //   2xl:max-w-[400px]
+    //   sm:min-w-[170px]
+    //   sm:max-w-[200px]
+    //   min-w-full
+    //   flex-col p-3 rounded-md hover:shadow-2xl"
+    // >
+    //   <div className="flex flex-col items-center w-full mt-3">
+    //     <div className="flex flex-col  justify-center items-center display-flex justify-start w-full mb-6 p-2">
+    //       <p className="text-white text-base">Date: {props.date}</p>
+    //       <p className="text-white text-base">
+    //         Customer Name: {props.customerName}{' '}
+    //       </p>
+    //     </div>
+    //   </div>
+    // </div>
+<h1>hello</h1>
+
   )
 }
 
@@ -156,9 +158,9 @@ const BarberProfile = () => {
   // console.log(appointments)
   return (
     <>
-      <div className="gradient-bg-welcome pt-4 pb-8 flex md:flex-row flex-col w-full justify-center items-center">
+      <div className="gradient-bg-welcome pb-4 flex md:flex-row flex-col w-full justify-center items-center">
         <div
-          className=" !bg-red mr-4 flex flex-[0.6]
+          className="mr-4 flex flex-[0.6]
           2xl:min-w-[750px]
           2xl:max-w-[800px]
           sm:min-w-[470px]
@@ -212,14 +214,14 @@ const BarberProfile = () => {
           {/* ------------ */}
         </div>
         <div className="text-[#37c7da] flex-[0.3] ">
-          Appointments for this barber
+          {/* Appointments for this barber
           {appointments.map((barber, i) => (
             <ShopCard1
               key={i}
               date={barber.date}
               customerName={customerName}
             />
-          ))}
+          ))} */}
           {/* ----------------------- */}
           <div>
             <div className="max-w-md  bg-white shadow-lg rounded-lg md:max-w-xl ">
@@ -290,6 +292,34 @@ const BarberProfile = () => {
             </div>
           </div>
           {/* ----------------- */}
+          Appointments for this barber
+          <table className='bg-white border__style'>
+            <thead>
+              <th className='border__style'>Date : </th>
+              <th className='border__style'>Customer Name : </th>
+            </thead>
+            <tbody>
+            { appointments.map((barber, i) => (
+          <tr key={i}>
+<td className='border__style'>{barber.date}</td>
+<td className='border__style'>{barber.customerName}</td>
+          </tr>
+
+           
+            ))}
+            </tbody>
+          </table>
+          
+
+          {/* {appointments.map((barber, i) => (
+            <ShopCard1
+              key={i}
+              date={barber.date}
+              customerName={customerName}
+            />
+          ))} */}
+
+          {/* ------------ */}
         </div>
       </div>
       {/* // ------------ Reviews form */}
