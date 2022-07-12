@@ -8,11 +8,11 @@ const SpecialButton = () => (
         <button
               type="button"
               onClick={()=>{}}
-              className="mt-20 w-[250px] flex flex-row justify-center items-center p-3 rounded-full cursor-pointer cta"
+              className="mt-20 w-[275px] flex flex-row justify-center items-center p-3 rounded-full cursor-pointer cta"
             >
 
               <span className="text-black text-base font-semibold">
-                Show All Barbers
+                SHOW ALL BARBERS
               </span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
               <path d="M1,5 L11,5"></path>
