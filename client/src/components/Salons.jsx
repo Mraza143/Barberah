@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //import { getSalonsAsync } from "../redux/salonSlice";
 //import { getAllBarberss } from '../redux/actions/barberAction'
 import { getAllSalons } from "../redux/actions/salonAction";
+import "./Salons.css"
 
 
 const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
@@ -12,15 +13,29 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
   return (
     
     <Link to={text}>
-    <div className="bg-[#181918] m-4 flex flex-1
-      2xl:min-w-[350px]
-      2xl:max-w-[400px]
-      sm:min-w-[170px]
-      sm:max-w-[200px]
-      min-w-full
-      flex-col p-3 rounded-md hover:shadow-2xl"
+    <div className="my-4 mx-6"
     >
-      <div className="flex flex-col items-center w-full mt-3">
+
+      <div class="card">
+        <div class="card-img">
+          <img></img>
+        </div>
+        <div class="card-info">
+          <p class="text-title">{name}</p>
+          <p class="text-body">{location}</p>
+          <p class="text-body">{timings}</p>
+          </div>
+          <div class="btn">
+            <a class="fancy" href="#">
+        <span class="top-key"></span>
+        <a class="text">Book Now</a>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+            </a> 
+          </div>
+        </div>
+  </div>
+      {/*<div className="flex flex-col items-center w-full mt-3">
         <div className="display-flex justify-start w-full mb-6 p-2">
           <a href={`https://ropsten.etherscan.io/address/${location}`} target="_blank" rel="noreferrer">
             <p className="text-white text-base">Location: {location}</p>
@@ -37,8 +52,7 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
         <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
           <p className="text-[#37c7da] font-bold">{name}</p>
         </div>
-      </div>
-    </div>
+      </div>*/}
     </Link>
   );
 };
@@ -53,20 +67,20 @@ const Salons = (props) => {
   },[dispatch])
 
   return (
-    <div className="gradient-bg-black" id="Salons">
+    <div className="bg-white" id="Salons" >
     
-    <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
-      <div className="flex flex-col md:p-12 py-12 px-4">
+    <div className="flex w-full justify-center items-center 2xl:px-20 bg-white">
+      <div className="flex flex-col md:p-12 py-4 px-4">
 
-          <h3 className="mt-12 text-[#37c7da] text-3xl text-center my-2 font-bold">
+          <h3 className="mt-2 text-black text-3xl text-center font-bold">
             Barber's Shops
           </h3>
-          <h3 className="py-12 text-[#37c7da] bold text-3xl text-center my-2">
+          <h3 className="py-2 text-black bold text-xl text-center my-2">
             Connect your account to make a appointment with the barber of your choice!
           </h3>
 
 
-        <div className="flex flex-wrap  justify-center items-center mt-10">
+        <div className="flex flex-wrap mt-6 justify-around">
           
         {salons.filter((transaction,id)=>id<props.total).map((transaction, i) => (
             <ShopCard key={i} {...transaction} />))}           
