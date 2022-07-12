@@ -1,8 +1,11 @@
 import React from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { BrowserRouter, Link as Link1 } from "react-router-dom";
 import logo from "/images/logooo.png";
+import profilePng from '/images/Profile.png'
+import UserProfile from "./UserProfile";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
@@ -49,6 +52,30 @@ const Navbar = () => {
           </ul>
         )}
       </div>
+      {/* Logout Toggle and User Profile */}
+
+      <div
+        className="flex text-4xl items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+        onClick={()=>setToggleMenu(!toggleMenu)}
+      >
+        <img
+          className="rounded-full w-8 h-8"
+          src={profilePng}
+          alt="user-profile"
+        />
+        <p>
+          <span className="text-gray-400 text-14">Hi,</span>{" "}
+          <span className="text-gray-400 font-bold ml-1 text-14">Shayan</span>
+        </p>
+        <MdKeyboardArrowDown className="text-gray-400 text-14" />
+      </div>
+
+      {toggleMenu && <UserProfile />}
+
+
+
+
+      {/* ----------------- */}
     </nav>
   );
 };
