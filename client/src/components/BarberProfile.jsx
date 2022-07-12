@@ -430,7 +430,7 @@ const BarberProfile = () => {
 
       {/* // ------------ Reviews form */}
 
-      <div className="gradient-bg-welcome pt-12  flex flex-col w-full justify-center items-center py-8">
+      <div className="bg-black pt-12  flex flex-col w-full justify-center items-center py-8">
         <div className="min-w-md  bg-white shadow-lg rounded-lg md:max-w-xl  mb-14">
           <div className="md:flex font-cursive">
             <div className="w-full px-6 py-6 flex flex-col ">

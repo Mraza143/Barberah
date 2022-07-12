@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 const NavBarItem = ({ title,link, classprops }) => (
   <Link1 to={link} > 
-  <li className={`hover:bg-[#2546bd] mx-12 rounded-full cursor-pointer ${classprops}`}>{title}</li></Link1>
+  <li className={`hover:underline decoration-[#37c7da] decoration-2 mx-12 rounded-full cursor-pointer ${classprops}`}>{title}</li></Link1>
 );
 
 
