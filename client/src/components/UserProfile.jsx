@@ -44,7 +44,7 @@ const UserProfile = () => {
             <img
               className="rounded-full h-24 w-24"
               // src={profilePng}
-              src={user.avatar.url? user.avatar.url: profilePng}
+              // src={user.avatar.url? user.avatar.url: profilePng}
               alt="user-profile"
             />
             <div>
@@ -90,13 +90,8 @@ const UserProfile = () => {
 
           <div className="mt-5">
             <button
-<<<<<<< HEAD
               onClick={handleClick_LogoutUser}
-              className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg"
-=======
-              onClick={handleClick}
               className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg border"
->>>>>>> f5c6f2ad827433bd0c96bc4249a89b2f509d536f
             >
               Logout
             </button>
