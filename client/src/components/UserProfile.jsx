@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import profilePng from '/images/Profile.png'
-
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
+import {logout} from "../redux/actions/userAction"
+import { useDispatch, useSelector } from "react-redux";
+import { useAlert } from "react-alert";
+
 const UserProfile = () => {
+  const dispatch=useDispatch()
+  const alert=useAlert()
   const [isClicked, setIsClicked] = useState(true);
-  const handleClick = () => {
+  const { user } = useSelector((state) => state.user)
+
+  const handleClick_LogoutUser = () => {
     setIsClicked(!isClicked);
+    dispatch(logout())
+    alert.success("Logout Successfully")
   };
 
   return (
@@ -20,13 +29,13 @@ const UserProfile = () => {
               User Profile
             </p>
             <button
-              onClick={handleClick}
-              className="text-2xl p-3 hover:drop-shadow-xl "
+              onClick={()=>setIsClicked(!isClicked)}
+              className="text-2xl p-3 hover:drop-shadow-xl bg-light-gray border-[50%] "
               type="button"
               icon={<MdOutlineCancel />}
-              bgHoverColor="light-gray"
-              size="2xl"
-              borderRadius="50%"
+              // bgHoverColor="light-gray"
+              // size="2xl"
+              // borderRadius="50%"
             >
               <MdOutlineCancel />
             </button>
@@ -34,21 +43,17 @@ const UserProfile = () => {
           <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
             <img
               className="rounded-full h-24 w-24"
-              src={profilePng}
+              // src={profilePng}
+              src={user.avatar.url? user.avatar.url: profilePng}
               alt="user-profile"
             />
             <div>
               <p className="font-semibold text-xl dark:text-gray-200">
-                {" "}
-                Shayan Jamil{" "}
-              </p>
-              <p className="text-gray-500 text-sm dark:text-gray-400">
-                {" "}
-                Software Engineer{" "}
-              </p>
+                {user.name}
+                </p>
+            
               <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
-                {" "}
-                shayanjamil500@gmail.com{" "}
+                {user.email}
               </p>
             </div>
           </div>
@@ -85,7 +90,7 @@ const UserProfile = () => {
 
           <div className="mt-5">
             <button
-              onClick={handleClick}
+              onClick={handleClick_LogoutUser}
               className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg"
             >
               Logout

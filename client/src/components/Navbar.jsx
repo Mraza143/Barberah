@@ -6,6 +6,7 @@ import { BrowserRouter, Link as Link1 } from "react-router-dom";
 import logo from "/images/logooo.png";
 import profilePng from '/images/Profile.png'
 import UserProfile from "./UserProfile";
+import { useSelector } from "react-redux";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
@@ -15,6 +16,7 @@ const NavBarItem = ({ title,link, classprops }) => (
 
 
 const Navbar = () => {
+  const { user } = useSelector((state) => state.user)
   const [toggleMenu, setToggleMenu] = React.useState(false);
   //Modift this array for links of navbar
   const links =["AboutUs","Salons","login","register","ContactUs","dashboard"] 
@@ -60,12 +62,12 @@ const Navbar = () => {
       >
         <img
           className="rounded-full w-8 h-8"
-          src={profilePng}
+          src={user.avatar.url? user.avatar.url : profilePng}
           alt="user-profile"
         />
         <p>
           <span className="text-gray-400 text-10 text-base">Hi,</span>{" "}
-          <span className="text-gray-400 font-bold ml-1 text-10 text-lg">Shayan</span>
+          <span className="text-gray-400 font-bold ml-1 text-10 text-lg">{user.name}</span>
         </p>
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>

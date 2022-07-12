@@ -35,7 +35,7 @@ const [loginPassword, setLoginPassword] = useState('')
         dispatch(clearErrors())
       }
       if (isAuthenticated) {
-        history.push("/sfghyh")
+        history.push("/")
       }
     }, [dispatch, error, alert, history, isAuthenticated])
 
