@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { userReducer } from "./reducers/userReducer"
 import { barbersReducer} from './reducers/barberReducer'
 import { salonReducer } from './reducers/salonReducer'
-import { salonDetailsReducer } from './reducers/salonDetailsReducer'
+import { salonDetailsReducer , salonCoordinatesReducer } from './reducers/salonDetailsReducer'
 import { barbersDetailsReducer } from './reducers/barberDetailsReducer'
 import { appointmentReducer } from './reducers/appointmentsReducer'
 import {reviewsReducer,ReviewCreateReducer,reviewsAverageReducer} from './reducers/reviewReducer'
@@ -17,7 +17,8 @@ const reducer = combineReducers({
     barber: barbersDetailsReducer,
     appointments: appointmentReducer,
     reviews: reviewsReducer,
-    average:reviewsAverageReducer
+    average:reviewsAverageReducer,
+    coordinates:salonCoordinatesReducer
 })
 
 /*let initialState = {

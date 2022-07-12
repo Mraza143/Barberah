@@ -34,7 +34,12 @@ const salonSchema = mongoose.Schema(
         experience : Number,
         ratings : Number
       }
-    ]
+    ],
+    coordinates :
+      {
+        latitude : Number,
+        langitude : Number
+      }
   },
   {
     timestamps: true,

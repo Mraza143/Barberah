@@ -23,6 +23,15 @@ exports.getSalon = catchAsyncErrors(async(req, res, next) => {
 
 })
 
+exports.getSalonCoordinates = catchAsyncErrors(async(req, res, next) => {
+    const salon = await Salon.findById(req.params.id);
+    res.status(200).json({
+        success: true,
+        coordinates : salon.coordinates,
+    })
+
+})
+
 
 exports.setSalon = catchAsyncErrors(async(req, res, next) => {
 
@@ -31,7 +40,9 @@ exports.setSalon = catchAsyncErrors(async(req, res, next) => {
         timings: req.body.timings,
         location: req.body.location,
         imagePath: req.body.imagePath,
-        barber: req.body.barber
+        barber: req.body.barber,
+        coordinates:req.body.coordinates
+
     })
     if (!req.body.name) {
         return next(new ErrorHandler("Please add a Text Field", 400));
