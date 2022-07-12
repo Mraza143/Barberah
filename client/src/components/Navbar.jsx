@@ -19,7 +19,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.user)
   const [toggleMenu, setToggleMenu] = React.useState(false);
   //Modift this array for links of navbar
-  const links =["AboutUs","Salons","login","register","ContactUs","dashboard"] 
+  const links =["AboutUs","Salons","login","register","ContactUs"] 
 
   return (
 
@@ -63,11 +63,12 @@ const Navbar = () => {
         <img
           className="rounded-full w-8 h-8"
           // src={user.avatar.url? user.avatar.url : profilePng}
+          src={user?.avatar?.url}
           alt="user-profile"
         />
         <p>
           <span className="text-gray-400 text-10 text-base">Hi,</span>{" "}
-          <span className="text-gray-400 font-bold ml-1 text-10 text-lg">user.name</span>
+          <span className="text-gray-400 font-bold ml-1 text-10 text-lg">{user?.name}</span>
         </p>
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>

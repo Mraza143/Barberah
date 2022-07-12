@@ -7,6 +7,7 @@ import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import {logout} from "../redux/actions/userAction"
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const dispatch=useDispatch()
@@ -45,33 +46,37 @@ const UserProfile = () => {
               className="rounded-full h-24 w-24"
               // src={profilePng}
               // src={user.avatar.url? user.avatar.url: profilePng}
+              src={user?.avatar?.url }
               alt="user-profile"
             />
             <div>
               <p className="font-semibold text-xl dark:text-gray-200">
-                {user.name}
+                {user?.name}
                 </p>
             
               <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
-                {user.email}
+                {user?.email}
               </p>
             </div>
           </div>
           <div>
-            <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+            <Link to="/admin/dashboard"
+            className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
               <button
                 type="button"
                 className=" text-xl rounded-lg p-3 hover:bg-light-gray"
-              ></button>
-              <div>
+              >
                 <DashboardIcon /> 
+
+              </button>
+              <div>
                 <p className="font-semibold dark:text-gray-200 ">Dashboard</p>
                 <p className="text-gray-500 text-sm dark:text-gray-400">
                   {" "}
                   Admin Settings
                 </p>
               </div>
-            </div>
+            </Link>
             <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
               <button
                 type="button"

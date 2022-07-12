@@ -14,7 +14,7 @@ const Sidebar = () => {
       <Link to="/">
         <img src={logo} alt="Ecommerce" />
       </Link>
-      <Link to="/dashboard">
+      <Link to="/admin/dashboard">
         <p>
           <DashboardIcon /> Dashboard
         </p>

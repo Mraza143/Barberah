@@ -38,7 +38,7 @@ const App = () => {
         </Route>
 
 {/* Admin Pages */}
-        <Route exact path="/dashboard">
+        <Route exact path="/admin/dashboard">
           <Dashboard />
         </Route>
         
