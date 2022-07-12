@@ -22,7 +22,7 @@ import NewBarber from './components/Admin/NewBarber'
 const App = () => {
   return (
         <Router>
-    <div className="gradient-bg-welcome">
+      <div className="gradient-bg-welcome">
         <Navbar />
       </div>
       <Switch>
