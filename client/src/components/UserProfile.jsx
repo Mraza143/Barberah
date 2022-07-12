@@ -23,8 +23,8 @@ const UserProfile = () => {
   return (
     <>
       {isClicked && (
-        <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 z-50">
-          <div className="flex justify-between items-center">
+        <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 z-50 mt-4">
+          <div className="flex justify-between items-center px-0">
             <p className="font-semibold text-lg dark:text-gray-200">
               User Profile
             </p>
@@ -90,8 +90,13 @@ const UserProfile = () => {
 
           <div className="mt-5">
             <button
+<<<<<<< HEAD
               onClick={handleClick_LogoutUser}
               className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg"
+=======
+              onClick={handleClick}
+              className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg border"
+>>>>>>> f5c6f2ad827433bd0c96bc4249a89b2f509d536f
             >
               Logout
             </button>

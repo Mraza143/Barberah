@@ -5,14 +5,15 @@ import {GoogleMap , withScriptjs , withGoogleMap} from "react-google-maps";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllBarberss } from "../redux/actions/barberAction";
-import { getAllSalonDetails } from "../redux/actions/salonDetailsAction";
+import { getAllSalonDetails ,getAllSalonCoordinates } from "../redux/actions/salonDetailsAction";
+import TheMap from "./TheMap";
 
-function Map(){
+/*function Map(){
   return (<GoogleMap defaultZoom={10}  defaultCenter={{lat:24.8608, lng : 67.0104}}/>
   );
 }
 const  WrappedMap = withScriptjs(withGoogleMap(Map));
-
+*/
 
 const ShopCard1 = (props)=> {
   let text = "/specificBarber/"  + props.id+ "/"+ props.name + "/" +props.sname;
@@ -59,6 +60,15 @@ const SpecificSalon = () => {
     const dispatch = useDispatch();
 	  const {salon} = useSelector((state) => state.salon);
     const {barbers} = useSelector((state) => state.barbers);
+    const {coordinates}=useSelector((state)=>state.coordinates)
+
+    //const [lat,setLat]= useState(10);
+    
+
+    
+
+    //const l1 = salon.coordinates["latitude"] ;
+    //const l2=67.020499918;
 
     const sname= salon.name;
     
@@ -66,7 +76,12 @@ const SpecificSalon = () => {
 
     useEffect(()=>{
       dispatch(getAllSalonDetails(id));
+      dispatch(getAllSalonCoordinates(id));
       dispatch(getAllBarberss(name));
+
+  
+      
+
 
     }, [dispatch,id,name]);
     return (
@@ -95,11 +110,8 @@ const SpecificSalon = () => {
               <p className="text-[#37c7da] font-bold">{salon.name}</p>
             </div>
             <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center ">
-            <WrappedMap googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCLNX0Qokx5Fu3s8kqN1NAp3tABdIr8xzE`}
-            loadingElement = {<div style={{height : "100%"}}/>}
-            containerElement = {<div style={{height : "100%"}}/>}
-            mapElement = {<div style={{height : "100%"}}/>}
-            />
+
+            <TheMap latt={coordinates["latitude"]} langg={coordinates["langitude"]}/>
             </div>
 
             <div className="mt-20 flex flex-wrap  justify-center items-center ">
@@ -114,3 +126,19 @@ const SpecificSalon = () => {
 
 export default SpecificSalon;
     
+
+
+/*
+
+Map code
+ <WrappedMap googleMapURL = {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCLNX0Qokx5Fu3s8kqN1NAp3tABdIr8xzE`}
+            loadingElement = {<div style={{height : "100%"}}/>}
+            containerElement = {<div style={{height : "100%"}}/>}
+            mapElement = {<div style={{height : "100%"}}/>}
+
+
+            />
+
+
+                      
+*/

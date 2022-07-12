@@ -52,7 +52,7 @@ const App = () => {
 
        
         <Route path="/salons">
-          <Salons total={6} />
+          <Salons total={10} />
         </Route>
         <Route path="/specificSalon/:id/:name">
           <SpecificSalon />
