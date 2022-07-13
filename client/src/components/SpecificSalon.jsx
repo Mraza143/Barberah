@@ -110,16 +110,17 @@ const SpecificSalon = () => {
             <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
               <p className="text-[#37c7da] font-bold">{salon.name}</p>
             </div>
-            <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center">
-
-            <TheMap latt={coordinates["latitude"]} langg={coordinates["langitude"]}/>
-            </div>
 
             <div className="mt-12 flex flex-wrap justify-center items-center ">
             {barbers.map((barber, i) => (
             <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} imagePath={barber.imagePath} name= {barber.name}  experience={barber.experience} sname={sname} />))}
             </div>
+
+            <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center">
+              <TheMap latt={coordinates["latitude"]} langg={coordinates["langitude"]}/>
+            </div>
           </div>
+          
         </div>
         </div>
         )};
