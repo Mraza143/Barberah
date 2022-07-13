@@ -1,13 +1,19 @@
 import axios from "axios";
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS, 
- } from "../constants/barberConstant";
+import {
+    ALL_BARBER_REQUEST,
+    ALL_BARBER_SUCCESS,
+    ALL_BARBER_FAIL,
+    CLEAR_ERRORS,
+    NEW_BARBER_REQUEST,
+    NEW_BARBER_SUCCESS,
+    NEW_BARBER_FAIL,
+    NEW_BARBER_RESET,
+} from "../constants/barberConstant";
 
 
 export const getAllBarberss = (name) => async(dispatch) => {
     try {
         dispatch({ type: ALL_BARBER_REQUEST })
-            //const config = { headers: { 'Content-Type': 'application/json' } }
-            //const  resp  = await axios.get(`http://localhost:5000/api/salons`)
         const { data } = await axios.get(`http://localhost:5000/api/barbers/${name}`);
 
 
@@ -22,6 +28,44 @@ export const getAllBarberss = (name) => async(dispatch) => {
         })
     }
 }
+
+
+
+// Create Product (Admin)
+export const createBarber = (barberData) => async(dispatch) => {
+    try {
+        dispatch({ type: NEW_BARBER_REQUEST })
+
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+        }
+
+        const { data } = await axios.post(
+            '/api/barbers/salonowner/new',
+            barberData,
+            config,
+        )
+
+        dispatch({
+            type: NEW_BARBER_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: NEW_BARBER_FAIL,
+            payload: error.response.data.message,
+        })
+    }
+}
+
+
+
+
+
+
+
+
+
 
 /*export const createProductReview = (productId,cname, review) => async (
     dispatch,

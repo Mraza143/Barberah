@@ -1,16 +1,5 @@
 const mongoose = require('mongoose')
-/*const reviewSchema = mongoose.Schema(
-    {
-      name: { type: String ,required:true},
-      rating: { type: Number},
-      comment: { type: String },
-     },
-    {
-      timestamps: true,
-    }
-  )
- 
-*/
+
 const barberSchema = mongoose.Schema({
         name: {
             type: String,
@@ -25,67 +14,38 @@ const barberSchema = mongoose.Schema({
             required: true,
         },
         ratings: {
-            type: {type:Number},
+            type: { type: Number },
         },
         experience: {
             type: Number,
             required: true,
         },
-        imagePath: {
-            type: String,
-            required: true,
-        },
+        images: [{
+            public_id: {
+                type: String,
+                required: true
+            },
+            url: {
+                type: String,
+                required: true
+            }
+        }],
 
         numOfReviews: {
             type: Number,
             default: 0
         },
-        
+
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: "User",
+            required: true,
+        }
+
     },
 
 )
 
-/*
-shanu comment
-
-rel:[reviewSchema],
-        reviews: [{
-            name: {
-                type: String,
-
-            },
-            rating: {
-                type: Number,
-
-            },
-            comment: {
-                type: String,
-
-            }
-        }],
-reviews: [{
-
-            user: {
-                type: mongoose.Schema.ObjectId,
-                ref: "User",
-                required: true
-            },
-
-            name: {
-                type: String,
-                required: true
-            },
-            rating: {
-                type: Number,
-                rquired: true
-            },
-            comment: {
-                type: String,
-                required: true
-            }
-        }],
-
-*/
 
 
 

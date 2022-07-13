@@ -1,4 +1,12 @@
-import { ALL_BARBER_REQUEST, ALL_BARBER_SUCCESS, ALL_BARBER_FAIL, CLEAR_ERRORS,
+import {
+    ALL_BARBER_REQUEST,
+    ALL_BARBER_SUCCESS,
+    ALL_BARBER_FAIL,
+    CLEAR_ERRORS,
+    NEW_BARBER_REQUEST,
+    NEW_BARBER_SUCCESS,
+    NEW_BARBER_FAIL,
+    NEW_BARBER_RESET,
 } from "../constants/barberConstant"
 
 
@@ -39,41 +47,28 @@ export const barbersReducer = (state = { barbers: [] }, action) => {
     }
 
 }
-/*export const productReviewCreateReducer = (state = {}, action) => {
-    switch (action.type) {
-      case PRODUCT_CREATE_REVIEW_REQUEST:
-        return { loading: true }
-      case PRODUCT_CREATE_REVIEW_SUCCESS:
-        return { loading: false, success: true }
-      case PRODUCT_CREATE_REVIEW_FAIL:
-        return { loading: false, error: action.payload }
-      case PRODUCT_CREATE_REVIEW_RESET:
-        return {}
-      default:
-        return state
-    }
-  }
 
-
-/*export const newReviewReducer = (state = {}, action) => {
+// New Barber (Admin)
+export const newBarberReducer = (state = { barber: {} }, action) => {
     switch (action.type) {
-        case NEW_REVIEW_REQUEST:
+        case NEW_BARBER_REQUEST:
             return {
                 ...state,
                 loading: true,
             }
-        case NEW_REVIEW_SUCCESS:
+        case NEW_BARBER_SUCCESS:
             return {
                 loading: false,
-                success: action.payload,
+                success: action.payload.success,
+                barber: action.payload.barber,
             }
-        case NEW_REVIEW_FAIL:
+        case NEW_BARBER_FAIL:
             return {
                 ...state,
                 loading: false,
                 error: action.payload,
             }
-        case NEW_REVIEW_RESET:
+        case NEW_BARBER_RESET:
             return {
                 ...state,
                 success: false,
@@ -86,34 +81,4 @@ export const barbersReducer = (state = { barbers: [] }, action) => {
         default:
             return state
     }
-}/*
-
-
-/*export const productReviewsReducer = (state = { reviews: [] }, action) => {
-    switch (action.type) {
-        case ALL_REVIEW_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            }
-        case ALL_REVIEW_SUCCESS:
-            return {
-                loading: false,
-                reviews: action.payload,
-            }
-        case ALL_REVIEW_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: action.payload,
-            }
-
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            }
-        default:
-            return state
-    }
-}*/
+}

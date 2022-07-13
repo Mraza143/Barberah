@@ -78,13 +78,13 @@ const [loginPassword, setLoginPassword] = useState('')
                           
                         </div>
           {/* --------------- */}
-          <div className=" flex items-center  mb-8 py-2 px-3 rounded-2xl pl-0 pr-0 ">
+          {/* <div className=" flex items-center  mb-8 py-2 px-3 rounded-2xl pl-0 pr-0 ">
               <select className=" block w-full px-3 py-1.5 font-normal text-gray-700  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white  focus:outline-none" defaultValue={'DEFAULT'} >
                   <option  value="DEFAULT" disabled>Select Role : </option>
                   <option value="2">Customer</option>
                   <option value="3">Salon Owner</option>
               </select>
-          </div>
+          </div> */}
           
                         {/* ------------- */}
                         <button  type="submit" className="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2">Login</button>

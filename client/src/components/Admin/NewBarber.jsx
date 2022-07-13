@@ -1,86 +1,77 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import './NewBarber.css'
-// import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 // import { clearErrors, createProduct } from '../../actions/productAction'
+import {clearErrors, createBarber} from "../../redux/actions/barberAction"
 import { useAlert } from 'react-alert'
 import { Button } from '@material-ui/core'
 // import MetaData from '../layout/MetaData'
-import AccountTreeIcon from '@material-ui/icons/AccountTree'
-import DescriptionIcon from '@material-ui/icons/Description'
-import StorageIcon from '@material-ui/icons/Storage'
-import SpellcheckIcon from '@material-ui/icons/Spellcheck'
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+// import AccountTreeIcon from '@material-ui/icons/AccountTree'
+// import DescriptionIcon from '@material-ui/icons/Description'
+// import StorageIcon from '@material-ui/icons/Storage'
+// import SpellcheckIcon from '@material-ui/icons/Spellcheck'
+// import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import SideBar from './Sidebar'
 // import { NEW_PRODUCT_RESET } from '../../constants/productConstant'
+import { NEW_BARBER_RESET } from '../../redux/constants/barberConstant'
 
 const NewBarber = ({ history }) => {
-  //   const dispatch = useDispatch()
-  //   const alert = useAlert()
+    const dispatch = useDispatch()
+    const alert = useAlert()
 
-  //   const { loading, error, success } = useSelector((state) => state.newProduct)
+    const { loading, error, success } = useSelector((state) => state.newBarber)
 
   const [name, setName] = useState('')
-  const [price, setPrice] = useState(0)
-  const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('')
-  const [Stock, setStock] = useState(0)
+  const [worksAt, setWorksAt] = useState('')
+  const [timings, setTimings]=useState('')
+  const [experience, setExperience]=useState('')
   const [images, setImages] = useState([])
   const [imagesPreview, setImagesPreview] = useState([])
 
-  const categories = [
-    'Laptop',
-    'Footwear',
-    'Bottom',
-    'Tops',
-    'Attire',
-    'Camera',
-    'SmartPhones',
-  ]
+
+  
 
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error)
-    //   dispatch(clearErrors())
-    // }
-    // if (success) {
-    //   alert.success('Product Created Successfully')
-    //   history.push('/admin/dashboard')
-    //   dispatch({ type: NEW_PRODUCT_RESET })
-    // }
-    // dispatch, alert, error, history, success]
-  }, [])
+    if (error) {
+      alert.error(error)
+      dispatch(clearErrors())
+    }
+    if (success) {
+      alert.success('Barber Created Successfully')
+      history.push('/salonowner/dashboard')
+      dispatch({ type: NEW_BARBER_RESET })
+    }
+  }, [dispatch, alert, error, history, success])
 
-  const createProductSubmitHandler = (e) => {
+  const createBarberSubmitHandler = (e) => {
     e.preventDefault()
-
     const myForm = new FormData()
 
     myForm.set('name', name)
-    myForm.set('price', price)
-    myForm.set('description', description)
-    myForm.set('category', category)
-    myForm.set('Stock', Stock)
+    myForm.set('worksAt', worksAt)
+    myForm.set('timings', timings)
+    myForm.set('experience', experience)
 
-    // images.forEach((image) => {
-    //   myForm.append('images', image)
-    // })
-    // dispatch(createProduct(myForm))
+    images.forEach((image) => {
+      myForm.append('images', image)
+    })
+    dispatch(createBarber(myForm))
   }
 
-  const createProductImagesChange = (e) => {
-    // const files = Array.from(e.target.files)
-    // setImages([])
-    // setImagesPreview([])
-    // files.forEach((file) => {
-    //   const reader = new FileReader()
-    //   reader.onload = () => {
-    //     if (reader.readyState === 2) {
-    //       setImagesPreview((old) => [...old, reader.result])
-    //       setImages((old) => [...old, reader.result])
-    //     }
-    //   }
-    //   reader.readAsDataURL(file)
-    // })
+  const createBarberImagesChange = (e) => {
+    const files = Array.from(e.target.files)
+    setImages([])
+    setImagesPreview([])
+    files.forEach((file) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImagesPreview((old) => [...old, reader.result])
+          setImages((old) => [...old, reader.result])
+        }
+      }
+      reader.readAsDataURL(file)
+    })
   }
 
   return (
@@ -90,61 +81,101 @@ const NewBarber = ({ history }) => {
         <div className="newProductContainer">
           {/* --------------- */}
 
-          <form className="form">
+          <form 
+          encType='multipart/form-data'
+          onSubmit={createBarberSubmitHandler}
+          className="form"
+          >
             <div className="title">Create Barber</div>
             <div className="input-container ic1">
               <input
-                id="firstname"
+                id="barbername"
                 className="input"
                 type="text"
+                required
+                value={name}
+                onChange={(e)=>e.target.value}
                 placeholder=" "
               />
               <div className="cut"></div>
-              <label for="firstname" className="placeholder">
+              <label htmlFor="name" className="placeholder">
                 Barber Name
               </label>
             </div>
             <div className="input-container ic2">
               <input
-                id="lastname"
+                id="worksat"
                 className="input"
                 type="text"
+                required
+                value={worksAt}
+                onChange={(e)=>e.target.value}
                 placeholder=" "
               />
               <div className="cut"></div>
-              <label for="lastname" className="placeholder">
+              <label htmlFor="worksat" className="placeholder">
                 Works At
               </label>
             </div>
             <div className="input-container ic2">
-              <input id="email" className="input" type="text" placeholder=" " />
+              <input
+               id="timings" 
+               className="input"
+                type="text"
+                required
+                value={timings}
+                onChange={(e)=>e.target.value}
+                placeholder=" " />
               <div className="cut cut-short"></div>
-              <label for="email" className="placeholder">
+              <label htmlFor="timings" className="placeholder">
                 Timings
               </label>
             </div>
             <div className="input-container ic2">
-              <input id="email" className="input" type="text" placeholder=" " />
+              <input id="experience" className="input" type="text"
+              required
+              value={experience}
+              onChange={(e)=>e.target.value}
+              placeholder=" " />
               <div className="cut cut-short"></div>
-              <label for="email" className="placeholder">
+              <label htmlFor="experience" className="placeholder">
                 Experience
               </label>
             </div>
+
+
             <div className="input-container ic2">
             <input
-            className="input"
+            className="input createProductFormFile"
                 type="file"
                 name="avatar"
                 accept="image/*"
                 multiple
+                onChange={createBarberImagesChange}
               />
               <div className="cut cut-short"></div>
-              <label for="email" className="placeholder">
+              <label htmlFor="email" className="placeholder">
                 Image File
               </label>
             </div>
-            <button type="text" className="submit">
-              submit
+
+
+            <div className="input-container ic2 product_preview">
+            <div
+            className="input createProductFormImage">
+{
+  imagesPreview.map((image, index)=>(
+    <img key={index} src={image} alt="Barber Preview"/>
+  ))
+}
+            </div>
+            </div>
+
+
+
+
+            <button type="submit" className="submit" disabled={loading ? true : false} >
+              Submit
             </button>
           </form>
 

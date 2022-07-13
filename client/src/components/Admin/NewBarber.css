@@ -10,6 +10,24 @@
     /* height: 100vh; */
 }
 
+.product_preview {
+    height: 150px;
+}
+
+.createProductFormImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.createProductFormImage>img {
+    width: 3vmax;
+    margin: 0 0.5vmax;
+}
+
 
 /* ------------------- */
 
