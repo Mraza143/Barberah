@@ -51,10 +51,9 @@ const ReviewCard = ({ review }) => {
   }
 
   return (
-    <div className="reviewCard">
+    <div className="reviewCard rounded-lg">
       <img src={profilePng} alt="User" />
       <p>{review.customerName}</p>
-      <p>{review.rating}</p>
 
 
       <Rating {...options} />
