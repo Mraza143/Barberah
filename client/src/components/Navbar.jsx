@@ -7,6 +7,7 @@ import logo from "/images/logooo.png";
 import profilePng from '/images/Profile.png'
 import UserProfile from "./UserProfile";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 
 const NavBarItem = ({ title,link, classprops }) => (
@@ -17,7 +18,9 @@ const NavBarItem = ({ title,link, classprops }) => (
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user)
-  const [toggleMenu, setToggleMenu] = React.useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  // For User Profile
+  const [isClicked, setIsClicked]=useState(false)
   //Modift this array for links of navbar
   const links =["AboutUs","Salons","login","register","ContactUs"] 
 
@@ -58,22 +61,22 @@ const Navbar = () => {
 
       <div
         className="flex text-4xl items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-        onClick={()=>setToggleMenu(!toggleMenu)}
+        onClick={()=>setIsClicked(!isClicked)}
       >
         <img
-          className="rounded-full w-8 h-8"
+          className="rounded-full w-[2.5rem] h-[2.5rem] text-white text-sm"
           // src={user.avatar.url? user.avatar.url : profilePng}
           src={user?.avatar?.url}
           alt="user-profile"
         />
-        <p>
-          <span className="text-gray-400 text-10 text-base">Hi,</span>{" "}
-          <span className="text-gray-400 font-bold ml-1 text-10 text-lg">{user?.name}</span>
+        <p className="flex items-center justify-center">
+          <span className="text-gray-400 text-10 text-base mr-2">Hi,</span>{" "}
+          <span className="text-gray-400 ml-1 text-10 text-lg">{user?.name}</span>
         </p>
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>
 
-      {toggleMenu && <UserProfile />}
+      {isClicked && <UserProfile />}
 
 
 

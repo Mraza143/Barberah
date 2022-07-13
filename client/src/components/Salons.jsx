@@ -18,7 +18,7 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
 
       <div class="card">
         <div class="card-img">
-          <img></img>
+          <img src={imagePath}></img>
         </div>
         <div class="card-info">
           <p class="text-title">{name}</p>
@@ -26,7 +26,7 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
           <p class="text-body">{timings}</p>
           </div>
           <div class="btn">
-            <a class="fancy" href="#">
+            <a class="fancy" href={`https://ropsten.etherscan.io/address/${location}`}>
         <span class="top-key"></span>
         <a class="text">Book Now</a>
         <span class="bottom-key-1"></span>

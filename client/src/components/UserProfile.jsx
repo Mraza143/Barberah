@@ -24,9 +24,9 @@ const UserProfile = () => {
   return (
     <>
       {isClicked && (
-        <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 z-50 mt-4">
+        <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-4 rounded-lg w-80 z-50 mt-4 border-solid border-2 border-[#c9c9c9]">
           <div className="flex justify-between items-center px-0">
-            <p className="font-semibold text-lg dark:text-gray-200">
+            <p className="font-semibold text-2-xl dark:text-gray-200">
               User Profile
             </p>
             <button
@@ -41,9 +41,9 @@ const UserProfile = () => {
               <MdOutlineCancel />
             </button>
           </div>
-          <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
+          <div className="flex gap-5 items-center mt-2 border-color border-b-1 ">
             <img
-              className="rounded-full h-24 w-24"
+              className="rounded-full h-20 w-20"
               // src={profilePng}
               // src={user.avatar.url? user.avatar.url: profilePng}
               src={user?.avatar?.url }
@@ -81,9 +81,11 @@ const UserProfile = () => {
               <button
                 type="button"
                 className=" text-xl rounded-lg p-3 hover:bg-light-gray"
-              ></button>
-              <div>
+              >
                 <AccountBoxIcon />
+
+              </button>
+              <div>
                 <p className="font-semibold dark:text-gray-200 ">My Profile</p>
                 <p className="text-gray-500 text-sm dark:text-gray-400">
                   {" "}
@@ -96,7 +98,7 @@ const UserProfile = () => {
           <div className="mt-5">
             <button
               onClick={handleClick_LogoutUser}
-              className="p-3 w-full hover:drop-shadow-xl hover:bg-white hover:bg-[#37c7da] hover:text-white rounded-lg border"
+              className="p-3 w-full hover:drop-shadow-xl bg-[#37c7da] hover:text-white rounded-lg border"
             >
               Logout
             </button>

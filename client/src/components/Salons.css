@@ -2,76 +2,89 @@
     width: 250px;
     height: 375px;
     padding: .8em;
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
+    background-color: #e1e1e1;
     position: relative;
     overflow: visible;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-   }
-   
-   .card-img {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card-img {
     background-color: #37c7da;
     height: 40%;
     width: 100%;
     border-radius: .5rem;
     transition: .3s ease;
-   }
-   
-   .card-info {
+}
+
+.card-img img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-info {
     padding-top: 10%;
-   }
-   
-   svg {
+}
+
+svg {
     width: 20px;
     height: 20px;
-   }
-   
-   .card-footer {
+}
+
+.card-footer {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 10px;
     border-top: 1px solid #ddd;
-   }
-   
-   /*Text*/
-   .text-title {
+}
+
+
+/*Text*/
+
+.text-title {
     font-weight: 900;
     font-size: 1.2em;
     line-height: 1.5;
     padding: 0rem;
-     margin: 0.1rem;
-   }
-   
-   .text-body {
+    margin: 0.1rem;
+}
+
+.text-body {
     font-size: .9em;
     padding-bottom: 10px;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-   }
-   
-   /*Button*/
-   .card-button {
+}
+
+
+/*Button*/
+
+.card-button {
     border: 1px solid #252525;
     display: flex;
     padding: .3em;
     cursor: pointer;
     border-radius: 50px;
     transition: .3s ease-in-out;
-   }
-   
-   /*Hover*/
-   .card-img:hover {
+}
+
+
+/*Hover*/
+
+.card-img:hover {
     transform: translateY(-25%);
     box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
-   }
-   
-   .card-button:hover {
+}
+
+.card-button:hover {
     border: 1px solid #ffcaa6;
     background-color: #ffcaa6;
-   }
-   
-   .fancy {
+}
+
+.fancy {
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 0;
@@ -93,9 +106,9 @@
     transition: all 0.3s ease-in-out;
     user-select: none;
     font-size: 13px;
-   }
-   
-   .fancy::before {
+}
+
+.fancy::before {
     content: " ";
     width: 1.5625rem;
     height: 2px;
@@ -106,9 +119,9 @@
     transform: translateY(-50%);
     transform-origin: center;
     transition: background 0.3s linear, width 0.3s linear;
-   }
-   
-   .fancy .text {
+}
+
+.fancy .text {
     font-size: 1.125em;
     line-height: 1.33333em;
     padding-left: 2em;
@@ -118,9 +131,9 @@
     text-transform: uppercase;
     text-decoration: none;
     color: black;
-   }
-   
-   .fancy .top-key {
+}
+
+.fancy .top-key {
     height: 2px;
     width: 1.5625rem;
     top: -2px;
@@ -128,9 +141,9 @@
     position: absolute;
     background: #e8e8e8;
     transition: width 0.5s ease-out, left 0.3s ease-out;
-   }
-   
-   .fancy .bottom-key-1 {
+}
+
+.fancy .bottom-key-1 {
     height: 2px;
     width: 1.5625rem;
     right: 1.875rem;
@@ -138,9 +151,9 @@
     position: absolute;
     background: #e8e8e8;
     transition: width 0.5s ease-out, right 0.3s ease-out;
-   }
-   
-   .fancy .bottom-key-2 {
+}
+
+.fancy .bottom-key-2 {
     height: 2px;
     width: 0.625rem;
     right: 0.625rem;
@@ -148,36 +161,36 @@
     position: absolute;
     background: #e8e8e8;
     transition: width 0.5s ease-out, right 0.3s ease-out;
-   }
-   
-   .fancy:hover {
+}
+
+.fancy:hover {
     color: white;
     background: black;
-   }
-   
-   .fancy:hover::before {
+}
+
+.fancy:hover::before {
     width: 0.9375rem;
     background: white;
-   }
-   
-   .fancy:hover .text {
+}
+
+.fancy:hover .text {
     color: white;
     padding-left: 1.5em;
-   }
-   
-   .fancy:hover .top-key {
+}
+
+.fancy:hover .top-key {
     left: -2px;
     width: 0px;
-   }
-   
-   .fancy:hover .bottom-key-1,
-    .fancy:hover .bottom-key-2 {
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
     right: 0;
     width: 0;
-   }
-   
-   .btn {
-     display: flex;
-     justify-content: center;
-     padding: 0.75rem;
-   }
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+}
