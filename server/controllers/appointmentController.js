@@ -1,4 +1,3 @@
-
 const asyncHandler = require('express-async-handler')
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const Appointment = require('../models/appointmentModel')
@@ -15,7 +14,7 @@ exports.getAppointments = catchAsyncErrors(async(req, res, next) => {
 })
 
 exports.getAppointmentofASpecificBarber = catchAsyncErrors(async(req, res, next) => {
-    const appointments = await Appointment.find({barberName: req.params.name ,salonName:req.params.sname});
+    const appointments = await Appointment.find({ barberName: req.params.name, salonName: req.params.sname });
     res.status(200).json({
         success: true,
         appointments
@@ -26,13 +25,13 @@ exports.getAppointmentofASpecificBarber = catchAsyncErrors(async(req, res, next)
 exports.setAppointment = catchAsyncErrors(async(req, res, next) => {
 
     const appointment = await Appointment.create({
-        customerName:req.body.customerName,
-      salonName:req.body.salonName,
-      barberName:req.body.barberName,
-      price:req.body.price,
-      date: req.body.date,
+        customerName: req.body.customerName,
+        salonName: req.body.salonName,
+        barberName: req.body.barberName,
+        price: req.body.price,
+        date: req.body.date,
     })
-    if (!req.body.name) {
+    if (!req.body.customerName) {
         return next(new ErrorHandler("Please add a Text Field", 400));
     }
     res.status(200).json({
@@ -57,7 +56,7 @@ exports.deleteAppointment = catchAsyncErrors(async(req, res, next) => {
 
 
 
- /*router.get('/:id/:name/:sname', async (req, res) => {
+/*router.get('/:id/:name/:sname', async (req, res) => {
 
   const appointments = await Appointment.find({barberName: req.params.name ,salonName:req.params.sname})
   res.status(200).json(appointments)

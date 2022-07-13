@@ -15,6 +15,8 @@ exports.isAuthenticatedUser = catchAsyncErrors(async(req, res, next) => {
     next();
 })
 
+
+// Authority to get access to resources
 exports.authorizeRoles = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) { // if the user is not authorize

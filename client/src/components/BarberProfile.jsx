@@ -204,7 +204,7 @@ const BarberProfile = () => {
                       type="text"
                       name="cname"
                       value={customerName}
-                      readOnly
+                      onChange={(e)=>e.target.value}
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Customer Name"
                     />

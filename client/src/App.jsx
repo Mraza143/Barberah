@@ -15,6 +15,7 @@ import Register from "./components/Register"
 import Dashboard from './components/Admin/Dashboard'
 import BarbersList from "./components/Admin/BarbersList"
 import NewBarber from './components/Admin/NewBarber'
+import ProtectedRoute from './components/ProtectedRoute'
 // import LoginSignup from './components/LoginSignup'
 
 
@@ -37,18 +38,6 @@ const App = () => {
           <Register/>
         </Route>
 
-{/* Admin Pages */}
-        <Route exact path="/admin/dashboard">
-          <Dashboard />
-        </Route>
-        
-        <Route exact path="/admin/barbers">
-          <BarbersList />
-        </Route>
-
-        <Route exact path="/admin/barber">
-          <NewBarber />
-        </Route>
 
        
         <Route path="/salons">
@@ -60,6 +49,32 @@ const App = () => {
         <Route path="/specificBarber/:id/:name/:sname">
           <Barberprofile />
         </Route>
+
+
+
+{/* Admin Pages */}
+        <ProtectedRoute 
+        isAdmin={true}
+         exact
+         path="/salonowner/dashboard"
+         component={Dashboard }
+        />
+
+        <ProtectedRoute 
+        isAdmin={true}
+         exact
+         path="/salonowner/barbers"
+         component={BarbersList }
+        />
+
+        <ProtectedRoute 
+        isAdmin={true}
+         exact
+         path="/salonowner/barber"
+         component={NewBarber }
+        />
+
+
       </Switch>
       <Footer />
     </Router>

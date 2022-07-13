@@ -14,37 +14,37 @@ const Sidebar = () => {
       <Link to="/">
         <img src={logo} alt="Ecommerce" />
       </Link>
-      <Link to="/admin/dashboard">
+      <Link to="/salonowner/dashboard">
         <p>
           <DashboardIcon /> Dashboard
         </p>
       </Link>
 
-      <Link to="/admin/barbers">
+      <Link to="/salonowner/barbers">
         <p>
         <PeopleIcon /> All Barbers
         </p>
       </Link>
 
-      <Link to="/admin/barber">
+      <Link to="/salonowner/barber">
         <p>
         <AddIcon /> Create Barber
         </p>
       </Link>
 
 
-      <Link to="/admin/appointments">
+      <Link to="/salonowner/appointments">
         <p>
           <ListAltIcon />
           Appointments
         </p>
       </Link>
-      <Link to="/admin/users">
+      <Link to="/salonowner/users">
         <p>
           <PeopleIcon /> Users
         </p>
       </Link>
-      <Link to="/admin/reviews">
+      <Link to="/salonowner/reviews">
         <p>
           <RateReviewIcon />
           Reviews
