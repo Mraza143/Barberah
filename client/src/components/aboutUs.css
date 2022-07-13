@@ -1,0 +1,9 @@
+.centered {
+    position: absolute;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const NavBarItem = ({ title,link, classprops }) => (
   <Link1 to={link} > 
-  <li className={`hover:underline decoration-[#37c7da] decoration-2 mx-12 rounded-full cursor-pointer ${classprops}`}>{title}</li></Link1>
+  <li className={`hover:underline hover:text-[white] decoration-[#37c7da] decoration-2 mx-12 rounded-full cursor-pointer ${classprops}`}>{title}</li></Link1>
 );
 
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       <Link1 to="/"><img src={logo}  alt="logo" className="w-20 cursor-pointer" /></Link1>
         
       </div>
-      <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+      <ul className="text-[#c8c8c8] md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {["About Us", "Salons" , "Login", "Register" , "Contact Us"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`/${links[index]}`} />
         ))}
