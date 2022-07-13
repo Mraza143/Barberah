@@ -1,4 +1,4 @@
-import { ALL_APPOINTMENT_REQUEST, ALL_APPOINTMENT_SUCCESS, ALL_APPOINTMENT_FAIL, CLEAR_ERRORS, NEW_APPOINTMENT_REQUEST, NEW_APPOINTMENT_SUCCESS, NEW_APPOINTMENT_FAIL } from "../constants/appointmentsConstant"
+import { NEW_APPOINTMENT_RESET,ALL_APPOINTMENT_REQUEST, ALL_APPOINTMENT_SUCCESS, ALL_APPOINTMENT_FAIL, CLEAR_ERRORS, NEW_APPOINTMENT_REQUEST, NEW_APPOINTMENT_SUCCESS, NEW_APPOINTMENT_FAIL } from "../constants/appointmentsConstant"
 
 
 
@@ -35,7 +35,7 @@ export const appointmentReducer = (state = { appointments: [] }, action) => {
     }
 }
 
-export const newAppointmentReducer = (state = { appointment: {} }, action) => {
+export const newAppointmentReducer = (state = {}, action) => {
     switch (action.type) {
         case NEW_APPOINTMENT_REQUEST:
             return {
@@ -54,6 +54,8 @@ export const newAppointmentReducer = (state = { appointment: {} }, action) => {
                 loading: false,
                 error: action.payload
             }
+        case NEW_APPOINTMENT_RESET:
+        return {};
         case CLEAR_ERRORS:
             return {
                 ...state,

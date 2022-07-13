@@ -19,10 +19,10 @@ export const getAllAppointments = (id, name, sname) => async(dispatch) => {
     }
 }
 
-export const createAppointmentForCustomers = (customerName, barberName, salonName, date, price) => async(dispatch) => {
+export const createAppointmentForCustomers = (customerName, name, salonName, date, price) => async(dispatch) => {
     try {
         dispatch({ type: NEW_APPOINTMENT_REQUEST })
-        const { data } = await axios.post("http://localhost:5000/api/appointments/create", customerName, barberName, salonName, date, price)
+        const { data } = await axios.post("http://localhost:5000/api/appointments/create", customerName, name, salonName, date, price)
 
         dispatch({
             type: NEW_APPOINTMENT_SUCCESS,

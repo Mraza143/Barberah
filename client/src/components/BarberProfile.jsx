@@ -10,12 +10,12 @@ import {
   getAllBarbersDetails,
 } from '../redux/actions/barberDetailsAction'
 import { createAppointmentForCustomers, getAllAppointments } from '../redux/actions/appointmentAction'
-import {getAllReviews} from '../redux/actions/reviewAction'
+import {getAllReviews,createbarberReview ,getAllReviewsAverage} from '../redux/actions/reviewAction'
 import { Rating } from '@material-ui/lab'
 
 import "./BarberProfile.css"
-import {createbarberReview ,getAllReviewsAverage} from '../redux/actions/reviewAction'
 import {CREATE_REVIEW_RESET} from '../redux/constants/reviewConstant'
+import {NEW_APPOINTMENT_RESET} from '../redux/constants/appointmentsConstant'
 
 
 const ShopCard1 = (props) => {
@@ -86,14 +86,15 @@ const BarberProfile = () => {
   const  {reviews} = useSelector((state) => state.reviews)
   //const [average,setAverage]=  useState(reviews[2]);
   const { appointments } = useSelector((state) => state.appointments)
-  const {appointment, error:appointmentError, success : appointmentSuccess}=useSelector((state)=>state.newAppointment)
+  const {newAppointment, error:appointmentError, success : appointmentSuccess}=useSelector((state)=>state.newAppointment)
   const { average } = useSelector((state) => state.average)
 
   const { success:reviewSuccess, error:reviewError } = useSelector(
     (state) => state.newReview,
   )
     
-  console.log(`average is `)
+  //console.log(`average is `)
+  //const {name}= barber;
   //console.log("User " +user)
   //console.log("Barber name "+ barber.name + " User name " +user.name)
 
@@ -105,14 +106,22 @@ const BarberProfile = () => {
   }
 
    const appointmentSubmitHandler=(e)=>{
-    e.preventDefault()
+    //e.preventDefault()
+    setBarberName(barber.name)
+    setSalonName(barber.worksAt)
+    
+    //
+  
     dispatch(createAppointmentForCustomers({
       customerName,
-      barberName,
+      name,
       salonName,
       date,
       price
-    }))
+    })
+    
+    )
+    console.log(barber.name + barber.worksAt + name) 
    }
 
   const submitHandler = (e) => {
@@ -125,6 +134,7 @@ const BarberProfile = () => {
       })
     )
   }
+
 
   useEffect(() => {
     if (reviewError) {
@@ -144,12 +154,14 @@ const BarberProfile = () => {
 
     if (appointmentSuccess) {
       alert.success('Appointment Booked Successfully')
+      dispatch({ type: NEW_APPOINTMENT_RESET })
+      
       // dispatch({ type: CREATE_REVIEW_RESET })
     }
 
-
-    dispatch(getAllReviews(id))
     dispatch(getAllBarbersDetails(id))
+    dispatch(getAllReviews(id))
+    
     dispatch(getAllAppointments(id, name, sname))
     dispatch(getAllReviewsAverage(id))
  
@@ -213,7 +225,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="bname"
-                      value={barberName}
+                      value={barber.name}
                       readOnly
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Barber Name"
@@ -223,7 +235,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="sname"
-                      value={salonName}
+                      value={barber.worksAt}
                       readOnly
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Salon Name"
