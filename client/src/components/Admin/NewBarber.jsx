@@ -94,7 +94,7 @@ const NewBarber = ({ history }) => {
                 type="text"
                 required
                 value={name}
-                onChange={(e)=>e.target.value}
+                onChange={(e)=>setName(e.target.value)}
                 placeholder=" "
               />
               <div className="cut"></div>
@@ -109,7 +109,7 @@ const NewBarber = ({ history }) => {
                 type="text"
                 required
                 value={worksAt}
-                onChange={(e)=>e.target.value}
+                onChange={(e)=>setWorksAt(e.target.value)}
                 placeholder=" "
               />
               <div className="cut"></div>
@@ -124,7 +124,7 @@ const NewBarber = ({ history }) => {
                 type="text"
                 required
                 value={timings}
-                onChange={(e)=>e.target.value}
+                onChange={(e)=>setTimings(e.target.value)}
                 placeholder=" " />
               <div className="cut cut-short"></div>
               <label htmlFor="timings" className="placeholder">
@@ -135,7 +135,7 @@ const NewBarber = ({ history }) => {
               <input id="experience" className="input" type="text"
               required
               value={experience}
-              onChange={(e)=>e.target.value}
+              onChange={(e)=>setExperience(e.target.value)}
               placeholder=" " />
               <div className="cut cut-short"></div>
               <label htmlFor="experience" className="placeholder">
