@@ -41,7 +41,7 @@ export const createBarber = (barberData) => async(dispatch) => {
         }
 
         const { data } = await axios.post(
-            '/api/barbers/salonowner/new',
+            'http://localhost:5000/api/barbers/salonowner/new',
             barberData,
             config,
         )
