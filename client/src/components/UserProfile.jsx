@@ -30,9 +30,10 @@ const UserProfile = () => {
             <p className="font-semibold text-2-xl dark:text-gray-200">
               User Profile
             </p>
+            <div className="hover:scale-150">
             <button
               onClick={()=>setIsClicked(!isClicked)}
-              className="text-2xl p-3 hover:drop-shadow-xl bg-light-gray border-[50%] "
+              className="text-2xl p-3 hover:drop-shadow-xl bg-light-gray border-[50%]"
               type="button"
               icon={<MdOutlineCancel />}
               // bgHoverColor="light-gray"
@@ -41,6 +42,7 @@ const UserProfile = () => {
             >
               <MdOutlineCancel />
             </button>
+            </div>
           </div>
           <div className="flex gap-5 items-center mt-2 border-color border-b-1 ">
             <img
@@ -62,10 +64,10 @@ const UserProfile = () => {
           </div>
           <div>
             <Link to="/salonowner/dashboard"
-            className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer dark:hover:bg-[#42464D]">
+            className="flex gap-5 border-b-1 border-color p-2 hover:bg-[#37c7da] rounded hover:text-white cursor-pointer">
               <button
                 type="button"
-                className=" text-xl rounded-lg p-3"
+                className=" text-xl rounded-lg p-2"
               >
                 <DashboardIcon /> 
 
@@ -78,10 +80,10 @@ const UserProfile = () => {
                 </p>
               </div>
             </Link>
-            <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+            <div className="flex gap-5 border-b-1 border-color p-2 hover:bg-[#37c7da] rounded hover:text-white cursor-pointer">
               <button
                 type="button"
-                className=" text-xl rounded-lg p-3 hover:bg-light-gray"
+                className=" text-xl rounded-lg p-2 hover:bg-light-gray"
               >
                 <AccountBoxIcon />
 
