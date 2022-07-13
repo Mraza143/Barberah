@@ -16,6 +16,7 @@ import Dashboard from './components/Admin/Dashboard'
 import BarbersList from "./components/Admin/BarbersList"
 import NewBarber from './components/Admin/NewBarber'
 import AboutUs from "./components/aboutUs"
+import ContactUs from './components/contactUs'
 import ProtectedRoute from './components/ProtectedRoute'
 // import LoginSignup from './components/LoginSignup'
 
@@ -42,6 +43,9 @@ const App = () => {
 
         <Route path="/AboutUs">
           <AboutUs/>
+        </Route>
+        <Route path="/ContactUs">
+          <ContactUs/>
         </Route>
 
 

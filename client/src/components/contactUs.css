@@ -1,0 +1,24 @@
+h1, h2 {
+    font-weight: bold;
+    font-family: "Montserrat", "Helvetica Neue";
+}
+
+input[text],
+select {
+    width: 50%;
+}
+
+.try {
+    width: 70%;
+    text-align: left;
+}
+
+.again {
+    width: 30%;
+    text-align: right;
+}
+
+input[type="text"],
+select {
+    border: visible;
+}
