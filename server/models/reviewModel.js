@@ -19,6 +19,7 @@ const reviewSchema = mongoose.Schema(
       average:{
         type:Number,
         
+        
       }
   },
   {
