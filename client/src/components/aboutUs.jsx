@@ -43,7 +43,7 @@ const AboutUs = () => {
                     <img src="/images/mobile.png" className="h-4/6" />
                 </div>
                 <div className="w-1/2 h-fit mt-16 mx-20 mb-0">
-                    <div className="px-8 flex justify-center flex-col text-left mx-16 rounded-lg">
+                    <div className="px-8 flex justify-center flex-col text-left mx-16 rounded-lg ml-20">
                         <h1 className="py-6 text-3xl">FOR CLIENTS</h1>
                         <p className="pb-4">More Than Just An Appointment Booking App, It’s Life Made Easy!</p>
                         <p className="pb-2 text-lg font-semibold">Features</p>
@@ -53,6 +53,7 @@ const AboutUs = () => {
                             <li>Book your appointments, no need to call your barber for</li>
                             <li>Confirm, Decline, Reschedule appointments</li>
                             <li>Pay online for your services</li>
+                            <li>Services (categories, services, costs, duration)</li>
                             <li>Receive reminders, never miss your appointment</li>
                             <li>Review your services, rate your barber</li>
                             <li>Free access to a <a href="/" className="underline hover:font-bold">Barbera directory</a></li>
