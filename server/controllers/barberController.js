@@ -89,11 +89,11 @@ exports.createBarber = catchAsyncErrors(async(req, res, next) => {
 
     req.body.user = req.user.id // we get id from the user which is loggedin
 
-    const product = await Barber.create(req.body)
+    const barber = await Barber.create(req.body)
 
     res.status(201).json({
         success: true,
-        product,
+        barber,
     })
 
 })
