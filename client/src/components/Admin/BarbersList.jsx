@@ -2,39 +2,33 @@ import React, { Fragment, useEffect } from 'react'
 import { DataGrid } from '@material-ui/data-grid'
 import './BarbersList.css'
 import { useSelector, useDispatch } from 'react-redux'
-// import {
-//   clearErrors,
-//   getAdminProduct,
-//   deleteProduct,
-// } from '../../actions/productAction'
 import { Link } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { Button } from '@material-ui/core'
-// import MetaData from '../layout/MetaData'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 import SideBar from './Sidebar'
-// import { DELETE_PRODUCT_RESET } from '../../constants/productConstant'
+import { clearErrors, getSalonOwnerBarbers } from '../../redux/actions/barberAction'
 
 const BarbersList = ({ history }) => {
-//   const dispatch = useDispatch()
-//   const alert = useAlert()
+  const dispatch = useDispatch()
+  const alert = useAlert()
 
-//   const { error, products } = useSelector((state) => state.products)
+  const { error, barbers } = useSelector((state) => state.barbers)
 
-//   const { error: deleteError, isDeleted } = useSelector(
-//     (state) => state.product,
-//   )
+  // const { error: deleteError, isDeleted } = useSelector(
+  //   (state) => state.product,
+  // )
 
   const deleteProductHandler = (id) => {
     // dispatch(deleteProduct(id))
   }
 
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error)
-    //   dispatch(clearErrors())
-    // }
+    if (error) {
+      alert.error(error)
+      dispatch(clearErrors())
+    }
 
     // if (deleteError) {
     //   alert.error(deleteError)
@@ -47,9 +41,9 @@ const BarbersList = ({ history }) => {
     //   dispatch({ type: DELETE_PRODUCT_RESET })
     // }
 
-    // dispatch(getAdminProduct())
+    dispatch(getSalonOwnerBarbers())
     // [dispatch, alert, error, deleteError, history, isDeleted]
-  }, [])
+  }, [dispatch, alert, error,history])
 
   const columns = [
     { field: 'id', headerName: 'Barber ID', minWidth: 100, flex: 0.3 },
@@ -144,35 +138,29 @@ const BarbersList = ({ history }) => {
 
   ]
 
-  const rows=[]
-  dummyData.forEach((item)=>{
-    rows.push({
-    id:item.id,
+  // const rows=[]
+  // dummyData.forEach((item)=>{
+  //   rows.push({
+  //   id:item.id,
+  //   name:item.name,
+  //   worksAt:item.worksAt,
+  //   timings:item.timings,
+  //   experience:item.experience
+  //   })
+  // })
+
+  const rows = []
+
+  barbers &&
+  barbers.forEach((item) => {
+      rows.push({
+        id: item._id,
     name:item.name,
     worksAt:item.worksAt,
     timings:item.timings,
     experience:item.experience
+      })
     })
-  })
-
-//   const rows = []
-//   rows.push({
-//     id:1234567890,
-//     name:"Shayan",
-//     worksAt:"Shah Jhan Barbers",
-//     timings:"10am-10pm",
-//     experience:10
-//   })
-
-//   products &&
-//     products.forEach((item) => {
-//       rows.push({
-//         id: item._id,
-//         stock: item.Stock,
-//         price: item.price,
-//         name: item.name,
-//       })
-//     })
 
   return (
     <Fragment>

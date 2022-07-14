@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
     ALL_BARBER_REQUEST,
     ALL_BARBER_SUCCESS,
@@ -8,6 +9,9 @@ import {
     NEW_BARBER_SUCCESS,
     NEW_BARBER_FAIL,
     NEW_BARBER_RESET,
+    ADMIN_BARBER_REQUEST,
+    ADMIN_BARBER_SUCCESS,
+    ADMIN_BARBER_FAIL,
 } from "../constants/barberConstant";
 
 
@@ -57,6 +61,27 @@ export const createBarber = (barberData) => async(dispatch) => {
         })
     }
 }
+
+
+// Get All Products For Admin
+export const getSalonOwnerBarbers = () => async(dispatch) => {
+    try {
+        dispatch({ type: ADMIN_BARBER_REQUEST })
+
+        const { data } = await axios.get('http://localhost:5000/api/salonowner/barbers')
+
+        dispatch({
+            type: ADMIN_BARBER_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: ADMIN_BARBER_FAIL,
+            payload: error.response.data.message,
+        })
+    }
+}
+
 
 
 
