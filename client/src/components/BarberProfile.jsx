@@ -82,6 +82,10 @@ const BarberProfile = () => {
   const [date, setDate]=useState("")
   const [price,setPrice]=useState(0);
 
+  const priceOptions=[
+    500, 1000, 2000
+  ]
+
   const  {reviews} = useSelector((state) => state.reviews)
   //const [average,setAverage]=  useState(reviews[2]);
   const { appointments } = useSelector((state) => state.appointments)
@@ -252,14 +256,18 @@ const BarberProfile = () => {
                     />
                   </div>
                   <div className="relative pb-5">
-                    <input
-                      type="number"
-                      name="price"
-                      value={price}
-                      onChange={(e)=>setPrice(e.target)}
-                      className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
-                      placeholder="Price"
-                    />
+                  
+<select
+className='border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm' 
+onChange={(e) => setPrice(e.target.value)}>
+                <option value="">Select your pakage : </option>
+                {priceOptions.map((priceOpt) => (
+                  <option key={priceOpt} value={priceOpt}>
+                    {priceOpt}
+                  </option>
+                ))}
+              </select>
+
                   </div>
                   <div className="flex justify-between items-center pt-2">
                   
@@ -342,7 +350,7 @@ const BarberProfile = () => {
                 <span className="text-base font-normal leading-tight text-gray-500">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" onClick={(e) => setPrice(500)} className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
 
     <div className="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-6 mb-8 text-center">
@@ -383,7 +391,7 @@ const BarberProfile = () => {
                 <span className="text-base font-normal leading-tight text-gray-500">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" onClick={(e) => setPrice(1000)} className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
 
     <div className="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-6 mb-8 text-center">
@@ -424,7 +432,7 @@ const BarberProfile = () => {
                 <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" onClick={(e) => setPrice(2000)} className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
     </div>
 
