@@ -19,13 +19,12 @@ app.use(express.json())
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
     // app.use(express.urlencoded({ extended: false }))
-app.use(cors())
-/*app.use(cors({
-    preflightContinue: true,
-    origin : "http://localhost:8080",
-    credentials: true,
+//app.use(cors())
+app.use(cors({
+
+    origin : "http://localhost:3000",
   }));
-  app.use(function(req, res, next) {
+  /*app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header("Access-Control-Allow-Credentials", true);

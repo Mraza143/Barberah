@@ -1,12 +1,15 @@
 
 {
     "name": "barbera",
-    "proxy": "http://127.0.0.1:5000",
+
+  
 
     "private": true,
+    "proxy":  " http://localhost:5000",
     "version": "0.0.0",
     "scripts": {
-        "dev": "vite",
+
+        "dev": "vite --host",
         "build": "vite build",
         "preview": "vite preview"
     },
@@ -47,4 +50,7 @@
         "tailwindcss": "^3.0.23",
         "vite": "^2.8.0"
     }
+
+
 }
+

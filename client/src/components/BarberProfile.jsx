@@ -133,6 +133,20 @@ const BarberProfile = () => {
       })
     )
   }
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      console.log(foundUser)
+      setCustomerName(foundUser["user"]["name"])
+      //setemail(foundUser["user"]["name"])
+      //setLink(foundUser["user"]["avatar"]["url"])
+
+      //setboolLog(true)
+
+    }
+    
+  }, []);
 
 
   useEffect(() => {

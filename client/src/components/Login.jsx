@@ -23,8 +23,14 @@ const [loginPassword, setLoginPassword] = useState('')
 
   // ------------
   const loginSubmit = (e) => {
-    e.preventDefault()
+    //e.preventDefault()
     dispatch(login(loginEmail, loginPassword))
+
+    setTimeout(() => {
+      window.location.reload
+    }, 8000); //miliseconds
+
+   
 
   }
 

@@ -9,18 +9,42 @@ import {logout} from "../redux/actions/userAction"
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const UserProfile = () => {
   const dispatch=useDispatch()
   const alert=useAlert()
   const [isClicked, setIsClicked] = useState(true);
   const { user } = useSelector((state) => state.user)
+  const [name , setname]=useState("")
+  const [email , setemail]=useState("")
+  const [link , setLink]=useState("")
 
   const handleClick_LogoutUser = () => {
     setIsClicked(!isClicked);
     dispatch(logout())
     alert.success("Logout Successfully")
+
+    setTimeout(() => {
+      window.location.reload
+    }, 2000); //miliseconds
+
   };
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      console.log(foundUser)
+      setname(foundUser["user"]["name"])
+      setemail(foundUser["user"]["name"])
+      setLink(foundUser["user"]["avatar"]["url"])
+
+      //setboolLog(true)
+
+    }
+    
+  }, []);
 
   return (
     <>
@@ -49,16 +73,16 @@ const UserProfile = () => {
               className="rounded-full h-20 w-20"
               // src={profilePng}
               // src={user.avatar.url? user.avatar.url: profilePng}
-              src={user?.avatar?.url }
+              src={link }
               alt="user-profile"
             />
             <div>
               <p className="font-semibold text-xl dark:text-gray-200">
-                {user?.name}
+                {name}
                 </p>
             
               <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
-                {user?.email}
+                {email}
               </p>
             </div>
           </div>

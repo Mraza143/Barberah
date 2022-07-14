@@ -31,7 +31,7 @@ const LoginSignup = ({ history }) => {
   const [avatarPreview, setAvatarPreview] = useState('/images/login_register.jpg')
   //   -------------------
   const loginSubmit = (e) => {
-    e.preventDefault()
+    //e.preventDefault()
     dispatch(login(loginEmail, loginPassword))
   }
   //   -------------------------
