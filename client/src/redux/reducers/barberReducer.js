@@ -7,6 +7,9 @@ import {
     NEW_BARBER_SUCCESS,
     NEW_BARBER_FAIL,
     NEW_BARBER_RESET,
+    ADMIN_BARBER_REQUEST,
+    ADMIN_BARBER_SUCCESS,
+    ADMIN_BARBER_FAIL,
 } from "../constants/barberConstant"
 
 
@@ -15,6 +18,7 @@ export const barbersReducer = (state = { barbers: [] }, action) => {
 
     switch (action.type) {
         case ALL_BARBER_REQUEST:
+        case ADMIN_BARBER_REQUEST:
             return {
                 loading: true,
                 barbers: [],
@@ -29,8 +33,15 @@ export const barbersReducer = (state = { barbers: [] }, action) => {
                 // filteredProductsCount: action.payload.filteredProductsCount,
             }
 
+        case ADMIN_BARBER_SUCCESS:
+            return {
+                loading: false,
+                barbers: action.payload.barbers,
+            }
+
 
         case ALL_BARBER_FAIL:
+        case ADMIN_BARBER_FAIL:
             return {
                 loading: false,
                 error: action.payload,

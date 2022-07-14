@@ -77,19 +77,19 @@ const Footer = () => (
       </div>
       <div class="">
         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-          Products
+          Services
         </h6>
         <p class="mb-4">
-          <a href="#!" class="text-white">Self-Care</a>
+          <a href="#!" class="text-white">Speciality Haircut</a>
         </p>
         <p class="mb-4">
-          <a href="#!" class="text-white">Hair & Massage</a>
+          <a href="#!" class="text-white">Beard Maintenance</a>
         </p>
         <p class="mb-4">
-          <a href="#!" class="text-white">Nails & Skin</a>
+          <a href="#!" class="text-white">Face & Head Massage</a>
         </p>
         <p>
-          <a href="#!" class="text-white">Barber</a>
+          <a href="#!" class="text-white">Hair Coloring</a>
         </p>
       </div>
       <div class="">
