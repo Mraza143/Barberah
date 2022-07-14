@@ -37,10 +37,10 @@ const AboutUs = () => {
                 </div>
             </div>
             <div className="flex flex-row flex-wrap w-full bg-[#37c7da] text-white">
-                <div className="hidden lg:flex lg:mt-16 lg:pl-36 lg:mb-0 lg:pb-0">
-                    <img src="/images/mobile.png" className="lg:h-4/6" />
+                <div className="hidden lg:flex lg:mt-32 lg:pl-36 lg:mb-0 lg:pb-0">
+                    <img src="/images/customer.png" className="lg:h-4/6" />
                 </div>
-                <div className="lg:w-1/2 h-fit lg:mt-16 lg:mx-20 lg:mb-0">
+                <div className="lg:w-1/2 h-fit lg:mt-16 lg:mx-0 lg:mb-0">
                     <div className="px-4 lg:px-8 flex justify-center flex-col text-left mx-4 my-4 lg:mx-16 rounded-lg lg:pl-20">
                         <h1 className="py-4 text-3xl">FOR CLIENTS</h1>
                         <p className="pb-4">More Than Just An Appointment Booking App, It’s Life Made Easy!</p>
