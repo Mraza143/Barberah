@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState ,useEffect } from 'react'
 import {
   Home,
   Welcome,
@@ -18,11 +18,22 @@ import NewBarber from './components/Admin/NewBarber'
 import AboutUs from "./components/aboutUs"
 import ContactUs from './components/contactUs'
 import ProtectedRoute from './components/ProtectedRoute'
+import { loadUser } from './redux/actions/userAction'
 // import LoginSignup from './components/LoginSignup'
+import store from './redux/store'
 
 
 
 const App = () => {
+  useEffect(()=>{
+    store.dispatch(loadUser())
+
+
+    
+
+
+  }, []);
+
   return (
         <Router>
       <div className="gradient-bg-welcome">

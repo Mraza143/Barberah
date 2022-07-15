@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema({
         }
 
     },
+    /*avatar: {
+        public_id: "this is shanu",
+
+        url: "dshaninn df dsf "
+
+    },*/
 
     role: {
         type: String,
