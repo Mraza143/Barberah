@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState, useHistory } from 'react'
 import './NewBarber.css'
-import { useSelector, useDispatch } from 'react-redux'
+import {useSelector, useDispatch } from 'react-redux'
 // import { clearErrors, createProduct } from '../../actions/productAction'
 import {clearErrors, createBarber} from "../../redux/actions/barberAction"
 import { useAlert } from 'react-alert'
@@ -15,7 +15,8 @@ import SideBar from './Sidebar'
 // import { NEW_PRODUCT_RESET } from '../../constants/productConstant'
 import { NEW_BARBER_RESET } from '../../redux/constants/barberConstant'
 
-const NewBarber = ({ history }) => {
+const NewBarber = () => {
+  // const history=useHistory()
     const dispatch = useDispatch()
     const alert = useAlert()
 
@@ -38,10 +39,10 @@ const NewBarber = ({ history }) => {
     }
     if (success) {
       alert.success('Barber Created Successfully')
-      history.push('/salonowner/dashboard')
+      // history.push('/salonowner/dashboard')
       dispatch({ type: NEW_BARBER_RESET })
     }
-  }, [dispatch, alert, error, history, success])
+  }, [dispatch, alert, error, success])
 
   const createBarberSubmitHandler = (e) => {
     e.preventDefault()

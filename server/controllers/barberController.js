@@ -2,6 +2,7 @@ const Barber = require('../models/barberModel')
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 // const sendToken = require('../utils/jwtToken');
 const ErrorHandler = require("../utils/errorHandler");
+const cloudinary = require("cloudinary")
 
 
 
@@ -87,7 +88,7 @@ exports.createBarber = catchAsyncErrors(async(req, res, next) => {
 
     req.body.images = imagesLinks
 
-    req.body.user = req.user.id // we get id from the user which is loggedin
+    // req.body.user = req.user.id // we get id from the user which is loggedin
 
     const barber = await Barber.create(req.body)
 

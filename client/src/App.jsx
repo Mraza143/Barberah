@@ -63,30 +63,41 @@ const App = () => {
 
 
 {/* Admin Pages */}
-        <ProtectedRoute 
+        {/* <ProtectedRoute 
         isAdmin={true}
          exact
          path="/salonowner/dashboard"
          component={Dashboard }
-        />
-
-        {/* <ProtectedRoute 
-        isAdmin={true}
-         exact
-         path="/salonowner/barbers"
-         component={BarbersList }
         /> */}
 
-<Route exact path="/salonowner/barbers">
-          <BarbersList />
+<Route path="/salonowner/dashboard">
+          <Dashboard />
         </Route>
+
+
+
 
         <ProtectedRoute 
         isAdmin={true}
          exact
+         path="/salonowner/barbers"
+         component={BarbersList }
+        />
+
+{/* <Route exact path="/salonowner/barbers">
+          <BarbersList />
+        </Route> */}
+
+        {/* <ProtectedRoute 
+        isAdmin={true}
+         exact
          path="/salonowner/barber"
          component={NewBarber }
-        />
+        /> */}
+
+<Route exact path="/salonowner/barber">
+          <NewBarber />
+        </Route>
 
 
       </Switch>

@@ -9,7 +9,7 @@ const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 router.route("/").get(getAllBarbers);
 router.route("/details/:id").get(getSingleBarber);
 router.route("/:name").get(getBarbersByLocation);
-router.route("/salonowner/new").post(isAuthenticatedUser, authorizeRoles('salonowner'), createBarber);
+router.route("/salonowner/new").post(createBarber);
 router.route("/salonowner/barbers").get(getAdminBarbers)
 router.route("/:id").put(updateBarber);
 //router.route("/review").put(createBarberReview)
