@@ -46,7 +46,7 @@ const BarbersList = ({ history }) => {
   }, [dispatch, alert, error,history])
 
   const columns = [
-    { field: 'id', headerName: 'Barber ID', minWidth: 100, flex: 0.3 },
+    { field: 'id', headerName: 'Barber ID', minWidth: 100, flex: 0.5 },
 
     {
       field: 'name',
@@ -105,49 +105,6 @@ const BarbersList = ({ history }) => {
     },
   ]
 
-  const dummyData=[
-    {
-        id:1,
-    name:"Shayan",
-    worksAt:"Shah Jhan Barbers",
-    timings:"10am-10pm",
-    experience:10
-    },
-    
-    {
-        id:2,
-    name:"Shayan",
-    worksAt:"Shah Jhan Barbers",
-    timings:"10am-10pm",
-    experience:10
-    },
-    {
-        id:3,
-    name:"Shayan",
-    worksAt:"Shah Jhan Barbers",
-    timings:"10am-10pm",
-    experience:10
-    },
-    {
-        id:4,
-    name:"Shayan",
-    worksAt:"Shah Jhan Barbers",
-    timings:"10am-10pm",
-    experience:10
-    },
-
-  ]
-
-  // const rows=[]
-  // dummyData.forEach((item)=>{
-  //   rows.push({
-  //   id:item.id,
-  //   name:item.name,
-  //   worksAt:item.worksAt,
-  //   timings:item.timings,
-  //   experience:item.experience
-  //   })
-  // })
 
   const rows = []
 

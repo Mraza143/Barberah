@@ -68,7 +68,7 @@ export const getSalonOwnerBarbers = () => async(dispatch) => {
     try {
         dispatch({ type: ADMIN_BARBER_REQUEST })
 
-        const { data } = await axios.get('http://localhost:5000/api/salonowner/barbers')
+        const { data } = await axios.get('http://localhost:5000/api/barbers/salonowner/barbers')
 
         dispatch({
             type: ADMIN_BARBER_SUCCESS,

@@ -70,12 +70,16 @@ const App = () => {
          component={Dashboard }
         />
 
-        <ProtectedRoute 
+        {/* <ProtectedRoute 
         isAdmin={true}
          exact
          path="/salonowner/barbers"
          component={BarbersList }
-        />
+        /> */}
+
+<Route exact path="/salonowner/barbers">
+          <BarbersList />
+        </Route>
 
         <ProtectedRoute 
         isAdmin={true}
