@@ -20,8 +20,8 @@ const Navbar = () => {
   const { user ,error, loading, isAuthenticated } = useSelector((state) => state.user)
 
 
-  const [boolLog,setboolLog]= useState(false)
-  const [name,setName]= useState("")
+  // const [boolLog,setboolLog]= useState(false)
+  // const [name,setName]= useState("")
   const [link , setLink]=useState("")
   //const [foundUser,setfoundUser]= useState("")
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -30,19 +30,19 @@ const Navbar = () => {
   //Modift this array for links of navbar
   const links =["AboutUs","Salons","login","register","ContactUs"] 
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser)
-      setName(foundUser["user"]["name"])
-      setLink(foundUser["user"]["avatar"]["url"])
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     console.log(foundUser)
+  //     setName(foundUser["user"]["name"])
+  //     setLink(foundUser["user"]["avatar"]["url"])
 
-      setboolLog(true)
+  //     setboolLog(true)
 
-    }
+  //   }
     
-  }, [isAuthenticated , loading]);
+  // }, [isAuthenticated , loading]);
 
   return (
 
@@ -86,12 +86,12 @@ const Navbar = () => {
         <img
           className="rounded-full w-[2.5rem] h-[2.5rem] text-white text-sm"
           // src={user.avatar.url? user.avatar.url : profilePng}
-          src={link}
+          src={user?.avatar?.url}
           alt="user-profile"
         />
         <p className="flex items-center justify-center">
           <span className="text-gray-400 text-10 text-base mr-2">Hi,</span>{" "}
-          <span className="text-gray-400 ml-1 text-10 text-lg">{name}</span>
+          <span className="text-gray-400 ml-1 text-10 text-lg">{user?.name}</span>
         </p>
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>

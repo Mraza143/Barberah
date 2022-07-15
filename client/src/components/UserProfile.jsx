@@ -16,9 +16,9 @@ const UserProfile = () => {
   const alert=useAlert()
   const [isClicked, setIsClicked] = useState(true);
   const { user } = useSelector((state) => state.user)
-  const [name , setname]=useState("")
-  const [email , setemail]=useState("")
-  const [link , setLink]=useState("")
+  // const [name , setname]=useState("")
+  // const [email , setemail]=useState("")
+  // const [link , setLink]=useState("")
 
   const handleClick_LogoutUser = () => {
     setIsClicked(!isClicked);
@@ -31,20 +31,20 @@ const UserProfile = () => {
 
   };
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser)
-      setname(foundUser["user"]["name"])
-      setemail(foundUser["user"]["name"])
-      setLink(foundUser["user"]["avatar"]["url"])
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     console.log(foundUser)
+  //     setname(foundUser["user"]["name"])
+  //     setemail(foundUser["user"]["name"])
+  //     setLink(foundUser["user"]["avatar"]["url"])
 
-      //setboolLog(true)
+  //     //setboolLog(true)
 
-    }
+  //   }
     
-  }, []);
+  // }, []);
 
   return (
     <>
@@ -72,17 +72,17 @@ const UserProfile = () => {
             <img
               className="rounded-full h-20 w-20"
               // src={profilePng}
-              // src={user.avatar.url? user.avatar.url: profilePng}
-              src={link }
+              src={user?.avatar?.url}
+              // src={link }
               alt="user-profile"
             />
             <div>
               <p className="font-semibold text-xl dark:text-gray-200">
-                {name}
+                {user?.name}
                 </p>
             
               <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
-                {email}
+                {user?.email}
               </p>
             </div>
           </div>

@@ -25,14 +25,9 @@ import store from './redux/store'
 
 
 const App = () => {
-  useEffect(()=>{
-    store.dispatch(loadUser())
-
-
-    
-
-
-  }, []);
+  // useEffect(()=>{
+  //   store.dispatch(loadUser())
+  // }, []);
 
   return (
         <Router>
@@ -74,16 +69,16 @@ const App = () => {
 
 
 {/* Admin Pages */}
-        {/* <ProtectedRoute 
+        <ProtectedRoute 
         isAdmin={true}
          exact
          path="/salonowner/dashboard"
          component={Dashboard }
-        /> */}
+        />
 
-<Route path="/salonowner/dashboard">
+{/* <Route path="/salonowner/dashboard">
           <Dashboard />
-        </Route>
+        </Route> */}
 
 
 
@@ -99,16 +94,16 @@ const App = () => {
           <BarbersList />
         </Route> */}
 
-        {/* <ProtectedRoute 
+        <ProtectedRoute 
         isAdmin={true}
          exact
          path="/salonowner/barber"
          component={NewBarber }
-        /> */}
+        />
 
-<Route exact path="/salonowner/barber">
+{/* <Route exact path="/salonowner/barber">
           <NewBarber />
-        </Route>
+        </Route> */}
 
 
       </Switch>

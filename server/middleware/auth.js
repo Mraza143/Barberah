@@ -5,7 +5,7 @@ const User = require("../models/userModel")
 
 // isAuthenticatedUser only tells that the user is loggedin or loggedout
 exports.isAuthenticatedUser = catchAsyncErrors(async(req, res, next) => {
-    const { token } = req.cookies; // Will generate the token of the authenticated user
+    const { token } = req.Cookies; // Will generate the token of the authenticated user
     if (!token) {
         return next(new ErrorHandler("Please Login to access this Resource", 401));
     }
@@ -28,36 +28,36 @@ exports.authorizeRoles = (...roles) => {
 }
 
 
-exports.protect = catchAsyncErrors(async(req, res, next) => {
-    let token
+// exports.protect = catchAsyncErrors(async(req, res, next) => {
+//     let token
 
-    if (
-        req.headers.authorization &&
-        req.headers.authorization.startsWith('Bearer')
-    ) {
-        try {
-            // Get token from header
-            token = req.headers.authorization.split(' ')[1]
-            console.log("token onlyyyyyyyyy" + token)
+//     if (
+//         req.headers.authorization &&
+//         req.headers.authorization.startsWith('Bearer')
+//     ) {
+//         try {
+//             // Get token from header
+//             token = req.headers.authorization.split(' ')[1]
+//             console.log("token onlyyyyyyyyy" + token)
 
-            // Verify token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+//             // Verify token
+//             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-            // Get user from the token
-            req.user = await User.findById(decoded.id).select('-password')
+//             // Get user from the token
+//             req.user = await User.findById(decoded.id).select('-password')
 
-            // req.user = await User.findById(decoded.id)
+//             // req.user = await User.findById(decoded.id)
 
-            next()
-        } catch (error) {
-            console.log(error)
-            res.status(401)
-            throw new Error('Not authorized')
-        }
-    }
+//             next()
+//         } catch (error) {
+//             console.log(error)
+//             res.status(401)
+//             throw new Error('Not authorized')
+//         }
+//     }
 
-    if (!token) {
-        res.status(401)
-        throw new Error('Not authorized, no token')
-    }
-})
+//     if (!token) {
+//         res.status(401)
+//         throw new Error('Not authorized, no token')
+//     }
+// })

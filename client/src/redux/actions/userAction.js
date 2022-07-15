@@ -5,27 +5,27 @@ import { CLEAR_ERRORS, LOAD_USER_FAIL, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOG
 export const login = (email, password) => async(dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST })
-        const config = { headers: { 'Content-Type': 'application/json' } }
-       /* const {data}= await fetch(`http://localhost:5000/api/login`,{
-            mode:"no-cors",
-            method:'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            credentials:'include',
-            body : JSON.stringify({email , password})
-           
-        })*/
+        const config = { headers: { 'Content-Type': 'application/json' }, credentials: "include" }
+            /* const {data}= await fetch(`http://localhost:5000/api/login`,{
+                 mode:"no-cors",
+                 method:'POST',
+                 headers:{
+                     'Content-Type': 'application/json'
+                 },
+                 credentials:'include',
+                 body : JSON.stringify({email , password})
+                
+             })*/
         const { data } = await axios.post(
-            `http://localhost:5000/api/login`, { credentials: "include", email, password},
-            config,
+                `http://localhost:5000/api/login`, { email, password },
+                config,
 
-            // `http://localhost:5000/api/salons`
-            // `/api/login`
-        )
-        /*if (data) {
-            localStorage.setItem('user', JSON.stringify(data))
-        }*/
+                // `http://localhost:5000/api/salons`
+                // `/api/login`
+            )
+            /*if (data) {
+                localStorage.setItem('user', JSON.stringify(data))
+            }*/
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -44,7 +44,10 @@ export const logout = () => async(dispatch) => {
     try {
         //localStorage.removeItem('user')
         //const config = { headers: { 'Content-Type': 'application/json' } }
-        await axios.get('http://localhost:5000/api/logout',{credentials:"include"})
+        const config = {
+            credentials: "include"
+        }
+        await axios.get('http://localhost:5000/api/logout', config)
             // there is no need to pass data in payload bcoz we haven't pass any data in logout success case
 
         dispatch({
@@ -64,12 +67,12 @@ export const logout = () => async(dispatch) => {
 export const register = (userData) => async(dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
-        const config = { headers: { 'Content-Type': 'multipart/form-data' } }
-        //await axios.post(`/api/v1/register`, userData, config)
-        const { data } = await axios.post(`http://localhost:5000/api/register`,{ credentials: "include", userData, config})
-        /*if (data) {
-            localStorage.setItem('user', JSON.stringify(data))
-        }*/
+        const config = { headers: { 'Content-Type': 'multipart/form-data' }, credentials: "include" }
+            //await axios.post(`/api/v1/register`, userData, config)
+        const { data } = await axios.post(`http://localhost:5000/api/register`, userData, config)
+            /*if (data) {
+                localStorage.setItem('user', JSON.stringify(data))
+            }*/
         dispatch({
             type: REGISTER_USER_SUCCESS,
             payload: data,
@@ -85,7 +88,7 @@ export const register = (userData) => async(dispatch) => {
 export const loadUser = () => async(dispatch) => {
     try {
         dispatch({ type: LOAD_USER_REQUEST })
-        const { data } = await axios.get('http://localhost:5000/api/me' , {credentials:"include"})
+        const { data } = await axios.get('http://localhost:5000/api/me', { credentials: "include" })
 
         dispatch({
             type: LOAD_USER_SUCCESS,
