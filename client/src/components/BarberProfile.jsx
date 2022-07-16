@@ -114,24 +114,6 @@ const BarberProfile = () => {
       })
     )
   }
-<<<<<<< HEAD
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     console.log(foundUser)
-  //     //setCustomerName(foundUser["user"]["name"])
-  //     //setemail(foundUser["user"]["name"])
-  //     //setLink(foundUser["user"]["avatar"]["url"])
-
-  //     //setboolLog(true)
-
-  //   }
-    
-  // }, []);
-=======
-
->>>>>>> 5848625d1a498f67b43646bdd3baf451f6e63d86
 
 
   useEffect(() => {
@@ -190,7 +172,7 @@ const BarberProfile = () => {
               </p>
             </div>
             <img
-              src={barber.imagePath}
+              src={barber.images[0].url}
               alt="nature"
               className="w-256 h-64 2xl:h-96 rounded-md shadow-lg object-cover"
             />

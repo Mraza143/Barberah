@@ -99,16 +99,28 @@ exports.getAdminSalons = catchAsyncErrors(async(req, res, next) => {
 
 exports.createSalon = catchAsyncErrors(async(req, res, next) => {
 
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.imagePath, {
-        folder: 'salonimages',
-        width: 150,
-        crop: 'scale',
-    })
+    let images = []
 
-    req.body.imagePath = {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
+    if (typeof req.body.images === 'string') {
+        images.push(req.body.images)
+    } else {
+        images = req.body.images
     }
+
+    const imagesLinks = []
+
+    for (let i = 0; i < images.length; i++) {
+        const result = await cloudinary.v2.uploader.upload(images[i], {
+            folder: 'salonimages',
+        })
+
+        imagesLinks.push({
+            public_id: result.public_id,
+            url: result.secure_url,
+        })
+    }
+
+    req.body.images = imagesLinks
 
     // req.body.user = req.user.id // we get id from the user which is loggedin
 

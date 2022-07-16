@@ -8,7 +8,7 @@ import { getAllSalons } from "../redux/actions/salonAction";
 import "./Salons.css"
 
 
-const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
+const ShopCard = ({_id, location,  timings, images ,name})=> {
   let text = "/specificSalon/"  + _id + "/"+ name;
   return (
     
@@ -18,11 +18,7 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
 
       <div class="card">
         <div class="card-img">
-<<<<<<< HEAD
-          <img src={imagePath.url}></img>
-=======
-          <img src={imagePath["url"]}></img>
->>>>>>> 5848625d1a498f67b43646bdd3baf451f6e63d86
+          <img src={images[0].url}></img>
         </div>
         <div class="card-info">
           <p class="text-title">{name}</p>

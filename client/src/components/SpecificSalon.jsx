@@ -37,7 +37,7 @@ const ShopCard1 = (props)=> {
 
 
         <img
-          src={ props.images[0].url}
+          src={ props.images}
           alt="nature"
           className="w-64 h-32 2xl:h-96 rounded-md shadow-lg object-cover"
         />
@@ -60,7 +60,7 @@ const SpecificSalon = () => {
 
     const dispatch = useDispatch();
 	  const {salon} = useSelector((state) => state.salon);
-	  const {salons} = useSelector((state) => state.salons);
+    // const {salon :newSalon}=useSelector((state)=>state.newSalon)
     // console.log("Salon only : "+salon)
     // console.log("Salonsssss only : "+salons)
     const {barbers} = useSelector((state) => state.barbers);
@@ -69,7 +69,6 @@ const SpecificSalon = () => {
 
     //const [lat,setLat]= useState(10);
     
-
     
 
     //const l1 = salon.coordinates["latitude"] ;
@@ -109,7 +108,7 @@ const SpecificSalon = () => {
              
             </div>
             <img
-              src={//Object.keys(salon.imagePath).find(key=>salon.imagePath[key]==="url")}
+            // src={salon.images[0].url}
               alt="nature"
               className="w-full h-128 2xl:h-96 rounded-md shadow-lg object-cover"
             />
@@ -119,7 +118,7 @@ const SpecificSalon = () => {
 
             <div className="mt-12 flex flex-wrap justify-center items-center ">
             {barbers.map((barber, i) => (
-            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} images={barber.images}  name= {barber.name}  experience={barber.experience} sname={sname} />))}
+            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} images={barber.images[0].url}  name= {barber.name}  experience={barber.experience} sname={sname} />))}
             </div>
 
             <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center">

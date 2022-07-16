@@ -23,8 +23,8 @@ const NewBarber = () => {
   const [name, setName] = useState('')
   const [timings, setTimings]=useState('')
   const [location, setLocation]=useState('')
-  const [imagePath, setImagePath] = useState('')
-  const [imagePathPreview, setImagePathPreview] = useState('')
+  // const [images, setImages] = useState([])
+  // const [imagesPreview, setImagesPreview] = useState([])
 
 
   
@@ -49,23 +49,30 @@ const NewBarber = () => {
     myForm.set('name', name)
     myForm.set('timings', timings)
     myForm.set('location', location)
-    myForm.set('imagePath', imagePath)
+    images.forEach((image) => {
+      myForm.append('images', image)
+    })
 
     dispatch(createSalon(myForm))
   }
 
-  const imagePathHandler = (e) => {
-    if (e.target.name === 'imagePath') {
+ 
+  const createSalonImagesChange = (e) => {
+    const files = Array.from(e.target.files)
+    setImages([])
+    setImagesPreview([])
+    files.forEach((file) => {
       const reader = new FileReader()
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setImagePathPreview(reader.result)
-          setImagePath(reader.result)
+          setImagesPreview((old) => [...old, reader.result])
+          setImages((old) => [...old, reader.result])
         }
       }
-      reader.readAsDataURL(e.target.files[0])
-    } 
+      reader.readAsDataURL(file)
+    })
   }
+
 
   return (
     <Fragment>
@@ -122,42 +129,34 @@ const NewBarber = () => {
               </label>
             </div>
 
-            {/* <div className="flex items-center border-2 mb-8 py-3 px-3 rounded-2xl ">
-                    <img
-                      src={avatarPreview}
-                      alt="Avatar Preview"
-                      className="w-12 mr-2 h-12 rounded-full"
-                    />
-                    {/* <input
-                      className="w-full outline-none border-2 bg-indigo-100 p-1 text-sm "
-                      type="file"
-                      name="avatar"
-                      accept="image/*"
-                      onChange={registerDataChange}
-                    /> */}
 
+            
             <div className="input-container ic2">
             <input
             className="input createProductFormFile"
                 type="file"
-                name="imagePath"
+                name="avatar"
                 accept="image/*"
                 multiple
-                onChange={imagePathHandler}
+                onChange={createSalonImagesChange}
               />
               <div className="cut cut-short"></div>
-              <label htmlFor="image" className="placeholder">
+              <label htmlFor="email" className="placeholder">
                 Image File
               </label>
             </div>
 
 
-            <div className="input-container ic2 product_preview"> 
+            <div className="input-container ic2 product_preview">
             <div
             className="input createProductFormImage">
-    <img src={imagePathPreview} alt="Salon Preview"/>
+{
+  imagesPreview.map((image, index)=>(
+    <img key={index} src={image} alt="Barber Preview"/>
+  ))
+}
             </div>
-            </div> 
+            </div>
 
 
 
