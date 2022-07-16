@@ -23,7 +23,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { loadUser } from './redux/actions/userAction'
 // import LoginSignup from './components/LoginSignup'
 import store from './redux/store'
-import Trending from './components/Trending'
+
 
 
 
@@ -62,9 +62,7 @@ const App = () => {
         <Route path="/salons">
           <Salons total={10} />
         </Route>
-        <Route path="/trending">
-          <Trending total={10} />
-        </Route>
+
         <Route path="/specificSalon/:id/:name">
           <SpecificSalon />
         </Route>

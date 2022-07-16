@@ -10,6 +10,9 @@ import {
     ADMIN_BARBER_REQUEST,
     ADMIN_BARBER_SUCCESS,
     ADMIN_BARBER_FAIL,
+    UPDATE_BARBER_FAIL,
+    UPDATE_BARBER_REQUEST,
+    UPDATE_BARBER_SUCCESS
 } from "../constants/barberConstant"
 
 
@@ -92,4 +95,44 @@ export const newBarberReducer = (state = { barber: {} }, action) => {
         default:
             return state
     }
+}
+
+
+export const barberRatingsReducer = (state = {ratings: "" }, action) => {
+
+    switch (action.type) {
+        case UPDATE_BARBER_REQUEST:
+            return {
+                loading: true,
+                ratings: "",
+            }
+
+        case UPDATE_BARBER_SUCCESS:
+            return {
+                loading: false,
+               ratings: action.payload.ratings,
+                // productsCount: action.payload.productsCount,
+                // resultPerPage: action.payload.resultPerPage,
+                // filteredProductsCount: action.payload.filteredProductsCount,
+            }
+
+
+        case UPDATE_BARBER_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
+            }
+
+        default:
+            return state
+    }
+
+
+
 }

@@ -35,6 +35,7 @@ const ShopCard1 = (props)=> {
           <p className="text-black text-base">Sample Hair style</p>
         </div>
 
+
         <img
           src={ props.imagePath}
           alt="nature"
@@ -113,7 +114,7 @@ const SpecificSalon = () => {
 
             <div className="mt-12 flex flex-wrap justify-center items-center ">
             {barbers.map((barber, i) => (
-            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} imagePath={barber.imagePath} name= {barber.name}  experience={barber.experience} sname={sname} />))}
+            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} imagePath={barber.imagePath}  name= {barber.name}  experience={barber.experience} sname={sname} />))}
             </div>
 
             <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center">

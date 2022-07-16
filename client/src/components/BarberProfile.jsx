@@ -18,30 +18,6 @@ import {CREATE_REVIEW_RESET} from '../redux/constants/reviewConstant'
 import {NEW_APPOINTMENT_RESET} from '../redux/constants/appointmentsConstant'
 
 
-const ShopCard1 = (props) => {
-  return (
-    // <div
-    //   className="bg-[#181918] m-4 flex flex-1
-    //   2xl:min-w-[350px]
-    //   2xl:max-w-[400px]
-    //   sm:min-w-[170px]
-    //   sm:max-w-[200px]
-    //   min-w-full
-    //   flex-col p-3 rounded-md hover:shadow-2xl"
-    // >
-    //   <div className="flex flex-col items-center w-full mt-3">
-    //     <div className="flex flex-col  justify-center items-center display-flex justify-start w-full mb-6 p-2">
-    //       <p className="text-white text-base">Date: {props.date}</p>
-    //       <p className="text-white text-base">
-    //         Customer Name: {props.customerName}{' '}
-    //       </p>
-    //     </div>
-    //   </div>
-    // </div>
-<h1>hello</h1>
-
-  )
-}
 
 const ReviewCard = ({ review }) => {
   const options = {
@@ -69,6 +45,7 @@ const BarberProfile = () => {
   const alert = useAlert()
   const dispatch = useDispatch()
   const [rating, setRating] = useState(0)
+  const [ratings,setRatings]=useState(10);
   const [comment, setComment] = useState('')
   
   const [barberId,setbarberId] = useState(id)
@@ -137,20 +114,7 @@ const BarberProfile = () => {
       })
     )
   }
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      console.log(foundUser)
-      //setCustomerName(foundUser["user"]["name"])
-      //setemail(foundUser["user"]["name"])
-      //setLink(foundUser["user"]["avatar"]["url"])
 
-      //setboolLog(true)
-
-    }
-    
-  }, []);
 
 
   useEffect(() => {
@@ -181,6 +145,8 @@ const BarberProfile = () => {
     
     dispatch(getAllAppointments(id, name, sname))
     dispatch(getAllReviewsAverage(id))
+    //dispatch(getBarbersAverage(id,ratings))
+    //console.log(dispatch(getAllReviewsAverage(id)))
  
     
   }, [dispatch, id, name,sname ,alert, reviewError, reviewSuccess, appointmentError, appointmentSuccess])
@@ -203,7 +169,7 @@ const BarberProfile = () => {
                 Experience: {barber.experience} years
               </p>
               <p className=" text-white text-base font-bold ">
-                Ratings: {Math.round(average * 100)/100} /10
+                Ratings: {Math.round(barber.ratings)} /10
               </p>
             </div>
             <img

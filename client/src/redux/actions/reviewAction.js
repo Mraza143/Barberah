@@ -6,6 +6,7 @@ export const getAllReviews = (id) => async(dispatch) => {
     try {
         dispatch({ type: ALL_REVIEW_REQUEST })
         const { data } = await axios.get(`http://localhost:5000/api/reviews/${id}`);
+        
         //const resp = await fetch(`http://localhost:5000/api/appointments/${id}/${name}/${sname}`);
 
         dispatch({
@@ -23,6 +24,8 @@ export const getAllReviewsAverage = (id) => async(dispatch) => {
   try {
       dispatch({ type: ALL_REVIEW_AVERAGE_REQUEST })
       const { data } = await axios.get(`http://localhost:5000/api/reviews/${id}/average`);
+      await axios.put(`http://localhost:5000/api/barbers/ratings/${id}`, data)
+
       //const resp = await fetch(`http://localhost:5000/api/appointments/${id}/${name}/${sname}`);
 
       dispatch({

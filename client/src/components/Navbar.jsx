@@ -28,7 +28,7 @@ const Navbar = () => {
   // For User Profile
   const [isClicked, setIsClicked]=useState(false)
   //Modift this array for links of navbar
-  const links =["AboutUs","Salons","login","trending","ContactUs"] 
+  const links =["AboutUs","Salons","login","ContactUs"] 
 
   // useEffect(() => {
   //   const loggedInUser = localStorage.getItem("user");
@@ -71,7 +71,7 @@ const Navbar = () => {
             flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
           >
             <li className="text-xl w-full my-2"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
-            {["About Us", "Salons" , "Login", "Trending" , "Contact Us"].map(
+            {["About Us", "Salons" , "Login",  "Contact Us"].map(
               (item, index) => <NavBarItem key={item + index} title={item} link={`/${links[index]}`} classprops="my-2 text-lg" />,
             )}
           </ul>
