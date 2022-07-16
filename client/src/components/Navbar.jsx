@@ -28,7 +28,7 @@ const Navbar = () => {
   // For User Profile
   const [isClicked, setIsClicked]=useState(false)
   //Modift this array for links of navbar
-  const links =["AboutUs","Salons","login","register","ContactUs"] 
+  const links =["AboutUs","Salons","login","trending","ContactUs"] 
 
   // useEffect(() => {
   //   const loggedInUser = localStorage.getItem("user");
@@ -52,7 +52,7 @@ const Navbar = () => {
         
       </div>
       <ul className="text-[#c8c8c8] md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["About Us", "Salons" , "Login", "Register" , "Contact Us"].map((item, index) => (
+        {["About Us", "Salons" , "Login", "Trending" , "Contact Us"].map((item, index) => (
           <NavBarItem key={item + index} title={item} link={`/${links[index]}`} />
         ))}
 
@@ -71,8 +71,8 @@ const Navbar = () => {
             flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
           >
             <li className="text-xl w-full my-2"><AiOutlineClose onClick={() => setToggleMenu(false)} /></li>
-            {["Market", "Exchange", "Tutorials", "Wallets"].map(
-              (item, index) => <NavBarItem key={item + index} title={item} classprops="my-2 text-lg" />,
+            {["About Us", "Salons" , "Login", "Trending" , "Contact Us"].map(
+              (item, index) => <NavBarItem key={item + index} title={item} link={`/${links[index]}`} classprops="my-2 text-lg" />,
             )}
           </ul>
         )}
