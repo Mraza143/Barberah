@@ -102,7 +102,11 @@ const NewBarber = () => {
                 Salon Name
               </label>
             </div>
-           
+            <div>
+                <label for="image">Upload Image</label>
+                <input type="file" id="image" 
+                       name="image" value="" required/>
+            </div>
             <div className="input-container ic2">
               <input
                id="timings" 

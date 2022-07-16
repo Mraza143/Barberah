@@ -6,6 +6,9 @@ const ErrorHandler = require('../utils/errorHandler');
 
 
 
+
+
+
 exports.getSalons = catchAsyncErrors(async(req, res, next) => {
     const salons = await Salon.find();
     res.status(200).json({
@@ -19,6 +22,14 @@ exports.getSalon = catchAsyncErrors(async(req, res, next) => {
     res.status(200).json({
         success: true,
         salon
+    })
+
+})
+exports.getSalonPic = catchAsyncErrors(async(req, res, next) => {
+    const salon = await Salon.findById(req.params.id);
+    res.status(200).json({
+        success: true,
+        url :salon.images[0].url
     })
 
 })
@@ -41,7 +52,8 @@ exports.setSalon = catchAsyncErrors(async(req, res, next) => {
         location: req.body.location,
         imagePath: req.body.imagePath,
         barber: req.body.barber,
-        coordinates: req.body.coordinates
+        coordinates: req.body.coordinates,
+        image:req.file.filename,
 
     })
     if (!req.body.name) {

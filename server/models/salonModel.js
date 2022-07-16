@@ -24,17 +24,21 @@ const salonSchema = mongoose.Schema({
     images: [{
         public_id: {
             type: String,
-            required: true
+           
         },
         url: {
             type: String,
-            required: true
+            
         }
     }],
     coordinates: {
         latitude: Number,
         langitude: Number
-    }
+    },
+        img: {
+            data: Buffer,
+            contentType: String,
+          },
 }, {
     timestamps: true,
 })
