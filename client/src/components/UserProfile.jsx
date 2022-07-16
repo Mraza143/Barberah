@@ -129,7 +129,7 @@ const UserProfile = () => {
             >
             <span>
               Logout
-              </span>
+            </span>
             </button>
           </div>
         </div>

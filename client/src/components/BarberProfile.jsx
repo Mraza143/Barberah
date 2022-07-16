@@ -274,7 +274,7 @@ const BarberProfile = () => {
 <select
 className='border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm' 
 onChange={(e) => setPrice(e.target.value)}>
-                <option value="">Select your pakage : </option>
+                <option value="">Select your Package : </option>
                 {priceOptions.map((priceOpt) => (
                   <option key={priceOpt} value={priceOpt}>
                     {priceOpt}
@@ -324,7 +324,7 @@ onChange={(e) => setPrice(e.target.value)}>
       </div>
 
       {/*Packages Section*/}
-      <h1 className="text-center text-3xl mt-8">Select Your Package</h1>
+      <h1 className="text-center text-3xl mt-8">Packages Details</h1>
       <div className="flex flex-row space-even justify-around flex-wrap">
       <div className="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-6 mb-8 text-center">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Basic Plan</h5>
@@ -364,7 +364,6 @@ onChange={(e) => setPrice(e.target.value)}>
                 <span className="text-base font-normal leading-tight text-gray-500">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
 
     <div className="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-6 mb-8 text-center">
@@ -405,7 +404,6 @@ onChange={(e) => setPrice(e.target.value)}>
                 <span className="text-base font-normal leading-tight text-gray-500">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
 
     <div className="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-6 mb-8 text-center">
@@ -446,7 +444,6 @@ onChange={(e) => setPrice(e.target.value)}>
                 <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">Hair Coloring</span>
             </li>
         </ul>
-        <button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
     </div>
     </div>
 
