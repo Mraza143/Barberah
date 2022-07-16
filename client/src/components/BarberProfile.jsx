@@ -142,7 +142,7 @@ const BarberProfile = () => {
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       console.log(foundUser)
-      setCustomerName(foundUser["user"]["name"])
+      //setCustomerName(foundUser["user"]["name"])
       //setemail(foundUser["user"]["name"])
       //setLink(foundUser["user"]["avatar"]["url"])
 
