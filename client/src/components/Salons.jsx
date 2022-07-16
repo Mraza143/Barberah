@@ -18,7 +18,7 @@ const ShopCard = ({_id, location,  timings, imagePath ,name})=> {
 
       <div class="card">
         <div class="card-img">
-          <img src={imagePath}></img>
+          <img src={imagePath.url}></img>
         </div>
         <div class="card-info">
           <p class="text-title">{name}</p>

@@ -59,6 +59,9 @@ const SpecificSalon = () => {
 
     const dispatch = useDispatch();
 	  const {salon} = useSelector((state) => state.salon);
+	  const {salons} = useSelector((state) => state.salons);
+    // console.log("Salon only : "+salon)
+    // console.log("Salonsssss only : "+salons)
     const {barbers} = useSelector((state) => state.barbers);
     const {coordinates}=useSelector((state)=>state.coordinates)
 
