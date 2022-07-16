@@ -15,12 +15,15 @@ import Register from "./components/Register"
 import Dashboard from './components/Admin/Dashboard'
 import BarbersList from "./components/Admin/BarbersList"
 import NewBarber from './components/Admin/NewBarber'
+import SalonsList from "./components/Admin/SalonsList"
+import NewSalon from "./components/Admin/NewSalon"
 import AboutUs from "./components/aboutUs"
 import ContactUs from './components/contactUs'
 import ProtectedRoute from './components/ProtectedRoute'
 import { loadUser } from './redux/actions/userAction'
 // import LoginSignup from './components/LoginSignup'
 import store from './redux/store'
+
 
 
 
@@ -59,6 +62,7 @@ const App = () => {
         <Route path="/salons">
           <Salons total={10} />
         </Route>
+
         <Route path="/specificSalon/:id/:name">
           <SpecificSalon />
         </Route>
@@ -104,6 +108,25 @@ const App = () => {
 {/* <Route exact path="/salonowner/barber">
           <NewBarber />
         </Route> */}
+
+
+<ProtectedRoute 
+        isAdmin={true}
+         exact
+         path="/salonowner/salons"
+         component={SalonsList }
+        />
+
+{/* <ProtectedRoute 
+        isAdmin={true}
+         exact
+         path="/salonowner/salon"
+         component={NewSalon }
+        /> */}
+
+        <Route exact path="/salonowner/salon">
+          <NewSalon />
+        </Route>
 
 
       </Switch>

@@ -27,6 +27,19 @@ exports.getSingleBarber = catchAsyncErrors(async(req, res, next) => {
     })
 })
 
+exports.updateRatingsOfaBarber = catchAsyncErrors(async(req, res, next) => {
+    const barber = await Barber.findById(req.params.id)
+    const updatedBarber = await Barber.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    res.status(200).json({
+        success: true,
+        updatedBarber
+    })
+})
+
 // Get Barbers By Location
 exports.getBarbersByLocation = catchAsyncErrors(async(req, res, next) => {
     const barbers = await Barber.find({ worksAt: req.params.name })

@@ -35,8 +35,9 @@ const ShopCard1 = (props)=> {
           <p className="text-black text-base">Sample Hair style</p>
         </div>
 
+
         <img
-          src={ props.imagePath}
+          src={ props.images}
           alt="nature"
           className="w-64 h-32 2xl:h-96 rounded-md shadow-lg object-cover"
         />
@@ -59,12 +60,15 @@ const SpecificSalon = () => {
 
     const dispatch = useDispatch();
 	  const {salon} = useSelector((state) => state.salon);
+    // const {salon :newSalon}=useSelector((state)=>state.newSalon)
+    // console.log("Salon only : "+salon)
+    // console.log("Salonsssss only : "+salons)
     const {barbers} = useSelector((state) => state.barbers);
     const {coordinates}=useSelector((state)=>state.coordinates)
+    //const [imagePath,setImagePath]= useState("")
 
     //const [lat,setLat]= useState(10);
     
-
     
 
     //const l1 = salon.coordinates["latitude"] ;
@@ -78,6 +82,7 @@ const SpecificSalon = () => {
       dispatch(getAllSalonDetails(id));
       dispatch(getAllSalonCoordinates(id));
       dispatch(getAllBarberss(name));
+      //setImagePath(salon.imagePath.url)
 
   
       
@@ -103,7 +108,7 @@ const SpecificSalon = () => {
              
             </div>
             <img
-              src={salon.imagePath}
+            // src={salon.images[0].url}
               alt="nature"
               className="w-full h-128 2xl:h-96 rounded-md shadow-lg object-cover"
             />
@@ -113,7 +118,7 @@ const SpecificSalon = () => {
 
             <div className="mt-12 flex flex-wrap justify-center items-center ">
             {barbers.map((barber, i) => (
-            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} imagePath={barber.imagePath} name= {barber.name}  experience={barber.experience} sname={sname} />))}
+            <ShopCard1 key={i} id={barber._id} ratings={barber.ratings} images={barber.images[0].url}  name= {barber.name}  experience={barber.experience} sname={sname} />))}
             </div>
 
             <div style={{width  :'70vw', height: '50vh'}} className=" mt-20 justify-center items-center">

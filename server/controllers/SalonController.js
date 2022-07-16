@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
-
+const cloudinary = require("cloudinary")
 const Salon = require('../models/salonModel');
 const ErrorHandler = require('../utils/errorHandler');
 
@@ -27,7 +27,7 @@ exports.getSalonCoordinates = catchAsyncErrors(async(req, res, next) => {
     const salon = await Salon.findById(req.params.id);
     res.status(200).json({
         success: true,
-        coordinates : salon.coordinates,
+        coordinates: salon.coordinates,
     })
 
 })
@@ -41,7 +41,7 @@ exports.setSalon = catchAsyncErrors(async(req, res, next) => {
         location: req.body.location,
         imagePath: req.body.imagePath,
         barber: req.body.barber,
-        coordinates:req.body.coordinates
+        coordinates: req.body.coordinates
 
     })
     if (!req.body.name) {
@@ -85,4 +85,50 @@ exports.deleteSalon = catchAsyncErrors(async(req, res, next) => {
     })
 })
 
+// Get All Salons (Admin)
+exports.getAdminSalons = catchAsyncErrors(async(req, res, next) => {
+    const salons = await Salon.find();
+    res.status(200).json({
+        success: true,
+        salons
+    })
 
+})
+
+// Create Salon (Admin) Shayan
+
+exports.createSalon = catchAsyncErrors(async(req, res, next) => {
+
+    let images = []
+
+    if (typeof req.body.images === 'string') {
+        images.push(req.body.images)
+    } else {
+        images = req.body.images
+    }
+
+    const imagesLinks = []
+
+    for (let i = 0; i < images.length; i++) {
+        const result = await cloudinary.v2.uploader.upload(images[i], {
+            folder: 'salonimages',
+        })
+
+        imagesLinks.push({
+            public_id: result.public_id,
+            url: result.secure_url,
+        })
+    }
+
+    req.body.images = imagesLinks
+
+    // req.body.user = req.user.id // we get id from the user which is loggedin
+
+    const salon = await Salon.create(req.body)
+
+    res.status(201).json({
+        success: true,
+        salon,
+    })
+
+})

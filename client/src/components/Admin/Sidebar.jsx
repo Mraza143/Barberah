@@ -32,6 +32,19 @@ const Sidebar = () => {
         </p>
       </Link>
 
+      <Link to="/salonowner/salons">
+        <p>
+        <PeopleIcon /> All Salons
+        </p>
+      </Link>
+
+      <Link to="/salonowner/salon">
+        <p>
+        <AddIcon /> Create Salon
+        </p>
+      </Link>
+
+
 
       <Link to="/salonowner/appointments">
         <p>

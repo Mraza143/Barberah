@@ -16,9 +16,6 @@ const UserProfile = () => {
   const alert=useAlert()
   const [isClicked, setIsClicked] = useState(true);
   const { user } = useSelector((state) => state.user)
-  // const [name , setname]=useState("")
-  // const [email , setemail]=useState("")
-  // const [link , setLink]=useState("")
 
   const handleClick_LogoutUser = () => {
     setIsClicked(!isClicked);
@@ -31,20 +28,6 @@ const UserProfile = () => {
 
   };
 
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     console.log(foundUser)
-  //     setname(foundUser["user"]["name"])
-  //     setemail(foundUser["user"]["name"])
-  //     setLink(foundUser["user"]["avatar"]["url"])
-
-  //     //setboolLog(true)
-
-  //   }
-    
-  // }, []);
 
   return (
     <>
@@ -87,8 +70,12 @@ const UserProfile = () => {
             </div>
           </div>
           <div>
+
+            {
+              user.role === "salonowner" && <>
             <Link to="/salonowner/dashboard"
-            className="flex gap-5 border-b-1 border-color p-2 hover:bg-[#37c7da] rounded hover:text-white cursor-pointer">
+            onClick={()=>setIsClicked(!isClicked)}
+            className="flex gap-5 mt-6 border-b-1 border-color p-2 hover:bg-[#37c7da] rounded hover:text-white cursor-pointer">
               <button
                 type="button"
                 className=" text-xl rounded-lg p-2"
@@ -104,22 +91,11 @@ const UserProfile = () => {
                 </p>
               </div>
             </Link>
-            <div className="flex gap-5 border-b-1 border-color p-2 hover:bg-[#37c7da] rounded hover:text-white cursor-pointer">
-              <button
-                type="button"
-                className=" text-xl rounded-lg p-2 hover:bg-light-gray"
-              >
-                <AccountBoxIcon />
-
-              </button>
-              <div>
-                <p className="font-semibold dark:text-gray-200 ">My Profile</p>
-                <p className="text-gray-500 text-sm dark:text-gray-400">
-                  {" "}
-                  Account Settings
-                </p>
-              </div>
-            </div>
+  
+              </>
+            }
+            
+           
           </div>
 
           <div className="mt-5 flex justify-center">
