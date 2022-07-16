@@ -50,6 +50,15 @@ exports.getBarbersByLocation = catchAsyncErrors(async(req, res, next) => {
 
 })
 
+exports.getBarbersUrl = catchAsyncErrors(async(req, res, next) => {
+    const barber = await Barber.findById(req.params.id)
+    res.status(200).json({
+        sucess: true,
+        burl: barber.images[0].url
+    })
+
+})
+
 // Raza tera wala hai yai create barber
 // exports.createBarber = catchAsyncErrors(async(req, res, next) => {
 

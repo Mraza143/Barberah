@@ -8,7 +8,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   clearErrors,
   getAllBarbersDetails,
+  getAllBarbersUrl
 } from '../redux/actions/barberDetailsAction'
+import {getAllSalonUrl} from '../redux/actions/salonDetailsAction'
 import { createAppointmentForCustomers, getAllAppointments } from '../redux/actions/appointmentAction'
 import {getAllReviews,createbarberReview ,getAllReviewsAverage} from '../redux/actions/reviewAction'
 import { Rating } from '@material-ui/lab'
@@ -54,8 +56,8 @@ const BarberProfile = () => {
 
   // Appointment States
   const [customerName, setCustomerName] = useState(user?.name)
-  const [barberName, setBarberName]=useState(barber.name)
-  const [salonName, setSalonName]=useState(barber.worksAt)
+  const [barberName, setBarberName]=useState(barber?.name)
+  const [salonName, setSalonName]=useState(barber?.worksAt)
   const [date, setDate]=useState("")
   const [price,setPrice]=useState(0);
 
@@ -69,6 +71,8 @@ const BarberProfile = () => {
   const {newAppointment, error:appointmentError, success : appointmentSuccess}=useSelector((state)=>state.newAppointment)
   const { average } = useSelector((state) => state.average)
 
+  const {burl} =useSelector((state) => state.burl)
+
   const { success:reviewSuccess, error:reviewError } = useSelector(
     (state) => state.newReview,
   )
@@ -80,7 +84,7 @@ const BarberProfile = () => {
 
   const options = {
     size: 'large',
-    value: barber.ratings,
+    value: barber?.ratings,
     readOnly: true,
     precision: 0.5,
   }
@@ -89,6 +93,7 @@ const BarberProfile = () => {
     e.preventDefault()
     setBarberName(barber.name)
     setSalonName(barber.worksAt)
+
     
     //
   
@@ -144,6 +149,7 @@ const BarberProfile = () => {
     
     dispatch(getAllAppointments(id, name, sname))
     dispatch(getAllReviewsAverage(id))
+    dispatch(getAllBarbersUrl(id))
     //dispatch(getBarbersAverage(id,ratings))
     //console.log(dispatch(getAllReviewsAverage(id)))
  
@@ -165,19 +171,19 @@ const BarberProfile = () => {
           <div className="flex flex-col justify-center items-center w-full mt-3">
             <div className=" flex flex-col  justify-center items-center w-full mb-6 p-7">
               <p className="    text-white text-base font-bold ">
-                Experience: {barber.experience} years
+                Experience: {barber?.experience} years
               </p>
               <p className=" text-white text-base font-bold ">
-                Ratings: {Math.round(barber.ratings)} /10
+                Ratings: {Math.round(barber?.ratings)} /10
               </p>
             </div>
             <img
-              src={barber.images[0].url}
+              src={burl}
               alt="nature"
               className="w-256 h-64 2xl:h-96 rounded-md shadow-lg object-cover"
             />
             <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
-              <p className="text-[#37c7da] font-bold">{barber.name}</p>
+              <p className="text-[#37c7da] font-bold">{barber?.name}</p>
             </div>
           </div>
           {/* ------------ */}
@@ -207,7 +213,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="bname"
-                      value={barber.name}
+                      value={barber?.name}
                       readOnly
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Barber Name"
@@ -217,7 +223,7 @@ const BarberProfile = () => {
                     <input
                       type="text"
                       name="sname"
-                      value={barber.worksAt}
+                      value={barber?.worksAt}
                       readOnly
                       className="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm"
                       placeholder="Salon Name"
@@ -425,7 +431,7 @@ onChange={(e) => setPrice(e.target.value)}>
             <div className="w-full px-6 py-6 flex flex-col ">
               <div className="flex flex-row mb-4">
                 <h2 className="text-2xl font-semibold font__style text-[#602239]">
-                  Submit Your Review For {barber.name} Barber{' '}
+                  Submit Your Review For {barber?.name} Barber{' '}
                 </h2>
               </div>
 
@@ -462,7 +468,7 @@ onChange={(e) => setPrice(e.target.value)}>
 
         {reviews[0]!=null ? (
           <>
-            <h1 className='reviews__title'>Reviews for {barber.name} Barber</h1>
+            <h1 className='reviews__title'>Reviews for {barber?.name} Barber</h1>
           <div className="reviews">
           {
                 reviews.map((review) => (
@@ -484,12 +490,4 @@ onChange={(e) => setPrice(e.target.value)}>
 
 export default BarberProfile
 
-/*
-              <textarea
-                className="submitDialogTextArea"
-                cols="30"
-                rows="5"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-              ></textarea>
-*/
+
