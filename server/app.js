@@ -28,6 +28,8 @@ app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
     // app.use(express.urlencoded({ extended: false }))
 
+
+
 //app.use(cors())
 //app.use(cors({
 /*app.use(cors({
