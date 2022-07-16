@@ -1,6 +1,7 @@
 
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const Review = require('../models/reviewModel')
+const Barber = require('../models/barberModel')
 const ErrorHandler = require('../utils/errorHandler');
 
 
@@ -14,6 +15,7 @@ exports.getReviewsofASpecificBarber = catchAsyncErrors(async(req, res, next) => 
 })
 exports.getAverageReviewsofASpecificBarber = catchAsyncErrors(async(req, res, next) => {
   const reviews = await Review.find({barberId: req.params.id });
+  
   if (reviews.length==0) {
     res.status(200).json({
       success: true,
@@ -40,6 +42,8 @@ exports.setReview = catchAsyncErrors(async(req, res, next) => {
     
 }
   const reviews= await Review.find({barberId:req.body.barberId});
+ // const barber = await Barber.findById(req.params.id)
+ 
   let val = 0;
   if(reviews.length==0){
     val= req.body.rating;
@@ -57,11 +61,14 @@ exports.setReview = catchAsyncErrors(async(req, res, next) => {
       comment:req.body.comment,
       average : val
     })
-   
+    const filter = { id: req.params.id };
+    const update = { ratings: val };
+    let barber = await Barber.findOneAndUpdate(filter , update)
    
     res.status(200).json({
         success: true,
-        review
+        review,
+        barber
     });
 
 })

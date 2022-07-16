@@ -11,7 +11,7 @@ const Review = require('../models/reviewModel')
 router.route("/:id").get(getReviewsofASpecificBarber);
 router.route("/:id/average").get(getAverageReviewsofASpecificBarber);
 
-router.route("/").post(setReview, isAuthenticatedUser);
+router.route("/").post(setReview);
 
 
 

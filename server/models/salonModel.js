@@ -21,7 +21,7 @@ const salonSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    imagePath: {
+    imagePath: [{
         public_id: {
             type: String,
             required: true
@@ -30,7 +30,7 @@ const salonSchema = mongoose.Schema({
             type: String,
             required: true
         }
-    },
+    }],
 
     coordinates: {
         latitude: Number,

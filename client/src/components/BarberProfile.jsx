@@ -45,6 +45,7 @@ const BarberProfile = () => {
   const alert = useAlert()
   const dispatch = useDispatch()
   const [rating, setRating] = useState(0)
+  const [ratings,setRatings]=useState(10);
   const [comment, setComment] = useState('')
   
   const [barberId,setbarberId] = useState(id)
@@ -113,6 +114,7 @@ const BarberProfile = () => {
       })
     )
   }
+<<<<<<< HEAD
   // useEffect(() => {
   //   const loggedInUser = localStorage.getItem("user");
   //   if (loggedInUser) {
@@ -127,6 +129,9 @@ const BarberProfile = () => {
   //   }
     
   // }, []);
+=======
+
+>>>>>>> 5848625d1a498f67b43646bdd3baf451f6e63d86
 
 
   useEffect(() => {
@@ -157,6 +162,8 @@ const BarberProfile = () => {
     
     dispatch(getAllAppointments(id, name, sname))
     dispatch(getAllReviewsAverage(id))
+    //dispatch(getBarbersAverage(id,ratings))
+    //console.log(dispatch(getAllReviewsAverage(id)))
  
     
   }, [dispatch, id, name,sname ,alert, reviewError, reviewSuccess, appointmentError, appointmentSuccess])
@@ -179,7 +186,7 @@ const BarberProfile = () => {
                 Experience: {barber.experience} years
               </p>
               <p className=" text-white text-base font-bold ">
-                Ratings: {Math.round(average * 100)/100} /10
+                Ratings: {Math.round(barber.ratings)} /10
               </p>
             </div>
             <img
