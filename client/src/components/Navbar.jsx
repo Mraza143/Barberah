@@ -79,7 +79,9 @@ const Navbar = () => {
       </div>
       {/* Logout Toggle and User Profile */}
 
-      <div
+{
+  isAuthenticated && <>
+   <div
         className="flex text-4xl items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
         onClick={()=>setIsClicked(!isClicked)}
       >
@@ -96,7 +98,10 @@ const Navbar = () => {
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>
 
+  </>
+}
       {isClicked && <UserProfile />}
+     
 
 
 
