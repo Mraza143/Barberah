@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from "redux-devtools-extension"
 import { userReducer } from "./reducers/userReducer"
 import { barbersReducer, newBarberReducer } from './reducers/barberReducer'
-import { salonReducer } from './reducers/salonReducer'
+import { newSalonReducer, salonReducer } from './reducers/salonReducer'
 import { salonDetailsReducer, salonCoordinatesReducer } from './reducers/salonDetailsReducer'
 import { barbersDetailsReducer } from './reducers/barberDetailsReducer'
 import { appointmentReducer, newAppointmentReducer } from './reducers/appointmentsReducer'
@@ -11,6 +11,7 @@ import { reviewsReducer, ReviewCreateReducer, reviewsAverageReducer } from './re
 const reducer = combineReducers({
     user: userReducer,
     salons: salonReducer,
+    newSalon: newSalonReducer,
     barbers: barbersReducer,
     newBarber: newBarberReducer,
     salon: salonDetailsReducer,
