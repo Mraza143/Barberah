@@ -5,7 +5,7 @@ import {GoogleMap , withScriptjs , withGoogleMap} from "react-google-maps";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllBarberss } from "../redux/actions/barberAction";
-import { getAllSalonDetails ,getAllSalonCoordinates } from "../redux/actions/salonDetailsAction";
+import { getAllSalonDetails ,getAllSalonCoordinates, getAllSalonUrl } from "../redux/actions/salonDetailsAction";
 import TheMap from "./TheMap";
 
 /*function Map(){
@@ -65,6 +65,7 @@ const SpecificSalon = () => {
     // console.log("Salonsssss only : "+salons)
     const {barbers} = useSelector((state) => state.barbers);
     const {coordinates}=useSelector((state)=>state.coordinates)
+    const {url}=useSelector((state)=>state.url)
     //const [imagePath,setImagePath]= useState("")
 
     //const [lat,setLat]= useState(10);
@@ -81,6 +82,7 @@ const SpecificSalon = () => {
     useEffect(()=>{
       dispatch(getAllSalonDetails(id));
       dispatch(getAllSalonCoordinates(id));
+      dispatch(getAllSalonUrl(id));
       dispatch(getAllBarberss(name));
       //setImagePath(salon.imagePath.url)
 
@@ -108,7 +110,7 @@ const SpecificSalon = () => {
              
             </div>
             <img
-            // src={salon.images[0].url}
+             src={url}
               alt="nature"
               className="w-full h-128 2xl:h-96 rounded-md shadow-lg object-cover"
             />

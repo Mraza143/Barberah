@@ -4,8 +4,8 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { userReducer } from "./reducers/userReducer"
 import { barbersReducer, newBarberReducer ,barberRatingsReducer} from './reducers/barberReducer'
 import { newSalonReducer, salonReducer } from './reducers/salonReducer'
-import { salonDetailsReducer, salonCoordinatesReducer } from './reducers/salonDetailsReducer'
-import { barbersDetailsReducer } from './reducers/barberDetailsReducer'
+import { salonDetailsReducer, salonCoordinatesReducer , salonUrlReducer } from './reducers/salonDetailsReducer'
+import { barbersDetailsReducer , barbersUrlReducer } from './reducers/barberDetailsReducer'
 import { appointmentReducer, newAppointmentReducer } from './reducers/appointmentsReducer'
 import { reviewsReducer, ReviewCreateReducer, reviewsAverageReducer } from './reducers/reviewReducer'
 const reducer = combineReducers({
@@ -22,7 +22,9 @@ const reducer = combineReducers({
     reviews: reviewsReducer,
     average: reviewsAverageReducer,
     coordinates: salonCoordinatesReducer,
-    barberRating:  barberRatingsReducer
+    barberRating:  barberRatingsReducer,
+    url : salonUrlReducer,
+    burl :barbersUrlReducer
         //average: reviewsAverageReducer
 })
 

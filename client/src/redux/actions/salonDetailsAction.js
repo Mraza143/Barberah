@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ALL_SALON_REQUEST } from "../constants/salonConstant";
-import {ALL_SALON_COORDINATES_FAIL,ALL_SALON_COORDINATES_REQUEST,ALL_SALON_COORDINATES_SUCCESS,ALL_SALON_DETAILS_SUCCESS,ALL_SALON_DETAILS_REQUEST,ALL_SALON_DETAILS_FAIL,CLEAR_ERRORS } from "../constants/salonDetailsConstant"
+import {ALL_SALON_COORDINATES_FAIL,ALL_SALON_COORDINATES_REQUEST,ALL_SALON_COORDINATES_SUCCESS,ALL_SALON_DETAILS_SUCCESS,ALL_SALON_DETAILS_REQUEST,ALL_SALON_DETAILS_FAIL,CLEAR_ERRORS,ALL_SALON_URL_FAIL,ALL_SALON_URL_REQUEST,ALL_SALON_URL_SUCCESS } from "../constants/salonDetailsConstant"
 
 
 export const getAllSalonDetails = (id) => async(dispatch) => {
@@ -40,6 +40,27 @@ export const getAllSalonCoordinates = (id) => async(dispatch) => {
         })
     }
 }
+
+
+export const getAllSalonUrl = (id) => async(dispatch) => {
+    try {
+        dispatch({ type: ALL_SALON_URL_REQUEST})
+        //const config = { headers: { 'Content-Type': 'application/json' } }
+       //const  resp  = await axios.get(`http://localhost:5000/api/salons`)
+       const {data } = await axios.get(`http://localhost:5000/api/salons/url/${id}`);
+
+        dispatch({
+            type: ALL_SALON_URL_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: ALL_SALON_URL_FAIL,
+            payload: error.response.data.message,
+        })
+    }
+}
+
 
 
 // Clearing Errors

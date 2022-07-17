@@ -3,10 +3,12 @@ const app = express()
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
-const path = require('path')
+var fs = require('fs');
+var path = require('path');
 var cors = require('cors')
 const errorMiddleware = require('./middleware/error')
 const dotenv = require("dotenv")
+var multer = require('multer');
 
 
 // Config
@@ -26,10 +28,9 @@ app.use(express.json())
 app.use(cookieParser());
 app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
     // app.use(express.urlencoded({ extended: false }))
-
-
-
+   
 //app.use(cors())
 //app.use(cors({
 /*app.use(cors({
