@@ -93,11 +93,11 @@ const Register = () => {
             </div>
 
             <div className="flex w-full lg:w-1/2 justify-center items-center bg-[#f2f9ff] space-y-8">
-              <div className="w-full px-8 md:px-32 lg:px-24">
+              <div className="w-full">
                 <form
                   onSubmit={registerSubmit}
                   encType="multipart/form-data"
-                  className="bg-white rounded-md shadow-2xl p-5"
+                  className="bg-white rounded-md shadow-2xl p-12 w-full"
                 >
                   <h1 className="text-gray-800 font-bold text-2xl mb-1 text-center">
                     Get your FREE Account

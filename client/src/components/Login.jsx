@@ -60,7 +60,7 @@ const [loginPassword, setLoginPassword] = useState('')
                     <div className="flex w-full lg:w-6/12 justify-center items-center bg-[#f2f9ff] space-y-8">
                       <div className="w-full px-8 md:px-32 lg:px-24 bg-white">
           
-                      <form onSubmit={loginSubmit}  className="bg-white rounded-md shadow-2xl p-5"  >
+                      <form onSubmit={loginSubmit}  className="bg-white rounded-md shadow-2xl p-8"  >
                         <h1 className="text-gray-800 font-bold text-2xl mb-1 text-center">Hello Again!</h1>
                         <p className="text-sm font-normal text-gray-600 mb-8 text-center">Welcome Back</p>
           

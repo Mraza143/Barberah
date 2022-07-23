@@ -160,17 +160,14 @@ const BarberProfile = () => {
     <>
       <div className="gradient-bg-welcome pb-4 flex md:flex-row flex-col w-full justify-center items-center">
         <div
-          className="mr-4 flex flex-[0.6]
+          className=" flex flex-[0.6]
           2xl:min-w-[750px]
-          2xl:max-w-[800px]
           sm:min-w-[470px]
-          sm:max-w-[570px]
-          min-w-full
-          flex-col p-3 rounded-md hover:shadow-2xl"
+          flex-col rounded-md hover:shadow-2xl"
         >
           <div className="flex flex-col justify-center items-center w-full mt-3">
-            <div className=" flex flex-col  justify-center items-center w-full mb-6 p-7">
-              <p className="    text-white text-base font-bold ">
+            <div className="flex flex-col justify-center items-center w-full">
+              <p className="text-white text-base font-bold ">
                 Experience: {barber?.experience} years
               </p>
               <p className=" text-white text-base font-bold ">
@@ -180,7 +177,7 @@ const BarberProfile = () => {
             <img
               src={burl}
               alt="nature"
-              className="w-256 h-64 2xl:h-96 rounded-md shadow-lg object-cover"
+              className="w-full h-full sm:h-full sm:px-12 rounded-lg shadow-lg object-cover"
             />
             <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
               <p className="text-[#37c7da] font-bold">{barber?.name}</p>
@@ -192,8 +189,8 @@ const BarberProfile = () => {
         <div className="text-[#37c7da] flex-[0.3] ">
           {/* ----------------------- */}
           <div>
-            <div className="max-w-md  bg-white shadow-lg rounded-lg md:max-w-xl ">
-              <div className="md:flex ">
+            <div className="max-w-md bg-white shadow-lg rounded-lg md:max-w-xl ">
+              <div className="md:flex">
                 <div className="w-full px-7 py-8">
                   <div className="flex flex-row">
                     <h2 className="text-3xl font-semibold mx-auto font__style text-[#0f0e13]">Book Now!</h2>
@@ -269,6 +266,7 @@ onChange={(e) => setPrice(e.target.value)}>
             </div>
           </div>
           {/* ----------------- */}
+          <br></br>
           Appointments for this barber
           <table className='bg-white border__style'>
             <thead>
@@ -427,7 +425,7 @@ onChange={(e) => setPrice(e.target.value)}>
           <div className="md:flex font-cursive">
             <div className="w-full px-6 py-6 flex flex-col ">
               <div className="flex flex-row mb-4">
-                <h2 className="text-2xl font-semibold font__style text-[#602239]">
+                <h2 className="text-2xl font-semibold font__style text-[#602239] text-center">
                   Submit Your Review For {barber?.name} Barber{' '}
                 </h2>
               </div>
@@ -465,18 +463,19 @@ onChange={(e) => setPrice(e.target.value)}>
 
         {reviews[0]!=null ? (
           <>
-            <h1 className='reviews__title'>Reviews for {barber?.name} Barber</h1>
-          <div className="reviews">
-          {
-                reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review}  />
-                ))}
+            <h1 className='reviews__title text-center'>Reviews for {barber?.name} Barber</h1>
+            <div className="flex flex-row space-even justify-around flex-wrap">
+              <div className="reviews">
+              {
+                    reviews.map((review) => (
+                      <ReviewCard key={review._id} review={review}  />
+                    ))}
+                </div>
             </div>
             </>
           ) : (
             <p className="noReviews text-white">No Reviews Yet</p>
           )}
-
       </div>
 
 
