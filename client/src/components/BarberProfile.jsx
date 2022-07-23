@@ -266,24 +266,6 @@ onChange={(e) => setPrice(e.target.value)}>
             </div>
           </div>
           {/* ----------------- */}
-          <br></br>
-          Appointments for this barber
-          <table className='bg-white border__style'>
-            <thead>
-              <th className='border__style'>Date : </th>
-              <th className='border__style'>Customer Name : </th>
-            </thead>
-            <tbody>
-            { appointments.map((barber, i) => (
-          <tr key={i}>
-<td className='border__style'>{barber.date}</td>
-<td className='border__style'>{barber.customerName}</td>
-          </tr>
-
-           
-            ))}
-            </tbody>
-          </table>
           
 
         
@@ -420,66 +402,89 @@ onChange={(e) => setPrice(e.target.value)}>
 
       {/* // ------------ Reviews form */}
 
-      <div className="bg-black pt-12  flex flex-col w-full justify-center items-center py-8">
-        <div className="min-w-md  bg-white shadow-lg rounded-lg md:max-w-xl  mb-14">
-          <div className="md:flex font-cursive">
-            <div className="w-full px-6 py-6 flex flex-col ">
-              <div className="flex flex-row mb-4">
-                <h2 className="text-2xl font-semibold font__style text-[#602239] text-center">
-                  Submit Your Review For {barber?.name} Barber{' '}
-                </h2>
-              </div>
-
-              <Rating
-                onChange={(e) => setRating(e.target.value)}
-                value={rating}
-                size="large"
-              />
-
-              <textarea
-                className="submitDialogTextArea"
-                cols="30"
-                rows="7"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              ></textarea>
-
-
-              <button
-                type="button"
-                class="h-12 w-full rounded font-larger text-xs bg-[#602239] text-white"
-                onClick={submitHandler}
-              >
-                Submit
-              </button>
-
-
-
-           
-            </div>
-          </div>
-        </div>
-
-
-        {reviews[0]!=null ? (
-          <>
-            <h1 className='reviews__title text-center'>Reviews for {barber?.name} Barber</h1>
-            <div className="flex flex-row space-even justify-around flex-wrap">
-              <div className="reviews">
-              {
-                    reviews.map((review) => (
-                      <ReviewCard key={review._id} review={review}  />
-                    ))}
-                </div>
-            </div>
-            </>
-          ) : (
-            <p className="noReviews text-white">No Reviews Yet</p>
-          )}
-      </div>
+      {/*<div className="bg-black pt-12  flex flex-col w-full justify-center items-center py-8">
+        
+            
+          </div>*/}
 
 
       {/* // ----------------- */}
+      <div>
+        <div >
+          <div className="flex flex-col sm:flex-row bg-black justify-around">
+            <div className="min-w-md  bg-white shadow-lg rounded-lg md:max-w-xl my-14 w-full sm:w-1/2">
+            <div className="md:flex font-cursive">
+            <div className="w-full px-6 py-6 flex flex-col ">
+                <div className="flex flex-row mb-4">
+                  <h2 className="text-2xl font-semibold font__style text-[#602239] text-center">
+                    Submit Your Review For {barber?.name} Barber{' '}
+                  </h2>
+                </div>
+
+                <Rating
+                  onChange={(e) => setRating(e.target.value)}
+                  value={rating}
+                  size="large"
+                />
+
+                <textarea
+                  className="submitDialogTextArea"
+                  cols="30"
+                  rows="7"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+
+
+                <button
+                  type="button"
+                  class="h-12 w-full rounded font-larger text-xs bg-[#602239] text-white"
+                  onClick={submitHandler}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+            </div>
+          <div className="w-full sm:w-1/2 my-12 flex flex-col content-center items-center">
+              <h1 className="text-white text-center">Today's Appointments</h1>
+              <div>
+              <table className='bg-white border__style text-center'>
+                <thead>
+                  <th className='border__style'>Date </th>
+                  <th className='border__style'>Customer Name </th>
+                </thead>
+                <tbody>
+                { appointments.map((barber, i) => (
+              <tr key={i}>
+                  <td className='border__style'>{barber.date}</td>
+                  <td className='border__style'>{barber.customerName}</td>
+              </tr>
+                ))}
+                </tbody>
+              </table>
+              </div>
+          </div>
+          </div>
+        <div className='bg-white'>
+          {reviews[0]!=null ? (
+            <>
+              <h1 className='reviews__title text-center'>Reviews for {barber?.name} Barber</h1>
+              <div className="flex flex-row space-even justify-around flex-wrap">
+                <div className="reviews">
+                {
+                      reviews.map((review) => (
+                        <ReviewCard key={review._id} review={review}  />
+                      ))}
+                  </div>
+              </div>
+              </>
+            ) : (
+              <p className="noReviews text-white">No Reviews Yet</p>
+            )}
+        </div>
+        </div>
+      </div>
     </>
   )
 }
